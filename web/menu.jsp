@@ -32,19 +32,19 @@ and open the template in the editor.
       <a href="#">Genre</a>
       <ul class="children sub-menu">
         <li>
-            <a>Action </a> <input name="genre_name" size=30 type="hidden" />
+            <a href="searchAnimeByGenre.jsp?genre_name=Action">Action</a>
         </li>
         <li>
           <a href="searchAnimeByGenre.jsp?genre_name=Adventure">Adventure</a>
         </li>
         <li>
-          <a href="#">Comedy</a>
+          <a href="searchAnimeByGenre.jsp?genre_name=Comedy">Comedy</a>
         </li>
         <li>
-          <a href="#">Fantasy</a>
+          <a href="searchAnimeByGenre.jsp?genre_name=Fantasy">Fantasy</a>
         </li>
         <li>
-          <a href="#">Horror</a>
+          <a href="searchAnimeByGenre.jsp?genre_name=Horror">Horror</a>
         </li>
       </ul>
     </li>

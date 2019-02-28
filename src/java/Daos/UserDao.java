@@ -127,5 +127,40 @@ public class UserDao extends Dao implements UserDaoInterface {
         }
         return newId;
     }
+    @Override
+    public int updateUserStatus(int userId, int Status){
+        Connection con = null;
+        PreparedStatement ps = null; 
+        ResultSet generatedKeys = null;
+         int returnValue = -1;
+         
+        try {
+            con = this.getConnection();
+            
+            String query ="Update user SET Status = ? Where user_id =? ";
+            ps= con.prepareStatement(query);
+            ps.setInt(1, Status);
+            ps.setInt(2, userId);
+            ps.executeUpdate();
+            returnValue = -1;
+            
+    
+    }catch (SQLException e) {
+            System.out.println("Exception occured in the updateUserStatus() method: " + e.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    freeConnection(con);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section of the updateUserStatus() method");
+                e.getMessage();
+            }
+        }
+        return returnValue = -1;
+}
 
 }
