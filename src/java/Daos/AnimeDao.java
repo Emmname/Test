@@ -133,7 +133,7 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
                     animeArry.add(a);
                 }
         }  catch (SQLException e) {
-            System.err.println("A problem occurred in getAllAnimes() method:\n" + e.getMessage());
+            System.err.println("A problem occurred in getAllAnimesDescByRating() method:\n" + e.getMessage());
         }finally {
             try {
                 if (rs != null) {

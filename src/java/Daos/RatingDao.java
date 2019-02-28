@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -121,5 +122,47 @@ public class RatingDao extends Dao implements RatingDaoInterface{
             }
         }
     return average;
+}
+     public ArrayList<Integer> getAnimeIdByRatingId(int ratingId){
+           Connection con = null;
+           PreparedStatement ps = null;
+           ResultSet rs = null;
+           
+           ArrayList<Integer> animeId = new ArrayList();
+           
+           try{
+               con = getConnection();
+               String query = "Select anime_id from rating where rating_id=?";
+               ps = con.prepareStatement(query);
+               ps.setInt(1, ratingId);
+               rs = ps.executeQuery();
+               
+               while(rs.next()){
+                   int Id = rs.getInt("anime_id");
+                   
+                   animeId.add(Id);
+               }
+           
+           
+           }catch (SQLException e) {
+            System.out.println("Exception occured in the getAnimeIdByRatingId() method: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    freeConnection(con);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section of the getAnimeIdByRatingId() method: " + e.getMessage());
+            }
+        }
+
+        return animeId;
+           
 }
 }
