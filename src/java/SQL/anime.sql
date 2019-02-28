@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2019 at 11:22 AM
+-- Generation Time: Feb 28, 2019 at 01:02 PM
 -- Server version: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
@@ -49,6 +49,34 @@ INSERT INTO `anime` (`anime_id`, `anime_name`, `release_date`, `animator`) VALUE
 (8, 'Code Geass', '2006-10-06', 'Ichir? ?kouchi'),
 (9, 'Hunter x Hunter', '1999-10-16', 'Yoshihiro Togashi'),
 (10, 'Tokyo Ghoul', '2014-07-04', 'Ch?ji Mikasano');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `episode`
+--
+
+CREATE TABLE `episode` (
+  `video_id` int(5) NOT NULL,
+  `anime_id` int(5) NOT NULL,
+  `episode_id` int(5) NOT NULL,
+  `episode_name` varchar(255) DEFAULT NULL,
+  `episode_link` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `episode`
+--
+
+INSERT INTO `episode` (`video_id`, `anime_id`, `episode_id`, `episode_name`, `episode_link`) VALUES
+(1, 1, 0, 'OVA: Road to Hero', NULL),
+(2, 1, 0, 'OVA: The Shadow That Snuck Up Too Close', NULL),
+(3, 1, 2, 'The Lone Cyborg', NULL),
+(4, 1, 3, 'The Obsessive Scientist', NULL),
+(8, 1, 4, 'The Modern Ninja', NULL),
+(9, 1, 5, 'The Ultimate Mentor', NULL),
+(10, 1, 1, 'The Strongest Man', NULL),
+(11, 3, 2, 'Hagane no renkinjutsushi (Fullmetal Alchemist)', NULL);
 
 -- --------------------------------------------------------
 
@@ -205,6 +233,13 @@ ALTER TABLE `anime`
   ADD PRIMARY KEY (`anime_id`);
 
 --
+-- Indexes for table `episode`
+--
+ALTER TABLE `episode`
+  ADD PRIMARY KEY (`video_id`),
+  ADD KEY `FK_anime_id` (`anime_id`);
+
+--
 -- Indexes for table `favourite`
 --
 ALTER TABLE `favourite`
@@ -268,6 +303,11 @@ ALTER TABLE `user`
 ALTER TABLE `anime`
   MODIFY `anime_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
+-- AUTO_INCREMENT for table `episode`
+--
+ALTER TABLE `episode`
+  MODIFY `video_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
 -- AUTO_INCREMENT for table `favourite`
 --
 ALTER TABLE `favourite`
@@ -305,6 +345,12 @@ ALTER TABLE `user`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `episode`
+--
+ALTER TABLE `episode`
+  ADD CONSTRAINT `FK_anime_id` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`);
 
 --
 -- Constraints for table `favourite`
