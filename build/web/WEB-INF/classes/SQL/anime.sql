@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2019 at 06:53 PM
+-- Generation Time: Mar 04, 2019 at 04:06 PM
 -- Server version: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
@@ -53,6 +53,34 @@ INSERT INTO `anime` (`anime_id`, `anime_name`, `release_date`, `animator`) VALUE
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `episode`
+--
+
+CREATE TABLE `episode` (
+  `video_id` int(5) NOT NULL,
+  `anime_id` int(5) NOT NULL,
+  `episode_id` int(5) NOT NULL,
+  `episode_name` varchar(255) DEFAULT NULL,
+  `episode_link` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `episode`
+--
+
+INSERT INTO `episode` (`video_id`, `anime_id`, `episode_id`, `episode_name`, `episode_link`) VALUES
+(1, 1, 0, 'OVA: Road to Hero', NULL),
+(2, 1, 0, 'OVA: The Shadow That Snuck Up Too Close', NULL),
+(3, 1, 2, 'The Lone Cyborg', NULL),
+(4, 1, 3, 'The Obsessive Scientist', NULL),
+(8, 1, 4, 'The Modern Ninja', NULL),
+(9, 1, 5, 'The Ultimate Mentor', NULL),
+(10, 1, 1, 'The Strongest Man', NULL),
+(11, 3, 2, 'Hagane no renkinjutsushi (Fullmetal Alchemist)', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `favourite`
 --
 
@@ -61,6 +89,13 @@ CREATE TABLE `favourite` (
   `user_id` int(5) NOT NULL,
   `anime_id` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `favourite`
+--
+
+INSERT INTO `favourite` (`favourite_id`, `user_id`, `anime_id`) VALUES
+(1, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -129,8 +164,15 @@ CREATE TABLE `orders` (
   `date_paid` date NOT NULL,
   `date_expired` date NOT NULL,
   `PaymentType` varchar(255) NOT NULL,
-  `AmountPaid` varchar(255) NOT NULL
+  `AmountPaid` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `user_id`, `date_paid`, `date_expired`, `PaymentType`, `AmountPaid`) VALUES
+(1, 1, '2019-02-01', '2019-03-01', 'visa', 20);
 
 -- --------------------------------------------------------
 
@@ -150,16 +192,11 @@ CREATE TABLE `rating` (
 --
 
 INSERT INTO `rating` (`rating_id`, `anime_id`, `user_id`, `ratingNumber`) VALUES
-(1, 4, 11, 4),
-(2, 7, 10, 5),
-(3, 7, 7, 5),
-(4, 3, 11, 3),
-(5, 10, 7, 4),
-(6, 1, 10, 4),
-(7, 8, 10, 4),
-(8, 9, 11, 5),
-(9, 5, 10, 4),
-(10, 1, 11, 5);
+(1, 4, 1, 5),
+(2, 7, 4, 3),
+(3, 7, 2, 5),
+(4, 8, 4, 1),
+(5, 5, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -185,21 +222,19 @@ CREATE TABLE `user` (
   `user_id` int(5) NOT NULL,
   `Username` varchar(24) NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `Password` varchar(16) NOT NULL,
-  `Status` varchar(7) DEFAULT NULL
+  `Password` varchar(1024) NOT NULL,
+  `Status` int(10) DEFAULT NULL,
+  `salt` varchar(1024) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `Username`, `Email`, `Password`, `Status`) VALUES
-(3, '1234', '123@gmal.com', '1234', 'free'),
-(4, '12345', '12345@gmail.comk', '12345', 'free'),
-(7, '1111', '1111@gmail.com', '1111', 'free'),
-(10, 'ahmed', '123asdf@hasdkj.com', 'ahmed', 'free'),
-(11, 'Jordan', 'jordan-donnelly@hotmail.com', '1234', 'Free'),
-(12, 'bART', 'BART@GMAIL.COM', '123', NULL);
+INSERT INTO `user` (`user_id`, `Username`, `Email`, `Password`, `Status`, `salt`) VALUES
+(1, '1234', '1234@gmail.com', '1234', 1, ''),
+(2, 'ItsMeBaby', 'DrinkMe@gmail.com', 'b060dc3e37c6952d0128f207882cae02', NULL, '¬ŽäËZ*Þ{-×	Ï'),
+(4, 'ItsMeBaby69;)', 'BigFuck@hotmail.com', 'eb14bb84404dd20ffd5c0ee0c55cea12', NULL, 'µÜ¹1W¶åê‡–ÏÑšËþL6/µ8-ù!£áü=ä&¥9ƒGk\'[„}§ÀÐëtîhø³ð@Ä84VÞx}1¤JìÂn0þ­/HÎ–%\Z!Ü¦‘qÁ›¬M‰dçÄ ­u^ðèw<\"©kš—{;[@ª,‘¸´ «v¿ñpøx!ùêùø¦ÑKä¾KÂòÄp`a|YC±4ã´“ŒA?þäÃÉx~ÛÄÄ²›æiý’€_—­Ñ[Xz«¶~,îtÒÛßìy5Þ e7±ß3|þåõ>•ðÇ+“;œ-»Ç÷ƒæ„ZnXZ©@Ô  m¿’ÿmëXKÂ¿Ì«ñÄÁ_çè´5ž+lrMÈdLüB|×Œèª@Ñ ”Îb&\\]“üîqõ¿¶š‹ÏK¿´}–íd30x:…‰\r›+¬jeðþsØ‘ßBéfñ™=ÕUJõ;å¥–PÙ(¶VuÁèÎ›1•Îf\"ÿ‘þf…êKétÐˆ/‰¥k§ØCI\\Æ³>Þ,¹šÚônfÃŽ–+âÚÿQ6H9·÷½ÜòÏ’ˆ3ùqŒ¬4;§Í4\"·¶ÝPyT~à¼Àé«•}×;™u°/µ©‹ë>äý\n9ñ&ÞJƒÒx!±Òåì¿8y‹Ôº(Q6');
 
 --
 -- Indexes for dumped tables
@@ -210,6 +245,13 @@ INSERT INTO `user` (`user_id`, `Username`, `Email`, `Password`, `Status`) VALUES
 --
 ALTER TABLE `anime`
   ADD PRIMARY KEY (`anime_id`);
+
+--
+-- Indexes for table `episode`
+--
+ALTER TABLE `episode`
+  ADD PRIMARY KEY (`video_id`),
+  ADD KEY `FK_anime_id` (`anime_id`);
 
 --
 -- Indexes for table `favourite`
@@ -275,10 +317,15 @@ ALTER TABLE `user`
 ALTER TABLE `anime`
   MODIFY `anime_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
+-- AUTO_INCREMENT for table `episode`
+--
+ALTER TABLE `episode`
+  MODIFY `video_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
 -- AUTO_INCREMENT for table `favourite`
 --
 ALTER TABLE `favourite`
-  MODIFY `favourite_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `favourite_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `genre`
 --
@@ -293,12 +340,12 @@ ALTER TABLE `genreanime`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `rating`
 --
 ALTER TABLE `rating`
-  MODIFY `rating_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `rating_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `reviews`
 --
@@ -308,10 +355,16 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `episode`
+--
+ALTER TABLE `episode`
+  ADD CONSTRAINT `FK_anime_id` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`);
 
 --
 -- Constraints for table `favourite`

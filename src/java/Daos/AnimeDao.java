@@ -148,8 +148,9 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
             } catch (SQLException e) {
                 System.err.println("A problem occurred when closing down the getAllBook() method:\n" + e.getMessage());
             }
-             return animeArry;
+             
         }
+        return animeArry;
     }
       
         

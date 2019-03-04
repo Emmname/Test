@@ -123,6 +123,7 @@ public class RatingDao extends Dao implements RatingDaoInterface{
         }
     return average;
 }
+    @Override
      public ArrayList<Integer> getAnimeIdByRatingId(int ratingId){
            Connection con = null;
            PreparedStatement ps = null;
@@ -165,4 +166,44 @@ public class RatingDao extends Dao implements RatingDaoInterface{
         return animeId;
            
 }
+
+    @Override
+    public int getNumberOfRatingIds() {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int ratingIds = 0;
+        
+        
+        try{
+            con = getConnection();
+            
+            String query = "Select Count(rating_id) as total from rating ";
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                ratingIds=rs.getInt("total");
+                
+            }
+        }catch (SQLException e) {
+            System.out.println("Exception occured in the getNumberOfGenreIds() method: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    freeConnection(con);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section of the getNumberOfGenreIds() method: " + e.getMessage());
+            }
+        }
+
+        return ratingIds;
+        
+    }
 }

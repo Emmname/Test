@@ -13,4 +13,5 @@ import java.util.ArrayList;
  */
 public interface GenreAnimeDaoInterface {
     public ArrayList<Integer> getAnimeIdBygenreId(int genreId);
+    
 }

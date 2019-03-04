@@ -31,7 +31,9 @@
                 <%
                 ArrayList<Anime> animes = new ArrayList<>();
                 AnimeDao aDao = new AnimeDao("anime");
-                for(int i=0; i<aDao.getAllAnimesDescByRating().size();i++){
+                RatingDao rDao = new RatingDao("anime");
+                
+                for(int i=0; i<rDao.getNumberOfRatingIds();i++){
                 if((aDao.getAllAnimesDescByRating().get(i) != null )){
                  animes.add(aDao.getAllAnimesDescByRating().get(i));
                 }

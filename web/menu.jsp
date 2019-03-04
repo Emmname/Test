@@ -52,7 +52,7 @@ and open the template in the editor.
       <a href="">Storage</a>
       <ul class="children sub-menu">
         <li>
-          <a href="#">Top Anime</a>
+          <a href="mostPopularAnime.jsp">Top Anime</a>
         </li>
         <li>
           <a href="#">Recently Update</a>
