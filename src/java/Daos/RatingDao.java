@@ -7,6 +7,7 @@ package Daos;
 
 import Daos.Dao;
 import Daos.Dao;
+import Dtos.Rating;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,7 +34,9 @@ public class RatingDao extends Dao implements RatingDaoInterface{
         PreparedStatement ps = null;
         ResultSet gk = null;
         int newId = -1;
-        
+        String msg="Sorry You already have put a rating in this anime";
+        while(checkRatingUser(user_id, anime_id)){
+            msg.equalsIgnoreCase("");
         try{
              con = this.getConnection();
              
@@ -50,7 +53,9 @@ public class RatingDao extends Dao implements RatingDaoInterface{
             {
                 newId = gk.getInt(1);
             }
-        } catch (SQLException ex) {
+        } 
+        
+        catch (SQLException ex) {
             Logger.getLogger(RatingDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         finally 
@@ -74,9 +79,14 @@ public class RatingDao extends Dao implements RatingDaoInterface{
                 System.err.println("A problem occurred when closing down the  borrowBook(int book_id,int member_id,String date,String due) method:\n" + e.getMessage());
             }
         }
+        
+        }
+        
+        System.out.println(msg);
         return newId;
+            
     }
-
+    
     @Override
     public double getAverageRating(int anime_id) {
         Connection con = null;
@@ -205,5 +215,47 @@ public class RatingDao extends Dao implements RatingDaoInterface{
 
         return ratingIds;
         
+    }
+
+    @Override
+    public boolean checkRatingUser(int user_id, int anime_id) {
+        Connection con = null;
+           PreparedStatement ps = null;
+           ResultSet rs = null;
+           boolean checked=true;
+           
+           try{
+               con = getConnection();
+               String query = "Select rating_id from rating where user_id=? and anime_id=?";
+               ps = con.prepareStatement(query);
+               ps.setInt(1, user_id);
+               ps.setInt(1, user_id);
+               rs = ps.executeQuery();
+               
+               while(rs.next()){
+                   checked=false;
+                   
+               }
+           
+           
+           }catch (SQLException e) {
+            System.out.println("Exception occured in the checkRatingUser(int user_id, int anime_id) method: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    freeConnection(con);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section of the checkRatingUser(int user_id, int anime_id) method: " + e.getMessage());
+            }
+        }
+
+        return checked;
     }
 }

@@ -18,3 +18,20 @@ body{
         background-image: url("../Images/Background.png");
         background-size: cover;
         }
+        table {
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: #ff0099
+}
+tr:nth-child(odd) {
+    background-color: #ff99ff
+}

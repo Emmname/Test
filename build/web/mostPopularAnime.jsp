@@ -13,21 +13,25 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="CSS/home.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <a href="header.jsp"></a>
+        <jsp:include page="menu.jsp" />
         <title>Most popular Animes</title>
     </head>
+     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <body>
-        <table>
+        <table id="myTable">
             <tr>
                     
                     <th>ID</th>
                     <th>Name</th>
                     <th>Animator</th>
                     <th>Release Date</th>
-                    <th>Rating</th>
+                    <th onclick="w3.sortHTML('#myTable', '.item','td:nth-child(5)')"style="cursor:pointer"> Rating</th>
                         
                 </tr>
-                
+              
                 
                 <%
                 ArrayList<Anime> animes = new ArrayList<>();
@@ -76,14 +80,14 @@
             if(animes.size() > 0)
             {
         %>       
-             <table>
+             
                 
                 <%
                     for(Anime a: animes)
                     {
                 %>
                 
-                <tr>
+                <tr class="item">
                     
                     <td><%=a.getAnime_id()%></td>
                     <td><%=a.getAnimename()%></td>
@@ -99,6 +103,7 @@
                 }
             %>
              </table>
-        
+                
+                  
     </body>
 </html>
