@@ -78,21 +78,21 @@ public class RatingDao extends Dao implements RatingDaoInterface{
     }
 
     @Override
-    public int getAverageRating(int anime_id) {
+    public double getAverageRating(int anime_id) {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        int average=0;
+        double average=0;
         
         try {
             con = this.getConnection();
             
-            String query = " SELECT AVG(ratingNumber) as average where anime_id = ?";
+            String query = " SELECT AVG(ratingNumber) as average from rating where anime_id = ?";
             ps = con.prepareStatement(query);
             ps.setInt(1, anime_id);
             rs=ps.executeQuery();
-            if(rs.next()){
-                 average=rs.getInt("average");
+            while(rs.next()){
+                 average=rs.getDouble("average");
             }
         }
             

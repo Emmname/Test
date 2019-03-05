@@ -120,7 +120,7 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
         
         try{
             con = this.getConnection();
-            String query = "SELECT anime_name, ratingNumber FROM anime, rating WHERE anime.anime_id = rating.anime_id ORDER BY (SELECT AVG(ratingNumber)from rating) DESC ";
+            String query = "SELECT anime_name, anime_id, ratingNumber FROM anime, rating WHERE anime.anime_id = rating.anime_id ORDER BY (SELECT AVG(ratingNumber)from rating) DESC ";
             ps = con.prepareStatement(query);
             rs = ps.executeQuery();
                 while(rs.next()){

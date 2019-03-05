@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public interface RatingDaoInterface {
     public int addRating(int anime_id,int ratingNumber, int user_id);
-    public int getAverageRating(int anime_id);
+    public double getAverageRating(int anime_id);
     public ArrayList<Integer> getAnimeIdByRatingId(int ratingId);
     public int getNumberOfRatingIds();
 }
