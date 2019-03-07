@@ -35,14 +35,16 @@ public class RegisterCommand implements Command {
                session.setAttribute("loggedInUser", u);
                
                forwardToJsp="home.jsp";
-            }else{
+            }
+            else{
              
                 String errorMessage = "registerError1";
                 HttpSession session = request.getSession();
                 session.setAttribute("errorMessage", errorMessage);
                 forwardToJsp = "error.jsp";
             }
-        }else{
+        }
+            else{
     
             String errorMessage = "registerError2";
             HttpSession session = request.getSession();

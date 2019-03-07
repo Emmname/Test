@@ -34,9 +34,7 @@ public class RatingDao extends Dao implements RatingDaoInterface{
         PreparedStatement ps = null;
         ResultSet gk = null;
         int newId = -1;
-        String msg="Sorry You already have put a rating in this anime";
-        while(checkRatingUser(user_id, anime_id)){
-            msg.equalsIgnoreCase("");
+        
         try{
              con = this.getConnection();
              
@@ -56,7 +54,7 @@ public class RatingDao extends Dao implements RatingDaoInterface{
         } 
         
         catch (SQLException ex) {
-            Logger.getLogger(RatingDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error occured when trying to add a rating in the addRating(int anime_id,int ratingNumber, int user_id) method " + ex.getMessage());
         }
         finally 
         {
@@ -80,9 +78,8 @@ public class RatingDao extends Dao implements RatingDaoInterface{
             }
         }
         
-        }
         
-        System.out.println(msg);
+        
         return newId;
             
     }

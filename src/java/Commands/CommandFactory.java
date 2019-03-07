@@ -46,8 +46,8 @@ private CommandFactory(){
                     c = new AddRatingCommand();
                     break;
                     
-                case "getAverageRating":
-                    c = new AddRatingCommand();
+                case "addFavourite":
+                    c = new AddFavourtieCommand();
                     break;
                     
                 default:

@@ -44,7 +44,7 @@
                 </div>
                   
                 <div class="col-md-12 text-center ">
-                    <button type="submit"  class=" btn btn-block mybtn btn-primary tx-tfm" >register</button>
+                    <button type="submit"  class=" btn btn-block mybtn btn-primary tx-tfm" >Register</button>
                  </div>
                 <div class="form-group">
                    <p class="text-center"><a href="login.jsp" id="signup" >Back login</a></p>
