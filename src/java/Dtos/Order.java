@@ -17,19 +17,19 @@ public class Order {
     private Date date_paid;
     private Date date_expired;
     private String PaymentType;
-    private String AmountPaid;
+    private int AmountPaid;
 
     public Order() {
         order_id=-1;
         date_paid =null;
         date_expired=null;
         PaymentType= null;
-        AmountPaid=null;
+        AmountPaid=0;
     }
         
     
 
-    public Order(int order_id, int user_id, Date date_paid, Date date_expired, String PaymentType, String AmountPaid) {
+    public Order(int order_id, int user_id, Date date_paid, Date date_expired, String PaymentType, int AmountPaid) {
         this.order_id = order_id;
         this.user_id = user_id;
         this.date_paid = date_paid;
@@ -78,11 +78,11 @@ public class Order {
         this.PaymentType = PaymentType;
     }
 
-    public String getAmountPaid() {
+    public int getAmountPaid() {
         return AmountPaid;
     }
 
-    public void setAmountPaid(String AmountPaid) {
+    public void setAmountPaid(int AmountPaid) {
         this.AmountPaid = AmountPaid;
     }
 

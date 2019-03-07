@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -29,14 +30,13 @@ public class OrderDao extends Dao implements OrderDaoInterface {
         try{
             conn = this.getConnection();
             
-            String query = "INSERT INTO orders(user_id,date_paid,date_expired,PaymentType,AmountPaid) VALUES (?, ?, ?, ?, ?)";
+            String query = "INSERT INTO orders(user_id,date_paid,PaymentType,AmountPaid) VALUES (?, ?, ?, ?)";
              ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         
              ps.setInt(1, userId);
              ps.setDate(2, datePaid);
-             ps.setDate(3, dateExpired);
-             ps.setString(4, paymentType);
-             ps.setInt(5, AmountPaid);
+             ps.setString(3, paymentType);
+             ps.setInt(4, AmountPaid);
              
              ps.executeUpdate();
              

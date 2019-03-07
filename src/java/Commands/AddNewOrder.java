@@ -5,9 +5,11 @@
  */
 package Commands;
 
-import java.sql.Date;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import Daos.OrderDao;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,16 +25,28 @@ public class AddNewOrder implements Command {
        String forwardToJsp = null;
        
        String paymentType = request.getParameter("PaymentType");
-       String AmountPaid = request.getParameter("AmountPaid");
+       int AmountPaid=0;
        if(paymentType !=null && AmountPaid !=null && paymentType.equals("") && AmountPaid.equals("") ){
            
            if(paymentType != "Visa" && paymentType !="Paypal" && paymentType != ""){
+               try{
                if((AmountPaid < 5) &&(AmountPaid > 5)){
-       HttpSession session = request.getSession();
-       String userId = session.getId();
-       DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-       LocalDateTime datePaid = LocalDateTime.now();
-       LocalDateTime dateExpired = datePaid.plusDays(30);
+                HttpSession session = request.getSession();
+                int userId = (int) session.getAttribute("user_id");
+                Date date = new Date(); 
+                DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                String formattedDate= dateFormat.format(date);
+                Date datePaid = dateFormat.parse(formattedDate);
+                
+                String query = "Update orders SET date_paid = DATE_ADD(date_expired,INTERVAL 30 DAY) where date_expired=NULL";
+                //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+               // DateTime datePaid = DateTime.now();
+               // LocalDateTime dateExpired = datePaid.plusDays(30);
+                OrderDao oDao = new OrderDao(userId,datePaid,paymentType,AmountPaid);
+               }
+               }catch(){
+               
+               
                }
            } 
            
