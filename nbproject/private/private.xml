@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/year3/AnimeProject/src/java/Daos/UserDaoInterface.java</file>
-            <file>file:/E:/year3/AnimeProject/src/java/Daos/UserDao.java</file>
-            <file>file:/E:/year3/AnimeProject/web/searchAnimeByGenre.jsp</file>
-            <file>file:/E:/year3/AnimeProject/src/java/Dtos/Order.java</file>
+            <file>file:/C:/xampp/htdocs/AnimeProject/src/java/Commands/RegisterCommand.java</file>
+            <file>file:/C:/xampp/htdocs/AnimeProject/web/home.jsp</file>
+            <file>file:/C:/xampp/htdocs/AnimeProject/src/java/Commands/AddNewOrder.java</file>
+            <file>file:/C:/xampp/htdocs/AnimeProject/src/java/Daos/OrderDao.java</file>
+            <file>file:/C:/xampp/htdocs/AnimeProject/src/java/Commands/CommandFactory.java</file>
+            <file>file:/C:/xampp/htdocs/AnimeProject/web/register.jsp</file>
+            <file>file:/C:/xampp/htdocs/AnimeProject/src/java/Daos/UserDao.java</file>
         </group>
     </open-files>
 </project-private>

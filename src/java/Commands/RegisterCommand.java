@@ -34,6 +34,7 @@ public class RegisterCommand implements Command {
                session.setAttribute("successMessage", "AccountCreatedsuccessfully");
                session.setAttribute("loggedInUser", u);
                
+               
                forwardToJsp="home.jsp";
             }
             else{

@@ -5,10 +5,12 @@
  */
 package Daos;
 
+import java.sql.Date;
+
 /**
  *
  * @author D00188619
  */
 public interface OrderDaoInterface {
-    
+    public int addOrder(int userId, Date datePaid, Date dateExpired, String paymentType,int AmountPaid);
 }
