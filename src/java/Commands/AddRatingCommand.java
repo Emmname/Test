@@ -38,6 +38,7 @@ public class AddRatingCommand implements Command {
             try{
                 HttpSession session = request.getSession();
                 userId= (int) session.getAttribute("ID");
+                animeId=(int) session.getAttribute("Anime_ID");
                 animeId=Integer.parseInt(anime_id);
                 
                 if(userId==-1){

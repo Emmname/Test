@@ -22,35 +22,36 @@ public class AddNewOrder implements Command {
     
     @Override
    public String execute(HttpServletRequest request, HttpServletResponse response) {
-       String forwardToJsp = null;
-       
-       String paymentType = request.getParameter("PaymentType");
-       int AmountPaid=0;
-       if(paymentType !=null && AmountPaid !=null && paymentType.equals("") && AmountPaid.equals("") ){
-           
-           if(paymentType != "Visa" && paymentType !="Paypal" && paymentType != ""){
-               try{
-               if((AmountPaid < 5) &&(AmountPaid > 5)){
-                HttpSession session = request.getSession();
-                int userId = (int) session.getAttribute("user_id");
-                Date date = new Date(); 
-                DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                String formattedDate= dateFormat.format(date);
-                Date datePaid = dateFormat.parse(formattedDate);
-                
-                String query = "Update orders SET date_paid = DATE_ADD(date_expired,INTERVAL 30 DAY) where date_expired=NULL";
-                //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-               // DateTime datePaid = DateTime.now();
-               // LocalDateTime dateExpired = datePaid.plusDays(30);
-                OrderDao oDao = new OrderDao(userId,datePaid,paymentType,AmountPaid);
-               }
-               }catch(){
-               
-               
-               }
-           } 
-           
-           else{}
-        }
+//       String forwardToJsp = null;
+//       
+//       String paymentType = request.getParameter("PaymentType");
+//       int AmountPaid=0;
+//       if(paymentType !=null && AmountPaid !=null && paymentType.equals("") && AmountPaid.equals("") ){
+//           
+//           if(paymentType != "Visa" && paymentType !="Paypal" && paymentType != ""){
+//               try{
+//               if((AmountPaid < 5) &&(AmountPaid > 5)){
+//                HttpSession session = request.getSession();
+//                int userId = (int) session.getAttribute("user_id");
+//                Date date = new Date(); 
+//                DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+//                String formattedDate= dateFormat.format(date);
+//                Date datePaid = dateFormat.parse(formattedDate);
+//                
+//                String query = "Update orders SET date_paid = DATE_ADD(date_expired,INTERVAL 30 DAY) where date_expired=NULL";
+//                //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+//               // DateTime datePaid = DateTime.now();
+//               // LocalDateTime dateExpired = datePaid.plusDays(30);
+//                OrderDao oDao = new OrderDao(userId,datePaid,paymentType,AmountPaid);
+//               }
+//               }catch(){
+//               
+//               
+//               }
+//           } 
+//           
+//           else{}
+//        }
+       return "";
 }
 }

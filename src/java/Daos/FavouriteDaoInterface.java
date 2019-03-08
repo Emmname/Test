@@ -16,4 +16,6 @@ import java.util.ArrayList;
 public interface FavouriteDaoInterface {
     public ArrayList<Integer> getFavourites(int user_id);
     public int addFavourite(int user_id, int anime_id);
+    public boolean checkExist(int user_id, int anime_id);
+    public ArrayList<Integer> getAnimeIdByFavouriteId(int favouriteId);
 }

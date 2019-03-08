@@ -47,7 +47,7 @@ private CommandFactory(){
                     break;
                     
                 case "addFavourite":
-                    c = new AddFavourtieCommand();
+                    c = new AddFavouriteCommand();
                     break;
                     
                 default:

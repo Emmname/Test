@@ -226,7 +226,7 @@ public class RatingDao extends Dao implements RatingDaoInterface{
                String query = "Select rating_id from rating where user_id=? and anime_id=?";
                ps = con.prepareStatement(query);
                ps.setInt(1, user_id);
-               ps.setInt(1, user_id);
+               ps.setInt(2, anime_id);
                rs = ps.executeQuery();
                
                while(rs.next()){

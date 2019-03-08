@@ -4,6 +4,7 @@
     Author     : D00195567
 --%>
 
+<%@page import="Dtos.User"%>
 <%@page import="Dtos.Rating"%>
 <%@page import="Daos.AnimeDao"%>
 <%@page import="Daos.RatingDao"%>
@@ -13,6 +14,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="CSS/Favourite.css" rel="stylesheet" type="text/css"/>
         <link href="CSS/home.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <a href="header.jsp"></a>
@@ -21,6 +23,10 @@
     </head>
      <script src="https://www.w3schools.com/lib/w3.js"></script>
     <body>
+        <%
+            User user = (User) session.getAttribute("loggedInUser");
+            if(user != null){
+        %>
         <table id="myTable">
             <tr>
                     
@@ -29,11 +35,12 @@
                     <th>Animator</th>
                     <th>Release Date</th>
                     <th onclick="w3.sortHTML('#myTable', '.item','td:nth-child(5)')"style="cursor:pointer"> Rating</th>
-                        
+                    <th> Add to your Favorites</th>
                 </tr>
               
                 
                 <%
+                session =  request.getSession();
                 ArrayList<Anime> animes = new ArrayList<>();
                 AnimeDao aDao = new AnimeDao("anime");
                 RatingDao rDao = new RatingDao("anime");
@@ -85,6 +92,8 @@
                 <%
                     for(Anime a: animes)
                     {
+                        session.setAttribute("Anime_ID", a.getAnime_id());
+                    
                 %>
                 
                 <tr class="item">
@@ -94,14 +103,25 @@
                     <td><%=a.getAnimator()%></td>
                     <td><%=a.getReleasedate()%></td>
                     <td><%=rDao.getAverageRating(a.getAnime_id())%></td>
+                    <form action="Servlet" method="post" name="addFavourite">
+                <td><button name="" type="text" class="heart"/></td> 
                     
-                  
+                <input type="hidden" name ="action" value="addFavourite" />
+                    </form>
                 </tr>
                 
                 <%
                     }
                 }
-            %>
+            
+            }
+            else{
+                String sessionExpired = "You must be logged in to use this service";
+                session.setAttribute("sessionExpired", sessionExpired);
+                response.sendRedirect("login.jsp");
+            }
+        %>
+           
              </table>
                 
                   

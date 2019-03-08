@@ -19,22 +19,21 @@ public class AddFavouriteCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-         String forwardToJsp = null;
+        HttpSession session = request.getSession();
+         String forwardToJsp = "mostPopularAnime.jsp";
         
-        String user_id=request.getParameter("user_id");
-        String anime_id=request.getParameter("anime_id");
+        int user_id=(int) session.getAttribute("ID");
+        int anime_id=(int) session.getAttribute("Anime_ID");
         
         int animeId=0;
         int userId=0;
         
         FavouriteDao fDao = new FavouriteDao("anime");
        
-        
-        if(user_id !=null && anime_id!=null ){
-        
-                HttpSession session = request.getSession();
+        if(user_id !=-1 && anime_id!=-1 ){
+                
                 userId= (int) session.getAttribute("ID");
-                animeId=Integer.parseInt(anime_id);
+                animeId= (int) session.getAttribute("Anime_ID");
                 
                 if(userId==-1){
                     forwardToJsp="login.jsp";
@@ -42,19 +41,28 @@ public class AddFavouriteCommand implements Command {
                 }
             
            
-                int newId = fDao.addFavourite(userId,animeId);
-                if(newId==-1){
-                String errorMessage = "Rating could not be added";
+                
+                
+                 if(!fDao.checkExist(userId, animeId)){
+                    
+                String errorMessage = "This anime is already inside your favourites";
                 session.setAttribute("errorMessage", errorMessage);
                 forwardToJsp = "error.jsp";
                 }
+                 else{
+                     int newId = fDao.addFavourite(userId,animeId);
+                     if(newId==-1){
+                String errorMessage = "There was a problem adding this to your favourites";
+                session.setAttribute("errorMessage", errorMessage);
+                forwardToJsp = "error.jsp";
+                }
+                 }
                 
         }
         
         
         else{
             String errorMessage = "One or more fields were missing.";
-             HttpSession session = request.getSession();
             session.setAttribute("errorMessage", errorMessage);
             forwardToJsp = "error.jsp";
         }

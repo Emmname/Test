@@ -31,6 +31,7 @@ public class RegisterCommand implements Command {
             if(newId!=-1){
                User u = uDao.getUserByUsernamePassword(username, password);
                HttpSession session = request.getSession();
+               session.setAttribute("ID", u.getUser_id());
                session.setAttribute("successMessage", "AccountCreatedsuccessfully");
                session.setAttribute("loggedInUser", u);
                
