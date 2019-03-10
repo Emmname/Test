@@ -49,6 +49,8 @@ private CommandFactory(){
                 case "addFavourite":
                     c = new AddFavouriteCommand();
                     break;
+                case "addOrder":
+                    c = new  AddNewOrder();
                     
                 default:
                     c = new NoActionSuppliedCommand();

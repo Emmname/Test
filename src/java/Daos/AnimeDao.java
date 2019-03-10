@@ -39,8 +39,9 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
                     String name = rs.getString("anime_name");
                     Date releaseDate = rs.getDate("release_date");
                     String animator = rs.getString("animator");
+                    String imageUrl = rs.getString("imageUrl");
                     
-                    Anime a = new Anime(animeId, name, releaseDate, animator);
+                    Anime a = new Anime(animeId, name, releaseDate, animator,imageUrl);
                     animeArry.add(a);
                 }
         }  catch (SQLException e) {
@@ -83,7 +84,7 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
             
             while(rs.next()){
             
-                a = new Anime(rs.getInt("anime_id"),rs.getString("anime_name"),rs.getDate("release_date"),rs.getString("animator"));
+                a = new Anime(rs.getInt("anime_id"),rs.getString("anime_name"),rs.getDate("release_date"),rs.getString("animator"),rs.getString("imageUrl"));
             
             }
 
@@ -128,8 +129,9 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
                     String name = rs.getString("anime_name");
                     Date releaseDate = rs.getDate("release_date");
                     String animator = rs.getString("animator");
+                    String imageUrl = rs.getString("imageUrl");
                     
-                    Anime a = new Anime(animeId, name, releaseDate, animator);
+                    Anime a = new Anime(animeId, name, releaseDate, animator,imageUrl);
                     animeArry.add(a);
                 }
         }  catch (SQLException e) {

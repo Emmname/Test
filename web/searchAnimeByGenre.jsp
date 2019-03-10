@@ -25,7 +25,7 @@
                     <th>search_name</th>
                     <th>search_animator</th>
                     <th>search_releasedate</th>
-
+                    <th>search_image</th>
                 </tr>
         </table>
         <a href="home.jsp">Go home</a>
@@ -88,7 +88,7 @@
                     <td><%=a.getAnimename()%></td>
                     <td><%=a.getAnimator()%></td>
                     <td><%=a.getReleasedate()%></td>
-                  
+                    <td><img src="images/<%=a.getImageUrl() %>" alt="<%=a.getImageUrl() %>" height="100" width="150"></td>
                 </tr>
                 
                 <%

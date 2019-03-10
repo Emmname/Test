@@ -5,27 +5,32 @@
  */
 package Daos;
 
+import Dtos.Order;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
+
 
 /**
  *
  * @author D00188619
  */
 public class OrderDao extends Dao implements OrderDaoInterface {
-     public OrderDao(String databaseName) {
-        super(databaseName);
+    
+    public OrderDao(String dbName) {
+        super(dbName);
     }
+
+
      @Override 
-     public int addOrder(int userId, Date datePaid, Date dateExpired, String paymentType,int AmountPaid){
+     public int addOrder(int userId, Date datePaid, String paymentType,int AmountPaid){
         Connection conn = null;
         PreparedStatement ps = null; 
         ResultSet generatedKeys = null;
+        
         int newId = -1;
         try{
             conn = this.getConnection();
