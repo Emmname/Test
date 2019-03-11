@@ -88,7 +88,7 @@
                     <td><%=a.getAnimename()%></td>
                     <td><%=a.getAnimator()%></td>
                     <td><%=a.getReleasedate()%></td>
-                    <td><img src="images/<%=a.getImageUrl() %>" alt="<%=a.getImageUrl() %>" height="100" width="150"></td>
+                    <td><img src="Images/<%=a.getImageUrl() %>" alt="<%=a.getImageUrl() %>" height="260" width="200"></td>
                 </tr>
                 
                 <%

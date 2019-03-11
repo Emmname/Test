@@ -4,6 +4,7 @@
     Author     : D00195567
 --%>
 
+<%@page import="Dtos.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
@@ -64,11 +65,9 @@ and open the template in the editor.
       <a href="">Premium</a>
       <ul class="children sub-menu">
         <li>
-            <a href="#"></a>
+            <a href="#">Upgrade Account</a>
         </li>
-        <li>
-          <a href="#"></a>
-        </li>
+        
       </ul>
     </li>
      <li>
@@ -80,23 +79,25 @@ and open the template in the editor.
       </ul>
     </li>
     <li>
-      <a href="">User</a>
+        <%
+            User user = (User) session.getAttribute("loggedInUser");
+            if(user != null){
+        %>
+            
+      <a href=""><%=user.getUsername()%></a>
+      <%}%>
       <ul class="children sub-menu">
         <li>
-          <a href="#">Log In</a>
+          <a href="#">My Profile</a>
         </li>
         <li>
-          <a href="#">Register</a>
+          <a href="favourites.jsp">My Favorites</a>
         </li>
-        <li>
-          <a href="#">Forget Password</a>
-        </li>
+        
         <li>
           <a href="#">our-team</a>
         </li>
-        <li>
-          <a href="#">worker-detail</a>
-        </li>
+        
       </ul>
     </li>
   </ul>

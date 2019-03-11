@@ -22,14 +22,21 @@
          <input type="hidden" name="<%%>"
          
         <form action="Servlet" method="post" name="">
-        <div class="pokeball">
-            
+        <div class="">
+            <label>Visa</label>
+            <input name="paymentType" value="" class="form-control" id="email" type="hide" />
         </div>
-        <div class="pokeball">
-           
-        </div>
-        <div class="pokeball">
             
+        <div >
+            <label >PayPal</label>
+        </div>
+        
+        <div>
+           <label >Google Wallet</label>
+        </div>
+        
+        <div class="pokeball">
+            <label>5 €/1 month</label>
         </div>
             
         <input type="hidden" name ="action" value="" />

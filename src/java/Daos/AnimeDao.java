@@ -64,6 +64,47 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
         }
         
 }
+    @Override 
+    public ArrayList<Anime> getAnimebyWords(){
+         Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<Anime> animesArry = new ArrayList();
+    try{
+            con = this.getConnection();
+            String query = "SELECT * FROM anime Where anime_name or animator LIKE '%?%'";
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
+                while(rs.next()){
+                    int animeId = rs.getInt("anime_id");
+                    String name = rs.getString("anime_name");
+                    Date releaseDate = rs.getDate("release_date");
+                    String animator = rs.getString("animator");
+                    String imageUrl = rs.getString("imageUrl");
+                    
+                    Anime a = new Anime(animeId, name, releaseDate, animator,imageUrl);
+                    animesArry.add(a);
+                }
+        }  catch (SQLException e) {
+            System.err.println("A problem occurred in getAllAnimes() method:\n" + e.getMessage());
+        }finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    freeConnection(con);
+                }
+            } catch (SQLException e) {
+                System.err.println("A problem occurred when closing down the getAllBook() method:\n" + e.getMessage());
+            }
+             return animesArry;
+        }
+
+    }
     
     @Override 
     public Anime getAnimeById(int animeId){
