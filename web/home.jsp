@@ -18,7 +18,8 @@
             if(user != null){
         %>
             <h1>Welcome, <%=user.getUsername()%></h1>
-            <div>
+            <h1>Welcome, <%=user.getUser_id()%></h1>
+           <div>
             <form action="Servlet" method="post">
             <table>
                 <tr>
@@ -29,6 +30,20 @@
             <input type="hidden" name ="action" value="searchAnimeByGenre" />
         </form>
         </div>
+        <div>
+            <p>Search Anime by Words</p>
+            <form action="Servlet" method="post">
+                <table>
+                    <tr>
+                        <td>Search </td><td> <input name="anime_name" size=30 type="text" /> </td> 
+                    </tr>
+                </table>
+                <input type="submit" value="Search" /> 
+                <input type="hidden" name ="action" value="searchAnimebyWords" />
+            </form>
+        </div>
+            
+        <p class="text-center"><a href="Pay.jsp" id="signup" >Pay</a></p>
             
         <%
             }

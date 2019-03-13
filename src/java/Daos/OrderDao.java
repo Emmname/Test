@@ -7,11 +7,11 @@ package Daos;
 
 import Dtos.Order;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 
 
 /**
@@ -37,9 +37,9 @@ public class OrderDao extends Dao implements OrderDaoInterface {
             
             String query = "INSERT INTO orders(user_id,date_paid,PaymentType,AmountPaid) VALUES (?, ?, ?, ?)";
              ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-        
+            
              ps.setInt(1, userId);
-             ps.setDate(2, datePaid);
+             ps.setDate(2, (java.sql.Date) datePaid);
              ps.setString(3, paymentType);
              ps.setInt(4, AmountPaid);
              

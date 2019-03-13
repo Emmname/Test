@@ -15,31 +15,35 @@
     </head>
     <body>
         <h1>Pay</h1>
-
         <div class="container">
         <h1>Choose your starter!</h1>
-
-         <input type="hidden" name="<%%>"
+<%
+                String sessionExpired = (String) session.getAttribute("sessionExpired");
+                if(sessionExpired != null){
+                    out.println("<b>" + sessionExpired + "</b>");
+                    session.removeAttribute("sessionExpired");
+                }
+            %>
          
-        <form action="Servlet" method="post" name="">
-        <div class="">
-            <label>Visa</label>
-            <input name="paymentType" value="" class="form-control" id="email" type="hide" />
+        <form action="Servlet" method="post" name="addOrder">
+        <div class="">Visa  
+            <input name="PaymentType"  size=30 type="text" />
         </div>
             
-        <div >
-            <label >PayPal</label>
+        <div >PayPal
+
         </div>
         
-        <div>
-           <label >Google Wallet</label>
+        <div>Google Wallet
+
         </div>
         
-        <div class="pokeball">
-            <label>5 €/1 month</label>
+        <div >5 €/1 month
+            <input name="AmountPaid"  size=30 type="text" />
         </div>
             
-        <input type="hidden" name ="action" value="" />
+        <input type="submit"  value="Pay" />
+        <input type="hidden" name ="action" value="addOrder" />
          </form>
 </div>
         

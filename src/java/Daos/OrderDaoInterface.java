@@ -6,7 +6,7 @@
 package Daos;
 
 import Dtos.Order;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *

@@ -26,26 +26,29 @@ public class AddNewOrder implements Command {
        String forwardToJsp = null;
        
        String paymentType = request.getParameter("PaymentType");
-       int AmountPaid=0;
-       if(paymentType !=null && AmountPaid !=-1 && paymentType.equals("")){
+       String AmountPaid = request.getParameter("AmountPaid");
+       int amountP = 0;
+       amountP=Integer.parseInt(AmountPaid);
+       if(paymentType !=null || AmountPaid !=null || paymentType.equals("")){
            if(paymentType != "Visa" && paymentType !="Paypal" && paymentType != "Google Wallet"){
               try{
-               if((AmountPaid < 5) &&(AmountPaid > 5)){
+               if(amountP==5){
                 HttpSession session = request.getSession();
-                int userId = (int) session.getAttribute("user_id");
+                int userId = (int) session.getAttribute("ID");
                 Date date = new Date(); 
                 DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
                 String formattedDate= dateFormat.format(date);
-                 java.sql.Date datePaid = (java.sql.Date) dateFormat.parse(formattedDate);
+                java.sql.Date datePaid = (java.sql.Date) dateFormat.parse(formattedDate);
                 
+                       
                 OrderDao oDao = new OrderDao("anime");
-                int newOId = oDao.addOrder(userId, datePaid, paymentType, AmountPaid);
+                int newOId = oDao.addOrder(userId, datePaid, paymentType, amountP);
                 if(newOId!=-1){
                     forwardToJsp ="PremiumHome.jsp";    
                 }else{
                     String errorMessage = "Pay is unsucessful" + "Please <a href='pay.jsp'>go back</a> and try again.";
                     session.setAttribute("errorMessage", errorMessage);
-                    forwardToJsp = "error.jsp";
+                    forwardToJsp = "error.jsp"; 
                 }
                }else{
                    String errorMessage = "You only can pay 5 €";

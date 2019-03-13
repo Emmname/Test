@@ -16,5 +16,6 @@ public interface AnimeDaoInterface {
     public ArrayList<Anime> getAllAnimes();
    public Anime getAnimeById(int animeId);
    public ArrayList<Anime> getAllAnimesDescByRating();
-    public ArrayList<Anime> getAnimebyWords();
+     public ArrayList<Anime> getAnimebyWords(String animeName);
+    public int addAnime(Anime a);
 }

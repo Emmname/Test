@@ -21,7 +21,14 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
     public AnimeDao(String dbName){
         super(dbName);
     }
-
+    @Override
+    public int addAnime(Anime a){
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet generatedKys = null;
+        int newId = -1;
+        return newId;
+    }
     @Override
     public ArrayList<Anime> getAllAnimes(){
         Connection con = null;
@@ -65,25 +72,23 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
         
 }
     @Override 
-    public ArrayList<Anime> getAnimebyWords(){
+    public ArrayList<Anime> getAnimebyWords(String animeName){
+        ArrayList<Anime> animesArrys = new ArrayList();
          Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        ArrayList<Anime> animesArry = new ArrayList();
+        
     try{
-            con = this.getConnection();
-            String query = "SELECT * FROM anime Where anime_name or animator LIKE '%?%'";
+            con = getConnection();
+            String query = "SELECT * FROM anime Where anime_name  LIKE ?";
             ps = con.prepareStatement(query);
+            ps.setString(1, "%"+animeName+"%");
             rs = ps.executeQuery();
+            Anime a =null;
                 while(rs.next()){
-                    int animeId = rs.getInt("anime_id");
-                    String name = rs.getString("anime_name");
-                    Date releaseDate = rs.getDate("release_date");
-                    String animator = rs.getString("animator");
-                    String imageUrl = rs.getString("imageUrl");
                     
-                    Anime a = new Anime(animeId, name, releaseDate, animator,imageUrl);
-                    animesArry.add(a);
+                    a = new Anime(rs.getInt("anime_id"), rs.getString("anime_name"), rs.getDate("release_date"), rs.getString("animator"),rs.getString("imageUrl"));
+                    animesArrys.add(a);
                 }
         }  catch (SQLException e) {
             System.err.println("A problem occurred in getAllAnimes() method:\n" + e.getMessage());
@@ -99,9 +104,9 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
                     freeConnection(con);
                 }
             } catch (SQLException e) {
-                System.err.println("A problem occurred when closing down the getAllBook() method:\n" + e.getMessage());
+                System.err.println("A problem occurred when closing down the getAllAnimes() method:\n" + e.getMessage());
             }
-             return animesArry;
+             return animesArrys;
         }
 
     }

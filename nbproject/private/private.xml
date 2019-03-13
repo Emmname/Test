@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
+        <file>
+            <url>src/java/Commands/GetAnimebyWordsCommand.java</url>
+            <bookmark id="2">
+                <name/>
+                <line>32</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>web/login.jsp</url>
+            <bookmark id="1">
+                <name/>
+                <line>47</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/user/Downloads/year3/Software%20project/AnimeProject/web/Pay.jsp</file>
-            <file>file:/C:/Users/user/Downloads/year3/Software%20project/AnimeProject/src/java/Commands/AddNewOrder.java</file>
-            <file>file:/C:/Users/user/Downloads/year3/Software%20project/AnimeProject/web/searchAnimeByGenre.jsp</file>
-            <file>file:/C:/Users/user/Downloads/year3/Software%20project/AnimeProject/src/java/Commands/SearchAnimeByGenreCommand.java</file>
-            <file>file:/C:/Users/user/Downloads/year3/Software%20project/AnimeProject/src/java/Dtos/Anime.java</file>
-            <file>file:/C:/Users/user/Downloads/year3/Software%20project/AnimeProject/web/menu.jsp</file>
-            <file>file:/C:/Users/user/Downloads/year3/Software%20project/AnimeProject/src/java/Daos/OrderDaoInterface.java</file>
-            <file>file:/C:/Users/user/Downloads/year3/Software%20project/AnimeProject/src/java/Daos/OrderDao.java</file>
-            <file>file:/C:/Users/user/Downloads/year3/Software%20project/AnimeProject/src/java/Daos/AnimeDao.java</file>
-            <file>file:/C:/Users/user/Downloads/year3/Software%20project/AnimeProject/src/java/Commands/CommandFactory.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

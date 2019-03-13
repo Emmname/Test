@@ -45,13 +45,15 @@ private CommandFactory(){
                 case "addRating":
                     c = new AddRatingCommand();
                     break;
-                    
                 case "addFavourite":
                     c = new AddFavouriteCommand();
                     break;
                 case "addOrder":
                     c = new  AddNewOrder();
-                    
+                    break;
+                case "searchAnimebyWords":
+                    c = new GetAnimebyWordsCommand();
+                    break;
                 default:
                     c = new NoActionSuppliedCommand();
                     break;

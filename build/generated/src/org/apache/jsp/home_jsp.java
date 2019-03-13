@@ -45,18 +45,16 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <link href=\"CSS/home.css\" rel=\"stylesheet\" type=\"text/css\"/>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <a href=\"header.jsp\"></a>\n");
-      out.write("        <a href=\"menu.jsp\"></a>\n");
+      out.write("        ");
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "menu.jsp", out, false);
+      out.write("\n");
       out.write("        <title>Home</title>\n");
       out.write("    </head>\n");
-      out.write("    <body background=\"Images/Background.png\">\n");
-      out.write("        <h1>Home</h1>\n");
       out.write("        ");
 
             User user = (User) session.getAttribute("loggedInUser");
@@ -66,17 +64,47 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <h1>Welcome, ");
       out.print(user.getUsername());
       out.write("</h1>\n");
+      out.write("            <h1>Welcome, ");
+      out.print(user.getUser_id());
+      out.write("</h1>\n");
+      out.write("           <div>\n");
+      out.write("            <form action=\"Servlet\" method=\"post\">\n");
+      out.write("            <table>\n");
+      out.write("                <tr>\n");
+      out.write("                    <td>Search Anime</td><td> <input name=\"genre_name\" size=30 type=\"text\" /> </td> \n");
+      out.write("                </tr>\n");
+      out.write("            </table>\n");
+      out.write("            <input type=\"submit\" value=Go! /> \n");
+      out.write("            <input type=\"hidden\" name =\"action\" value=\"searchAnimeByGenre\" />\n");
+      out.write("        </form>\n");
+      out.write("        </div>\n");
+      out.write("        <div>\n");
+      out.write("            <p>Search Anime by Words</p>\n");
+      out.write("            <form action=\"Servlet\" method=\"post\">\n");
+      out.write("                <table>\n");
+      out.write("                    <tr>\n");
+      out.write("                        <td>Search </td><td> <input name=\"anime_name\" size=30 type=\"text\" /> </td> \n");
+      out.write("                    </tr>\n");
+      out.write("                </table>\n");
+      out.write("                <input type=\"submit\" value=\"Search\" /> \n");
+      out.write("                <input type=\"hidden\" name =\"action\" value=\"searchAnimebyWords\" />\n");
+      out.write("            </form>\n");
+      out.write("        </div>\n");
+      out.write("            \n");
+      out.write("        <p class=\"text-center\"><a href=\"Pay.jsp\" id=\"signup\" >Pay</a></p>\n");
+      out.write("            \n");
       out.write("        ");
 
             }
             else{
-                String sessionExpired = "Your session has expired, please log in again.";
+                String sessionExpired = "You must be logged in to use this service";
                 session.setAttribute("sessionExpired", sessionExpired);
                 response.sendRedirect("login.jsp");
             }
         
       out.write("\n");
-      out.write("        <a href=\"DemoServlet?action=logout\">Logout</a>\n");
+      out.write("        \n");
+      out.write("        <a href=\"Servlet?action=logout\">Logout</a>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
