@@ -48,7 +48,7 @@ public class SearchAnimeByGenreCommand implements Command {
                  }
              } 
              else {
-            //if don't get the bookName,Send the user to the error page and inform them of this
+
             HttpSession session = request.getSession();
 
             session.setAttribute("errorMessage", "can't get anime id ");
@@ -58,10 +58,10 @@ public class SearchAnimeByGenreCommand implements Command {
    
          } 
          else {
-            //if don't get the bookName,Send the user to the error page and inform them of this
+
             HttpSession session = request.getSession();
 
-            session.setAttribute("errorMessage", "BookNotFound");
+            session.setAttribute("errorMessage", "AnimeNotFound");
             forwardToJsp = "error.jsp";
 
         }

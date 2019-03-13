@@ -58,7 +58,7 @@ public class FavouriteDao extends Dao implements FavouriteDaoInterface{
                     freeConnection(con);
                 }
             } catch (SQLException e) {
-                System.err.println("A problem occurred when closing down the getAllBook() method:\n" + e.getMessage());
+                System.err.println("A problem occurred when closing down the getAllAnimes() method:\n" + e.getMessage());
             }
              return animeIDs;
         }

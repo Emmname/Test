@@ -74,7 +74,7 @@ public class RatingDao extends Dao implements RatingDaoInterface{
             } 
             catch (SQLException e) 
             {
-                System.err.println("A problem occurred when closing down the  borrowBook(int book_id,int member_id,String date,String due) method:\n" + e.getMessage());
+                System.err.println("A problem occurred when closing down the addRating(int anime_id,int ratingNumber, int user_id) method:\n" + e.getMessage());
             }
         }
         

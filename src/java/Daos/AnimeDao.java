@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -25,9 +26,47 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
     public int addAnime(Anime a){
         Connection con = null;
         PreparedStatement ps = null;
-        ResultSet generatedKys = null;
+        ResultSet generatedKeys = null;
         int newId = -1;
+        try{
+            con = this.getConnection();
+            String query = "INSERT INTO anime(anime_id,anime_name,release_date,animator,imageUrl)";
+            ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            String animeName = a.getAnimename();
+            Date releaseDate = a.getReleasedate();
+            String animator = a.getAnimator();
+            String imageUrl = a.getImageUrl();
+            ps.setString(1, animeName);
+            ps.setDate(2, releaseDate);
+            ps.setString(3, animator);
+            ps.setString(4, imageUrl);
+            ps.executeUpdate();
+            generatedKeys = ps.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                newId = generatedKeys.getInt(1);
+            }
+            }catch (SQLException ex) {
+                System.out.println("An error occurred in addAnime() " + ex.getMessage());
+        }finally {
+            try {
+                if (generatedKeys != null) {
+                    generatedKeys.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    freeConnection(con);
+                }
+            } catch (SQLException e) {
+                System.err.println("A problem occurred when closing down the addAnime():\n" + e.getMessage());
+            }
+        }
         return newId;
+            
+            
+        
+       
     }
     @Override
     public ArrayList<Anime> getAllAnimes(){
@@ -65,7 +104,7 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
                     freeConnection(con);
                 }
             } catch (SQLException e) {
-                System.err.println("A problem occurred when closing down the getAllBook() method:\n" + e.getMessage());
+                System.err.println("A problem occurred when closing down the getAllAnimes() method:\n" + e.getMessage());
             }
              return animeArry;
         }
@@ -194,7 +233,7 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
                     freeConnection(con);
                 }
             } catch (SQLException e) {
-                System.err.println("A problem occurred when closing down the getAllBook() method:\n" + e.getMessage());
+                System.err.println("A problem occurred when closing down the getAllAnimesDescByRating() method:\n" + e.getMessage());
             }
              
         }
