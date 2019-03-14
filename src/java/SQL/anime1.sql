@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2019-03-14 10:45:10
+-- Generation Time: 2019-03-14 10:44:59
 -- 服务器版本： 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `anime`
+-- Database: `anime1`
 --
 
 -- --------------------------------------------------------
@@ -96,10 +96,7 @@ CREATE TABLE `favourite` (
 
 INSERT INTO `favourite` (`favourite_id`, `user_id`, `anime_id`) VALUES
 (1, 1, 5),
-(2, 5, 9),
-(4, 2, 3),
-(5, 2, 3),
-(6, 2, 3);
+(2, 5, 9);
 
 -- --------------------------------------------------------
 
@@ -178,13 +175,14 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` (`order_id`, `user_id`, `date_paid`, `date_expired`, `PaymentType`, `AmountPaid`) VALUES
 (1, 1, '2019-03-31', '2019-04-30', 'visa', 20),
 (2, 2, '2019-03-10', '2019-04-09', 'visa', 20),
-(3, 4, '2019-03-10', '2019-04-09', 'visa', 20);
+(3, 4, '2019-03-10', '2019-04-09', 'visa', 20),
+(5, 4, '2019-03-10', NULL, 'visa', 20);
 
 --
 -- 触发器 `orders`
 --
 DELIMITER $$
-CREATE TRIGGER `addOrder` AFTER INSERT ON `orders` FOR EACH ROW Update orders SET date_expired = DATE_ADD(date_paid,INTERVAL 30 DAY) where date_expired IS null
+CREATE TRIGGER `Update date` AFTER INSERT ON `orders` FOR EACH ROW Update orders SET date_expired = DATE_ADD(date_paid,INTERVAL 30 DAY) where date_expired IS null
 $$
 DELIMITER ;
 
@@ -259,8 +257,7 @@ INSERT INTO `user` (`user_id`, `Username`, `Email`, `Password`, `Status`, `salt`
 (1, '1234', '1234@gmail.com', '1234', 1, ''),
 (2, 'ItsMeBaby', 'DrinkMe@gmail.com', 'b060dc3e37c6952d0128f207882cae02', NULL, '¬ŽäËZ*Þ{-×	Ï'),
 (4, 'ItsMeBaby69;)', 'ItsMe@hotmail.com', 'eb14bb84404dd20ffd5c0ee0c55cea12', NULL, 'µÜ¹1W¶åê‡–ÏÑšËþL6/µ8-ù!£áü=ä&¥9ƒGk''[„}§ÀÐëtîhø³ð@Ä84VÞx}1¤JìÂn0þ­/HÎ–%\Z!Ü¦‘qÁ›¬M‰dçÄ ­u^ðèw<"©kš—{;[@ª,‘¸´ «v¿ñpøx!ùêùø¦ÑKä¾KÂòÄp`a|YC±4ã´“ŒA?þäÃÉx~ÛÄÄ²›æiý’€_—­Ñ[Xz«¶~,îtÒÛßìy5Þ e7±ß3|þåõ>•ðÇ+“;œ-»Ç÷ƒæ„ZnXZ©@Ô  m¿’ÿmëXKÂ¿Ì«ñÄÁ_çè´5ž+lrMÈdLüB|×Œèª@Ñ ”Îb&\\]“üîqõ¿¶š‹ÏK¿´}–íd30x:…‰\r›+¬jeðþsØ‘ßBéfñ™=ÕUJõ;å¥–PÙ(¶VuÁèÎ›1•Îf"ÿ‘þf…êKétÐˆ/‰¥k§ØCI\\Æ³>Þ,¹šÚônfÃŽ–+âÚÿQ6H9·÷½ÜòÏ’ˆ3ùqŒ¬4;§Í4"·¶ÝPyT~à¼Àé«•}×;™u°/µ©‹ë>äý\n9ñ&ÞJƒÒx!±Òåì¿8y‹Ôº(Q6'),
-(5, '12345', '12345@qq.com', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'XHèæ€moV]©ºÀ¯@Äè|æóµ[Vè…ãoÄ½vs\0ÞC³u£²Zè®k¼=Ã¹Š8^>ØÅÇføPyIÃì©TQÀš¨,?··ã¾*ÕB½YÏnçd;Â^æžU_Ï¾^2\r©mûªß÷Øf;Íƒ¬£ÞÔšž{9¶ù¹}¼è‰…Jç=wßJt×2·D¥ò ¶û„nkH¾õ„÷ZnÈæ»!=T¶Ú\0ŠNY!¨m"ô°îz±t=(D)`Ý+øí‡¢ÃÕì—Z¨5¡T~Û…÷<éÂÈºd­ó\\u5	¬™¯Çæ]Ý“eÈ€\\ÊºNú~Úö°DQØªA9nÚn^òaö_gEß.òÂ½™_CÚÕY¸NsÃ³ÓÇg€a½ä|#gèGîÅT#t;!''qæ¶Ä“Á…B*hrPûºÔb%¤ØžôÀ^5SÛ·ÄžÛï¶¢ØwTß’Í^‚ñnf1>ÿj*‰ 8È¯{êëX_Á2ú»þ^ŠjV(BòHb·Ò_<59˜0bµsvïÒN‹ë…ƒ?€?^+=Ô¯öé­\Z¾0”‰`ãpâe&³Í?ð¯	 \0 ]jM> ¨by~¬f,ÀZ7\n»é¢9‘‚ Ý£Ü®³ŒÆþ]Ìi£ÚâM§ó‹öÐk‹H™'),
-(6, '123456', '123456@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'àdBé"Á>ÇzwŽ¾d‹ÔžX>±&"´((ºÓx÷“Ë©-Ÿƒ4àO›¼Ú˜°Ó-ú''^o4úYgKQÆ!«ï{¾ÛÁêYü¥×FŸíÄ÷í^n)Ë1šÂ¥›RTV&w:_ØâØ‚ìRÀ#U˜ÌÚ»´Úì^ãÚ\nÎÙ«‡%åcÖÉÊ”¨$\\wìêÔœ’k-‘?”UÂ.ã~µ\Z`þ)£&Ý1“$SÜÎ²œb\\Av–GGtMXºŠAÛBšEYPtHééV-Pø&Ë—(¼â]üÏñÚf©6 îá}Om»÷â¹¨×|Ø§P¨¹ÏÐÁ.D¥\0]\Zk;2ó‡''¢ª¯7²uUAúHë‹SÞÄué#i´°£Í·6Ë·u®\0»i‹š™X<è;òÆóNú ¬›à†÷«Y¼iÒõTëÖ ÔÝŽ¦$yy''à&œ÷\nÆZ?ÖOBlŽ:àèì¸üÇ?PÓŽ„ˆÂñÛ\\¬wsÄ·«€²:o\rüjù5Oˆï¤ÞÎ´I&ÈÛ/D i3¾uVr™xmtl{n\nò0þ ýµ1:KÊ±œcÀù[Ö\0ûY)\rbüo»´ÛgåýÌý•ß³äøý9ñ™½*9õŽó»Õ+ËÐœØ‰Bñ¬-ZÅnC''[J');
+(5, '12345', '12345@qq.com', '827ccb0eea8a706c4c34a16891f84e7b', NULL, 'XHèæ€moV]©ºÀ¯@Äè|æóµ[Vè…ãoÄ½vs\0ÞC³u£²Zè®k¼=Ã¹Š8^>ØÅÇføPyIÃì©TQÀš¨,?··ã¾*ÕB½YÏnçd;Â^æžU_Ï¾^2\r©mûªß÷Øf;Íƒ¬£ÞÔšž{9¶ù¹}¼è‰…Jç=wßJt×2·D¥ò ¶û„nkH¾õ„÷ZnÈæ»!=T¶Ú\0ŠNY!¨m"ô°îz±t=(D)`Ý+øí‡¢ÃÕì—Z¨5¡T~Û…÷<éÂÈºd­ó\\u5	¬™¯Çæ]Ý“eÈ€\\ÊºNú~Úö°DQØªA9nÚn^òaö_gEß.òÂ½™_CÚÕY¸NsÃ³ÓÇg€a½ä|#gèGîÅT#t;!''qæ¶Ä“Á…B*hrPûºÔb%¤ØžôÀ^5SÛ·ÄžÛï¶¢ØwTß’Í^‚ñnf1>ÿj*‰ 8È¯{êëX_Á2ú»þ^ŠjV(BòHb·Ò_<59˜0bµsvïÒN‹ë…ƒ?€?^+=Ô¯öé­\Z¾0”‰`ãpâe&³Í?ð¯	 \0 ]jM> ¨by~¬f,ÀZ7\n»é¢9‘‚ Ý£Ü®³ŒÆþ]Ìi£ÚâM§ó‹öÐk‹H™');
 
 --
 -- Indexes for dumped tables
@@ -351,7 +348,7 @@ ALTER TABLE `episode`
 -- 使用表AUTO_INCREMENT `favourite`
 --
 ALTER TABLE `favourite`
-  MODIFY `favourite_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `favourite_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- 使用表AUTO_INCREMENT `genre`
 --
@@ -366,7 +363,7 @@ ALTER TABLE `genreanime`
 -- 使用表AUTO_INCREMENT `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- 使用表AUTO_INCREMENT `rating`
 --
@@ -381,7 +378,7 @@ ALTER TABLE `reviews`
 -- 使用表AUTO_INCREMENT `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- 限制导出的表
 --
