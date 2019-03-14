@@ -62,11 +62,7 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
                 System.err.println("A problem occurred when closing down the addAnime():\n" + e.getMessage());
             }
         }
-        return newId;
-            
-            
-        
-       
+        return newId; 
     }
     @Override
     public ArrayList<Anime> getAllAnimes(){
