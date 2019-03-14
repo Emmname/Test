@@ -34,14 +34,19 @@
                     <label for="exampleInputUsername">User Name</label>
                         <input name="Username" required size=20 class="form-control" id="username" type="text" placeholder="Enter Username" /> </td> 
                 </div>
+                 <div class="form-group">                  
+                    <label for="exampleInputEmail1">Email </label>
+                        <input name="Email" required size=20 class="form-control" id="email" type="email" placeholder="Enter email" /> </td> 
+                </div>
                  <div class="form-group">
                         <label for="exampleInputPassword">Password</label>
                         <input name="Password" required size=10  class="form-control" id="password"  type="password" placeholder="Enter Password"/> </td> 
                    </div>
-                    <div class="form-group">                  
-                    <label for="exampleInputEmail1">Email </label>
-                        <input name="Email" required size=20 class="form-control" id="email" type="email" placeholder="Enter email" /> </td> 
-                </div>
+                 <div class="form-group">
+                        <label for="exampleInputPassword">Retype Password</label>
+                        <input name="Matching" required size=10  class="form-control" id="password"  type="password" placeholder="Enter Password"/> </td> 
+                   </div>
+                    
                   
                 <div class="col-md-12 text-center ">
                     <button type="submit"  class=" btn btn-block mybtn btn-primary tx-tfm" >Register</button>

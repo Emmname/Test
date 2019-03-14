@@ -18,20 +18,10 @@
             if(user != null){
         %>
             <h1>Welcome, <%=user.getUsername()%></h1>
-            <h1>Welcome, <%=user.getUser_id()%></h1>
            <div>
-            <form action="Servlet" method="post">
-            <table>
-                <tr>
-                    <td>Search Anime</td><td> <input name="genre_name" size=30 type="text" /> </td> 
-                </tr>
-            </table>
-            <input type="submit" value=Go! /> 
-            <input type="hidden" name ="action" value="searchAnimeByGenre" />
-        </form>
-        </div>
-        <div>
-            <p>Search Anime by Words</p>
+            
+            
+            
             <form action="Servlet" method="post">
                 <table>
                     <tr>

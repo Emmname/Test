@@ -11,12 +11,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="CSS/vipchoose.css" rel="stylesheet" type="text/css"/>
-        <title>JSP Page</title>
+        <title>Upgrade</title>
     </head>
     <body>
         <h1>Pay</h1>
         <div class="container">
-        <h1>Choose your starter!</h1>
+        <h1>Choose Payment</h1>
 <%
                 String sessionExpired = (String) session.getAttribute("sessionExpired");
                 if(sessionExpired != null){
@@ -26,20 +26,25 @@
             %>
          
         <form action="Servlet" method="post" name="addOrder">
-        <div class="">Visa  
-            <input name="PaymentType"  size=30 type="text" />
+        <div class="">Payment Type  
+            <input name="PaymentType"  size=30 type="text" required />
         </div>
             
-        <div >PayPal
-
-        </div>
         
-        <div>Google Wallet
-
-        </div>
+        
+            
+            <div>
+                Card Number
+                <input name="CardNumber" size="24" type="text" required/>
+            </div>
+            
+            <div>
+                Cvc
+                <input name="cvc" size="10" type="text" required/>
+            </div>
         
         <div >5 €/1 month
-            <input name="AmountPaid"  size=30 type="text" />
+            <input name="AmountPaid"  size=30 type="text" required/>
         </div>
             
         <input type="submit"  value="Pay" />

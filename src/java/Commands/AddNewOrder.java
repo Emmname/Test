@@ -27,11 +27,34 @@ public class AddNewOrder implements Command {
        
        String paymentType = request.getParameter("PaymentType");
        String AmountPaid = request.getParameter("AmountPaid");
+       String cardNumber = request.getParameter("CardNumber");
+       String cvc = request.getParameter("cvc");
        int amountP = 0;
        amountP=Integer.parseInt(AmountPaid);
-       if(paymentType !=null || AmountPaid !=null || paymentType.equals("")){
-           if(paymentType != "Visa" && paymentType !="Paypal" && paymentType != "Google Wallet"){
-              try{
+       if(paymentType !=null || AmountPaid !=null || paymentType.equals("") || cardNumber.equals("")|| cvc.equals("")){
+           if(!paymentType.equals("Visa") || !paymentType.equals("Paypal") || !paymentType.equals("Google Wallet")){
+              if(cardNumber.length()<16){
+                  String errorMessage = "Card Number needs to be 16 characters";
+                   HttpSession session = request.getSession();
+                   session.setAttribute("errorMessage", errorMessage);
+                   forwardToJsp = "error.jsp";}
+//              else if(!cardNumber.substring(0, 3).equals("4319")){
+//                  String errorMessage = "Card Number must start with 4319";
+//                   HttpSession session = request.getSession();
+//                   session.setAttribute("errorMessage", errorMessage);
+//                   forwardToJsp = "error.jsp";}
+              
+              
+           else if(cvc.length()<3){
+               String errorMessage = "CVc Must be 3 chraacters long";
+                   HttpSession session = request.getSession();
+                   session.setAttribute("errorMessage", errorMessage);
+                   forwardToJsp = "error.jsp";
+           }
+           
+              
+       else{
+               try{
                if(amountP==5){
                 HttpSession session = request.getSession();
                 int userId = (int) session.getAttribute("ID");
@@ -44,30 +67,41 @@ public class AddNewOrder implements Command {
                 OrderDao oDao = new OrderDao("anime");
                 int newOId = oDao.addOrder(userId, datePaid, paymentType, amountP);
                 if(newOId!=-1){
-                    forwardToJsp ="PremiumHome.jsp";    
-                }else{
+                    forwardToJsp ="Home.jsp";    
+                }
+                else{
                     String errorMessage = "Pay is unsucessful" + "Please <a href='pay.jsp'>go back</a> and try again.";
                     session.setAttribute("errorMessage", errorMessage);
                     forwardToJsp = "error.jsp"; 
                 }
-               }else{
+               }
+               else{
                    String errorMessage = "You only can pay 5 €";
                    HttpSession session = request.getSession();
                    session.setAttribute("errorMessage", errorMessage);
                     forwardToJsp = "error.jsp";
                }
-              }catch( ParseException ex){
+              }
+               catch( ParseException ex){
                 System.out.println("This date should be an integer " + ex.getMessage());
                }
+            }
                 
-        }else{String errorMessage = "You must use these three payment methods ";
+           }
+   
+           else{
+           String errorMessage = "You must use these three payment methods ";
                    HttpSession session = request.getSession();
                    session.setAttribute("errorMessage", errorMessage);
                     forwardToJsp = "error.jsp";}
-        }else{String errorMessage = "You paymentType and/or AmountPaid was missing";
+        }
+   
+
+       else{
+                   String errorMessage = "You paymentType and/or AmountPaid was missing";
                    HttpSession session = request.getSession();
                    session.setAttribute("errorMessage", errorMessage);
-                    forwardToJsp = "error.jsp";}
+                   forwardToJsp = "error.jsp";}
        return forwardToJsp;
 }
 }
