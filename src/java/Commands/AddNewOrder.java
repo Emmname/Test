@@ -31,8 +31,8 @@ public class AddNewOrder implements Command {
        String cvc = request.getParameter("cvc");
        int amountP = 0;
        amountP=Integer.parseInt(AmountPaid);
-       if(paymentType !=null || AmountPaid !=null || paymentType.equals("") || cardNumber.equals("")|| cvc.equals("")){
-           if(!paymentType.equals("Visa") || !paymentType.equals("Paypal") || !paymentType.equals("Google Wallet")){
+       if(paymentType !=null && AmountPaid !=null && cardNumber !=null && cvc !=null && !paymentType.equals("") && !cardNumber.equals("")&& !cvc.equals("")){
+           if(!paymentType.equalsIgnoreCase("Visa") || !paymentType.equalsIgnoreCase("Paypal") || !paymentType.equalsIgnoreCase("Google Wallet")){
               if(cardNumber.length()<16){
                   String errorMessage = "Card Number needs to be 16 characters";
                    HttpSession session = request.getSession();
@@ -45,8 +45,8 @@ public class AddNewOrder implements Command {
 //                   forwardToJsp = "error.jsp";}
               
               
-           else if(cvc.length()<3){
-               String errorMessage = "CVc Must be 3 chraacters long";
+           else if(cvc.length()<3 || cvc.length()>3){
+               String errorMessage = "CVC Must be 3 chraacters long";
                    HttpSession session = request.getSession();
                    session.setAttribute("errorMessage", errorMessage);
                    forwardToJsp = "error.jsp";

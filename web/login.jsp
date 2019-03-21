@@ -38,12 +38,12 @@
             <form action="Servlet" method="post" name="login">
                 <div class="form-group">
                     
-                    <label for="exampleInputEmail1">Email address</label>
-                        <input name="Username" required size=20 class="form-control" id="email" type="text" placeholder="Enter email" /> </td> 
+                    <label for="exampleInputEmail1">Username</label>
+                        <input name="Username" required size=20 class="form-control" id="email" type="text" placeholder="Enter username" />  
                 </div>
                   <div class="form-group">
                         <label for="exampleInputEmail1">Password</label>
-                        <input name="Password" required size=10 type="password" id="password"  class="form-control" placeholder="Enter Password"/> </td> 
+                        <input name="Password" required size=10 type="password" id="password"  class="form-control" placeholder="Enter Password"/> 
                    </div>
                 <div class="col-md-12 text-center ">
                      <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>

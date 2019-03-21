@@ -26,12 +26,11 @@
             %>
          
         <form action="Servlet" method="post" name="addOrder">
-        <div class="">Payment Type  
-            <input name="PaymentType"  size=30 type="text" required />
-        </div>
-            
-        
-        
+           <select>
+                    <option value="Visa" name="PaymentType"  >Visa</option>
+                    <option value="PayPal" name="PaymentType"  >Pay Pal</option>
+                    <option value="GooglePay" name="PaymentType"  >Google Pay</option>
+           </select>
             
             <div>
                 Card Number
@@ -43,14 +42,14 @@
                 <input name="cvc" size="10" type="text" required/>
             </div>
         
-        <div >5 €/1 month
+        <div >€5 for 1 month
             <input name="AmountPaid"  size=30 type="text" required/>
         </div>
-            
         <input type="submit"  value="Pay" />
         <input type="hidden" name ="action" value="addOrder" />
+        </div>
          </form>
-</div>
+
         
     </body>
 </html>
