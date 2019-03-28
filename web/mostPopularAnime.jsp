@@ -18,7 +18,7 @@
         <link href="CSS/home.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <a href="header.jsp"></a>
-        <jsp:include page="menu.jsp" />
+        <jsp:include page="view/header.jsp" />
         <title>Most popular Animes</title>
     </head>
      <script src="https://www.w3schools.com/lib/w3.js"></script>
@@ -45,36 +45,9 @@
                 AnimeDao aDao = new AnimeDao("anime");
                 RatingDao rDao = new RatingDao("anime");
                 double rating=0;
-                double first=0;
-                double second=0;
-                double third=0;
-                double fourth=0;
-                double fifth=0;
                 for(int i=0; i<aDao.getAllAnimes().size();i++){
                     rating=rDao.getAverageRating(aDao.getAllAnimes().get(i).getAnime_id());
-                   
-                    if(rating>first){
-                        
-                        animes.add(aDao.getAllAnimes().get(i));
-                        first=rating;
-                    }
-                    else if(rating>second){
-                        animes.add(aDao.getAllAnimes().get(i));
-                        second=rating;
-                    }
-                    else if(rating>third){
-                        animes.add(aDao.getAllAnimes().get(i));
-                        third=rating;
-                    }
-                    else if(rating>fourth){
-                        animes.add(aDao.getAllAnimes().get(i));
-                        fourth=rating;
-                    }
-                    else if(rating>fifth){
-                        animes.add(aDao.getAllAnimes().get(i));
-                        fifth=rating;
-                    }
-                    
+                    animes.add(aDao.getAllAnimes().get(i));
                 }
           Rating resultAnime = (Rating)session.getAttribute("animeRatings");
             if(resultAnime != null){}
@@ -103,6 +76,7 @@
                     <td><%=a.getAnimator()%></td>
                     <td><%=a.getReleasedate()%></td>
                     <td><%=rDao.getAverageRating(a.getAnime_id())%></td>
+                    <td><img src="images/<%=a.getImageUrl()%>" height="260" width="100"><td>
                     <form action="Servlet" method="post" name="addFavourite">
                 <td><button name="" type="text" class="heart"/></td> 
                     
@@ -124,6 +98,6 @@
            
              </table>
                 
-                  
+                  <jsp:include page="view/footer.jsp" />
     </body>
 </html>

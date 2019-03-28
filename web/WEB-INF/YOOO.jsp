@@ -1,11 +1,11 @@
 <%-- 
     Document   : YOOO
-    Created on : 05-Mar-2019, 15:08:08
-    Author     : D00195567
+    Created on : Mar 21, 2019, 8:28:16 PM
+    Author     : omy
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

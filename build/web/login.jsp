@@ -38,7 +38,7 @@
             <form action="Servlet" method="post" name="login">
                 <div class="form-group">
                     
-                    <label for="exampleInputEmail1">Email address</label>
+                    <label for="exampleInputEmail1">Username</label>
                         <input name="Username" required size=20 class="form-control" id="email" type="text" placeholder="Enter email" /> </td> 
                 </div>
                   <div class="form-group">
