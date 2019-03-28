@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="CSS/vipchoose.css" rel="stylesheet" type="text/css"/>
+        <link href="css/vipchoose.css" rel="stylesheet" type="text/css"/>
         <title>Upgrade</title>
     </head>
     <body>

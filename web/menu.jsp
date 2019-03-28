@@ -1,109 +1,81 @@
 <%-- 
     Document   : menu
-    Created on : 31-Jan-2019, 10:56:13
+    Created on : 28-Mar-2019, 09:42:29
     Author     : D00195567
 --%>
 
-<%@page import="Dtos.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
-
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <link href="CSS/menu.css" rel="stylesheet" type="text/css"/>
-        <div class="wrapper">
-            
-        <nav class="navigation">
-            <form action="Servlet" method="post">
-  <ul>
-    <li class="active">
-      <a href="home.jsp">Home</a>
-    </li>
-    <li>
-      <a href="#">Genre</a>
-      <ul class="children sub-menu">
-        <li>
-            <a href="searchAnimeByGenre.jsp?genre_name=Action">Action</a>
-        </li>
-        <li>
-          <a href="searchAnimeByGenre.jsp?genre_name=Adventure">Adventure</a>
-        </li>
-        <li>
-          <a href="searchAnimeByGenre.jsp?genre_name=Comedy">Comedy</a>
-        </li>
-        <li>
-          <a href="searchAnimeByGenre.jsp?genre_name=Fantasy">Fantasy</a>
-        </li>
-        <li>
-          <a href="searchAnimeByGenre.jsp?genre_name=Horror">Horror</a>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <a href="">Charts</a>
-      <ul class="children sub-menu">
-        <li>
-          <a href="mostPopularAnime.jsp">Top Anime</a>
-        </li>
-        <li>
-          <a href="#">Recently Update</a>
-        </li>
+        <!-- Navigation -->
+            <nav class="navbar navbar-default">
 
-      </ul>
-    </li>
-    <li>
-      <a href="">Premium</a>
-      <ul class="children sub-menu">
-        <li>
-            <a href="#">Upgrade Account</a>
-        </li>
-        
-      </ul>
-    </li>
-     <li>
-      <a href="">Community</a>
-      <ul class="children sub-menu">
-        <li>
-            <a href="#">Evaluate</a>
-        </li>
-      </ul>
-    </li>
-    <li>
-        <%
-            User user = (User) session.getAttribute("loggedInUser");
-            if(user != null){
-        %>
-            
-      <a href=""><%=user.getUsername()%></a>
-      <%}%>
-      <ul class="children sub-menu">
-        <li>
-          <a href="#">My Profile</a>
-        </li>
-        <li>
-          <a href="favourites.jsp">My Favorites</a>
-        </li>
-        
-        <li>
-          <a href="#">our-team</a>
-        </li>
-        
-      </ul>
-    </li>
-  </ul>
-                <input type="hidden" name ="action" value="searchAnimeByGenre" />
-                </form>
-</nav>
+                <div class="container">
+                    <!-- display navbar fit with smaller screen  -->
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">menu</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        
+                        <!-- logo temp *need to be re-designed.* -->
+                        <div class="logo">
+                            <a class="navbar-brand page-scroll logo" href="#page-top">
+                                <img  src="images/logo.png" alt="website logo">
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="hidden">
+                                <a href="#page-top"></a>
+                            </li>
+                            <!-- menu bar -->
+                            <li class="list">
+                                <a class="page-scroll" href="#Genre">Anime</a>
+                                <ul class="nav dropdown">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Adventure</a></li>
+                                    <li><a href="#">Drama</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="#Storage">News</a>
+                            </li>
+                            <li>
+                                <a class="page-scroll" href="#Community">Community</a>
+                            </li>
+                            <li class="list">
+                                <a class="page-scroll" href="#account">Account</a>
+                                <ul class="nav dropdown">
+                                    <li><a href="login.jsp">Login</a></li>
+                                    <li><a href="register.jsp">Register</a></li>
+                                    <li><a href="Pay.jsp">Upgrade to premium</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.nav bar-collapse all menu bar -->
+                </div>
+                <!-- /.Navigation -->
+                
+                <section>
+                    <div class="search-wrap">
+                        <div class="search-text">
+                            
+                        </div>
+                        <div class="search-button">
+                            
+                        </div>
+                    </div>
+                </section>
+            </nav>
     </head>
     
 </html>

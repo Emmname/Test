@@ -15,8 +15,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-         <link href="CSS/Favourite.css" rel="stylesheet" type="text/css"/>
-        <link href="CSS/home.css" rel="stylesheet" type="text/css"/>
+         <link href="css/Favourite.css" rel="stylesheet" type="text/css"/>
+        <link href="css/home.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <a href="header.jsp"></a>
         <jsp:include page="menu.jsp" />
