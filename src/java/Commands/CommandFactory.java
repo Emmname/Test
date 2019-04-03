@@ -49,6 +49,9 @@ private CommandFactory(){
                 case "addFavourite":
                     c = new AddFavouriteCommand();
                     break;
+                 case "searchAnimebyWords":
+                    c = new GetAnimebyWordsCommand();
+                    break;
                 case "addOrder":
                     c = new  AddNewOrder();
                     
