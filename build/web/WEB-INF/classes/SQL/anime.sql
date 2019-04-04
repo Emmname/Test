@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2019-03-11 00:15:54
--- 服务器版本： 10.1.19-MariaDB
--- PHP Version: 5.6.28
+-- Generation Time: Apr 04, 2019 at 11:53 AM
+-- Server version: 10.1.24-MariaDB
+-- PHP Version: 7.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- 表的结构 `anime`
+-- Table structure for table `anime`
 --
 
 CREATE TABLE `anime` (
@@ -35,7 +37,7 @@ CREATE TABLE `anime` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `anime`
+-- Dumping data for table `anime`
 --
 
 INSERT INTO `anime` (`anime_id`, `anime_name`, `release_date`, `animator`, `imageUrl`) VALUES
@@ -53,7 +55,7 @@ INSERT INTO `anime` (`anime_id`, `anime_name`, `release_date`, `animator`, `imag
 -- --------------------------------------------------------
 
 --
--- 表的结构 `episode`
+-- Table structure for table `episode`
 --
 
 CREATE TABLE `episode` (
@@ -65,7 +67,7 @@ CREATE TABLE `episode` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `episode`
+-- Dumping data for table `episode`
 --
 
 INSERT INTO `episode` (`video_id`, `anime_id`, `episode_id`, `episode_name`, `episode_link`) VALUES
@@ -81,7 +83,7 @@ INSERT INTO `episode` (`video_id`, `anime_id`, `episode_id`, `episode_name`, `ep
 -- --------------------------------------------------------
 
 --
--- 表的结构 `favourite`
+-- Table structure for table `favourite`
 --
 
 CREATE TABLE `favourite` (
@@ -91,7 +93,7 @@ CREATE TABLE `favourite` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `favourite`
+-- Dumping data for table `favourite`
 --
 
 INSERT INTO `favourite` (`favourite_id`, `user_id`, `anime_id`) VALUES
@@ -100,7 +102,7 @@ INSERT INTO `favourite` (`favourite_id`, `user_id`, `anime_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `genre`
+-- Table structure for table `genre`
 --
 
 CREATE TABLE `genre` (
@@ -109,7 +111,7 @@ CREATE TABLE `genre` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `genre`
+-- Dumping data for table `genre`
 --
 
 INSERT INTO `genre` (`genre_id`, `genre_name`) VALUES
@@ -127,7 +129,7 @@ INSERT INTO `genre` (`genre_id`, `genre_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `genreanime`
+-- Table structure for table `genreanime`
 --
 
 CREATE TABLE `genreanime` (
@@ -137,7 +139,7 @@ CREATE TABLE `genreanime` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `genreanime`
+-- Dumping data for table `genreanime`
 --
 
 INSERT INTO `genreanime` (`genreanime_id`, `anime_id`, `genre_id`) VALUES
@@ -155,7 +157,7 @@ INSERT INTO `genreanime` (`genreanime_id`, `anime_id`, `genre_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `orders`
+-- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
@@ -168,7 +170,7 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `orders`
+-- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`order_id`, `user_id`, `date_paid`, `date_expired`, `PaymentType`, `AmountPaid`) VALUES
@@ -177,7 +179,7 @@ INSERT INTO `orders` (`order_id`, `user_id`, `date_paid`, `date_expired`, `Payme
 (3, 4, '2019-03-10', '2019-04-09', 'visa', 20);
 
 --
--- 触发器 `orders`
+-- Triggers `orders`
 --
 DELIMITER $$
 CREATE TRIGGER `Update date` AFTER UPDATE ON `orders` FOR EACH ROW Update orders SET date_expired = DATE_ADD(date_paid,INTERVAL 30 DAY) where date_expired IS null
@@ -187,7 +189,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- 表的结构 `rating`
+-- Table structure for table `rating`
 --
 
 CREATE TABLE `rating` (
@@ -198,7 +200,7 @@ CREATE TABLE `rating` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `rating`
+-- Dumping data for table `rating`
 --
 
 INSERT INTO `rating` (`rating_id`, `anime_id`, `user_id`, `ratingNumber`) VALUES
@@ -221,7 +223,7 @@ INSERT INTO `rating` (`rating_id`, `anime_id`, `user_id`, `ratingNumber`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `reviews`
+-- Table structure for table `reviews`
 --
 
 CREATE TABLE `reviews` (
@@ -235,7 +237,7 @@ CREATE TABLE `reviews` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -243,18 +245,18 @@ CREATE TABLE `user` (
   `Username` varchar(24) NOT NULL,
   `Email` varchar(50) NOT NULL,
   `Password` varchar(1024) NOT NULL,
-  `Status` int(10) DEFAULT NULL,
+  `Status` int(10) NOT NULL,
   `salt` varchar(1024) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`user_id`, `Username`, `Email`, `Password`, `Status`, `salt`) VALUES
-(1, '1234', '1234@gmail.com', '1234', 1, ''),
-(2, 'ItsMeBaby', 'DrinkMe@gmail.com', 'b060dc3e37c6952d0128f207882cae02', NULL, '¬ŽäËZ*Þ{-×	Ï'),
-(4, 'ItsMeBaby69;)', 'ItsMe@hotmail.com', 'eb14bb84404dd20ffd5c0ee0c55cea12', NULL, 'µÜ¹1W¶åê‡–ÏÑšËþL6/µ8-ù!£áü=ä&¥9ƒGk''[„}§ÀÐëtîhø³ð@Ä84VÞx}1¤JìÂn0þ­/HÎ–%\Z!Ü¦‘qÁ›¬M‰dçÄ ­u^ðèw<"©kš—{;[@ª,‘¸´ «v¿ñpøx!ùêùø¦ÑKä¾KÂòÄp`a|YC±4ã´“ŒA?þäÃÉx~ÛÄÄ²›æiý’€_—­Ñ[Xz«¶~,îtÒÛßìy5Þ e7±ß3|þåõ>•ðÇ+“;œ-»Ç÷ƒæ„ZnXZ©@Ô  m¿’ÿmëXKÂ¿Ì«ñÄÁ_çè´5ž+lrMÈdLüB|×Œèª@Ñ ”Îb&\\]“üîqõ¿¶š‹ÏK¿´}–íd30x:…‰\r›+¬jeðþsØ‘ßBéfñ™=ÕUJõ;å¥–PÙ(¶VuÁèÎ›1•Îf"ÿ‘þf…êKétÐˆ/‰¥k§ØCI\\Æ³>Þ,¹šÚônfÃŽ–+âÚÿQ6H9·÷½ÜòÏ’ˆ3ùqŒ¬4;§Í4"·¶ÝPyT~à¼Àé«•}×;™u°/µ©‹ë>äý\n9ñ&ÞJƒÒx!±Òåì¿8y‹Ôº(Q6');
+(1, '1234', '1234@gmail.com', '1234', 2, ''),
+(2, 'ItsMeBaby', 'DrinkMe@gmail.com', 'b060dc3e37c6952d0128f207882cae02', 1, '¬ŽäËZ*Þ{-×	Ï'),
+(4, 'ItsMeBaby69;)', 'ItsMe@hotmail.com', 'eb14bb84404dd20ffd5c0ee0c55cea12', 0, 'µÜ¹1W¶åê‡–ÏÑšËþL6/µ8-ù!£áü=ä&¥9ƒGk\'[„}§ÀÐëtîhø³ð@Ä84VÞx}1¤JìÂn0þ­/HÎ–%\Z!Ü¦‘qÁ›¬M‰dçÄ ­u^ðèw<\"©kš—{;[@ª,‘¸´ «v¿ñpøx!ùêùø¦ÑKä¾KÂòÄp`a|YC±4ã´“ŒA?þäÃÉx~ÛÄÄ²›æiý’€_—­Ñ[Xz«¶~,îtÒÛßìy5Þ e7±ß3|þåõ>•ðÇ+“;œ-»Ç÷ƒæ„ZnXZ©@Ô  m¿’ÿmëXKÂ¿Ì«ñÄÁ_çè´5ž+lrMÈdLüB|×Œèª@Ñ ”Îb&\\]“üîqõ¿¶š‹ÏK¿´}–íd30x:…‰\r›+¬jeðþsØ‘ßBéfñ™=ÕUJõ;å¥–PÙ(¶VuÁèÎ›1•Îf\"ÿ‘þf…êKétÐˆ/‰¥k§ØCI\\Æ³>Þ,¹šÚônfÃŽ–+âÚÿQ6H9·÷½ÜòÏ’ˆ3ùqŒ¬4;§Í4\"·¶ÝPyT~à¼Àé«•}×;™u°/µ©‹ë>äý\n9ñ&ÞJƒÒx!±Òåì¿8y‹Ôº(Q6');
 
 --
 -- Indexes for dumped tables
@@ -328,86 +330,86 @@ ALTER TABLE `user`
   ADD UNIQUE KEY `Email` (`Email`);
 
 --
--- 在导出的表使用AUTO_INCREMENT
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- 使用表AUTO_INCREMENT `anime`
+-- AUTO_INCREMENT for table `anime`
 --
 ALTER TABLE `anime`
   MODIFY `anime_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- 使用表AUTO_INCREMENT `episode`
+-- AUTO_INCREMENT for table `episode`
 --
 ALTER TABLE `episode`
   MODIFY `video_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
--- 使用表AUTO_INCREMENT `favourite`
+-- AUTO_INCREMENT for table `favourite`
 --
 ALTER TABLE `favourite`
   MODIFY `favourite_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- 使用表AUTO_INCREMENT `genre`
+-- AUTO_INCREMENT for table `genre`
 --
 ALTER TABLE `genre`
   MODIFY `genre_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- 使用表AUTO_INCREMENT `genreanime`
+-- AUTO_INCREMENT for table `genreanime`
 --
 ALTER TABLE `genreanime`
   MODIFY `genreanime_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- 使用表AUTO_INCREMENT `orders`
+-- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
   MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- 使用表AUTO_INCREMENT `rating`
+-- AUTO_INCREMENT for table `rating`
 --
 ALTER TABLE `rating`
   MODIFY `rating_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
--- 使用表AUTO_INCREMENT `reviews`
+-- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
   MODIFY `review_id` int(5) NOT NULL AUTO_INCREMENT;
 --
--- 使用表AUTO_INCREMENT `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- 限制导出的表
+-- Constraints for dumped tables
 --
 
 --
--- 限制表 `episode`
+-- Constraints for table `episode`
 --
 ALTER TABLE `episode`
   ADD CONSTRAINT `FK_anime_id` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`);
 
 --
--- 限制表 `favourite`
+-- Constraints for table `favourite`
 --
 ALTER TABLE `favourite`
   ADD CONSTRAINT `fk_anime_anime` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`),
   ADD CONSTRAINT `fk_user_favourite` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
--- 限制表 `genreanime`
+-- Constraints for table `genreanime`
 --
 ALTER TABLE `genreanime`
   ADD CONSTRAINT `fk_anime_genreanime` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`),
   ADD CONSTRAINT `fk_genre_genreanime` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`genre_id`);
 
 --
--- 限制表 `orders`
+-- Constraints for table `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `FK_user_order` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
--- 限制表 `rating`
+-- Constraints for table `rating`
 --
 ALTER TABLE `rating`
   ADD CONSTRAINT `fk_anime_rating` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`),
@@ -415,11 +417,12 @@ ALTER TABLE `rating`
   ADD CONSTRAINT `fk_user_rating` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
--- 限制表 `reviews`
+-- Constraints for table `reviews`
 --
 ALTER TABLE `reviews`
   ADD CONSTRAINT `FK_user_reviews` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `fk_anime_reviews` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

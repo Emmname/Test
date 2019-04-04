@@ -54,6 +54,8 @@ private CommandFactory(){
                     break;
                 case "addOrder":
                     c = new  AddNewOrder();
+                case "viewUserProfile" :
+                    c = new viewUserProfileCommand();
                     
                 default:
                     c = new NoActionSuppliedCommand();

@@ -11,6 +11,7 @@
 
         <%
             User user = (User) session.getAttribute("loggedInUser");
+            session.setAttribute("Status", user.getStatus());
             if (user != null) {
         %>
 
