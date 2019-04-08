@@ -11,21 +11,9 @@
 
         <%
             User user = (User) session.getAttribute("loggedInUser");
-            session.setAttribute("Status", user.getStatus());
             if (user != null) {
         %>
-
-
-        <%
-        } else {
-            String sessionExpired = "You must be logged in to use this service";
-            session.setAttribute("sessionExpired", sessionExpired);
-            response.sendRedirect("login.jsp");
-
-        %>  
-
-        <%            }
-        %>     
+     
         
         <!--  search bar -->
 
@@ -90,9 +78,7 @@
                     } else {
                     %>
                     <li class="list">
-                        <%
-                        
-                    %>
+               
                     <a class="page-scroll" href="account.jsp">Account</a>
                     <ul class="nav dropdown">
                         <li><a href="login.jsp">Login</a></li>
@@ -101,7 +87,12 @@
                 </li>
                     <%
                         }
-
+                }
+            else {
+                        String sessionExpired = "You must be logged in to use this service";
+                        session.setAttribute("sessionExpired", sessionExpired);
+                        response.sendRedirect("login.jsp");
+            }
                     %>
 
                 </li>
