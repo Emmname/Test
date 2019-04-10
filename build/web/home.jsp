@@ -34,7 +34,6 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <div class="section-title">
-                            <p>1111</p>
                         </div>
                     </div>
                 </div>	

@@ -15,5 +15,6 @@ public interface UserDaoInterface {
     public User getUserByUsernamePassword(String username, String password);
     public int registerUser(String username, String password, String email);
     public int updateUserStatus(int userId, int Status);
+    public User getUserById(int userId);
     public byte[] getSaltByUsername(String username);
 }

@@ -219,4 +219,47 @@ public class UserDao extends Dao implements UserDaoInterface {
         return salt;
     }
 
+    @Override
+    public User getUserById(int userId) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet result = null;
+        User user = new User();
+
+        try {
+            con = getConnection();
+
+            String query = "SELECT * FROM user WHERE user_id = ? ";
+            ps = con.prepareStatement(query);
+
+            ps.setInt(1, userId);
+            result = ps.executeQuery();
+            
+            while(result.next()){
+                
+                user.setUser_id(result.getInt("user_id"));
+                user.setUsername(result.getString("Username"));
+                user.setEmail(result.getString("Email"));
+                user.setPassword(result.getString("Password"));
+                user.setStatus(result.getInt("Status"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Exception occured in the getUserById() method: " + e.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    freeConnection(con);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section of the getUserById() method");
+                e.getMessage();
+            }
+        }
+        return user;
+    }
+
 }

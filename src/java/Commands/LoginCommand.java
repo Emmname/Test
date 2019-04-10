@@ -30,6 +30,7 @@ public class LoginCommand implements Command{
                 HttpSession session = request.getSession();
                 session.setAttribute("loggedInUser", u);
                 session.setAttribute("ID", u.getUser_id());
+                session.setAttribute("Status", u.getStatus());
                 forwardToJsp = "home.jsp";
             }
             else{

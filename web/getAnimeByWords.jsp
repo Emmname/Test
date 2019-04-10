@@ -27,16 +27,16 @@
         </table>
         <a href="home.jsp">Go home</a>
         <%
-            ArrayList<Anime> animes = new ArrayList<>();
-            String SearchWords = "";
-            AnimeDao aDao = new AnimeDao("anime");
-            
-            for(int i =0; i<aDao.getAnimebyWords().size();i++){
-                 animes = aDao.getAnimebyWords();
+           Object resultAnime = session.getAttribute("Animes");
+           if(resultAnime != null){
+               ArrayList<Anime> animes = (ArrayList<Anime>) resultAnime;
+           
               
-            }
+            
 
         %>
+        
+        There were <%=animes.size()%> Animes found in the database containing that name.
         
         <%
         if(animes.size() >0)
@@ -57,12 +57,26 @@
                  <td><%=a.getAnimename()%></td>
                  <td><%=a.getAnimator()%></td>
                  <td><%=a.getReleasedate()%></td>
-                 <td><img src="Images/<%=a.getImageUrl() %>" alt="<%=a.getImageUrl() %>" height="260" width="200"></td>
+                 <td><img src="images/<%=a.getImageUrl() %>" alt="<%=a.getImageUrl() %>" height="260" width="200"></td>
             </tr>
                  <%
                     }
                 }
             %>
              </table>
+             <%
+                session.removeAttribute("animes");
+        }  else
+        {
+        %>
+        
+        <p>Search Problem</p>
+         
+<%
+         }
+
+        %>
+        
+       
     </body>
 </html>
