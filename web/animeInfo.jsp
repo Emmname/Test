@@ -1,16 +1,18 @@
 <%-- 
     Document   : home
-    Created on : 27-Jan-2019, 23:00:31
-    Author     : Jordan
+    Created on : Mar 21, 2019, 8:21:35 PM
+    Author     : Emmine Team (Rui Hu, Jordan Donnelly, Haiyun Yu)
 --%>
+
 <%@page import="Dtos.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>        
-        <meta charset="utf-8">
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
 
         <!-- page content -->
         <meta name="Description" content="Anime Steaming Online">
@@ -22,119 +24,79 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,700,900" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
+              integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     </head>
+    <body>
 
-    <body id="page-top" lang="en">
-        <jsp:include page="view/header.jsp" />       
+        <!-------------------------- header  menu ---------------------------->
+        <jsp:include page="view/header.jsp" />
+
+
+        <!-------------------------- body content ---------------------------->             
 
         <!-- container -->
-        <section id="about" class="mz-module">
-            <div class="container light-bg">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="section-title">
-                            <p>1111</p>
-                        </div>
+        <section class="wrapper style1">
+            <div class="inner">
+                <header class="align-center">
+                    <h2>THE PROMISED NEVERLAND</h2>
+                    <p>The Promised Neverland is a Japanese manga series written by 
+                        Kaiu Shirai and illustrated by Posuka Demizu.</p>
+                </header>
+                <div class="video">
+                    <div class="video-wrapper">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/uMUjZs0HbwE" frameborder="0" allowfullscreen></iframe>
                     </div>
-                </div>	
+                    <p class="caption">
+                        Set in year 2045, Emma is an 11-year-old orphan living in Grace Field House, 
+                        a small orphanage housing her and her 37 siblings.</p> 
+                </div>
+                <p>Life had never been better; with food that tasted gourmet, 
+                    plush beds, snow-white uniforms, and the love of their "Mother" 
+                    (the caretaker) Isabella, as well the litany of daily exams that 
+                    Emma always aced with her two best friends Ray and Norman. </p> 
+                <p>The orphans are basically allowed to do whatever they want, 
+                    except venture out of the compounds or the gate that connects 
+                    the house to the outside world.</p>
             </div>
-        </section>		
-        <!-- /.container -->
-
-        <!--iframe container-->
-        <section  class="mz-module">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-title">                            
-                        <div class="iframe"> <!-- overflow display effect -->
-                            <div class="card-container">
-                                <!-- news display card 1 -->
-                                <figure class="figure-card">
-                                    <img src="images/demo/70034222_p0.jpg" alt="News Image 01"/>
-                                    <figcaption class="fig-card">
-                                        <div class="news-anime">news anime</div>
-                                        <div class="news-title">news title</div>
-                                    </figcaption>
-                                </figure>
-                                <!-- /. news display card 1 -->
-
-                                <!-- news display card 2 -->
-                                <figure class="figure-card">
-                                    <img src="images/demo/70034222_p0.jpg" alt="News Image 01"/>
-                                    <figcaption class="fig-card">
-                                        <div class="news-anime">news anime</div>
-                                        <div class="news-title">news title</div>
-                                    </figcaption>
-                                </figure>
-                                <!-- /. news display card 2 -->
-
-                                <!-- news display card 3 -->
-                                <figure class="figure-card">
-                                    <img src="images/demo/70034222_p0.jpg" alt="News Image 01"/>
-                                    <figcaption class="fig-card">
-                                        <div class="news-anime">news anime</div>
-                                        <div class="news-title">news title</div>
-                                    </figcaption>
-                                </figure>
-                                <!-- news display card 3 -->
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>				
-        </section>                
-        <!--iframe container-->
-
-        <!-- container -->
-        <section id="about" class="mz-module">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-title">
-                        <h2>Discover Anime</h2>
-                        <p>Anime and manga have had a strong, pervasive and lasting impact on the Japanese culture in particular, and the global culture in general. The characters are a representation of the fantastic, larger-than-life and vibrant world they inhabit.</p>	
-                    </div>
-                </div>
-            </div>	
-        </section>		
-        <!-- /.container -->
-
+        </section>
+    <!-- /.container -->
+    
         <!-- Anime display card -->
-        <section>
-            <!--------------------------------------------------------------------------------------------------------->
+        <section>         
             <div class="row row-0-gutter">
                 <!-- start anime item1 -->
-                <div class="ot-anime-item">
-                    <figure class="effect-bubba">
-                        <img src="images/demo/f3bce122f452164.jpg" alt="img01" class="img-responsive" />
-                        <figcaption>
-                            <h2>Top 1 anime</h2>
-                            <p>information1</p>
-                            <a href="#" data-toggle="modal" data-target="#Modal-1">View more</a>
-                        </figcaption>
-                    </figure>
+                <div class="col-md-6 col-0-gutter">
+                    <div class="ot-anime-item">
+                        <figure class="effect-bubba">
+                            <img src="images/demo/f3bce122f452164.jpg" alt="img01" class="img-responsive" />
+                            <figcaption>
+                                <h2>Top 1 anime</h2>
+                                <p>information1</p>
+                                <a href="#" data-toggle="modal" data-target="#Modal-1">View more</a>
+                            </figcaption>
+                        </figure>
+                    </div>
                 </div>
+                <!-- end anime item1 -->
+                <!-- start anime item2 -->
+                <div class="col-md-6 col-0-gutter">
+                    <div class="ot-anime-item">
+                        <figure class="effect-bubba">
+                            <img src="images/demo/img-bandai01.jpg" alt="img02" class="img-responsive" />
+                            <figcaption>
+                                <h2>Top 2 anime</h2>
+                                <p>information2</p>
+                                <a href="#" data-toggle="modal" data-target="#Modal-2">View more</a>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <!-- end anime item2 -->
             </div>
-            <!-- end anime item1 -->
-            <!--------------------------------------------------------------------------------------------------------->
-            <!-- start anime item2 -->
-            <div class="col-md-2 col-0-gutter">
-                <div class="ot-anime-item">
-                    <figure class="effect-bubba">
-                        <img src="images/demo/img-bandai01.jpg" alt="img02" class="img-responsive" />
-                        <figcaption>
-                            <h2>Top 2 anime</h2>
-                            <p>information2</p>
-                            <a href="#" data-toggle="modal" data-target="#Modal-2">View more</a>
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>               
-            <!-- end anime item2 -->
-            <!--------------------------------------------------------------------------------------------------------->
             <div class="row row-0-gutter">
                 <!-- start anime item3 -->
-                <div class="col-md-3 col-0-gutter">
+                <div class="col-md-6 col-0-gutter">
                     <div class="ot-anime-item">
                         <figure class="effect-bubba">
                             <img src="images/demo/38564e26f2905a3.jpg"  alt="img03" class="img-responsive" />
@@ -146,15 +108,12 @@
                         </figure>
                     </div>
                 </div>
-            </div>
-            <!-- end anime item3 -->
-            <!--------------------------------------------------------------------------------------------------------->
-            <!-- start anime item4 -->
-            <div class="row row-0-gutter">
-                <div class="col-md-4 col-0-gutter">
+                <!-- end anime item3 -->
+                <!-- start anime item4 -->
+                <div class="col-md-6 col-0-gutter">
                     <div class="ot-anime-item">
                         <figure class="effect-bubba">
-                            <img src="images/demo/f9ee68e029af637.jpg" alt="img04" class="img-responsive" />
+                            <img src="images/demo/4370572_p0.jpg" alt="img04" class="img-responsive" />
                             <figcaption>
                                 <h2>Top 4 Anime</h2>
                                 <p>information4</p>
@@ -163,11 +122,10 @@
                         </figure>
                     </div>
                 </div>
-            </div>
-            <!-- end anime item4 -->
+                <!-- end anime item4 -->
         </section>
         <!-- Anime display card -->
-        <!--------------------------------------------------------------------------------------------------------->
+
         <!-- Modal for anime item 1 -->
         <div class="modal fade" id="Modal-1" tabindex="-1" role="dialog" aria-labelledby="Modal-label-1">
             <div class="modal-dialog" role="document">
@@ -237,7 +195,7 @@
                         <h4 class="modal-title" id="Modal-label-4">Anime Name</h4>
                     </div>
                     <div class="modal-body">
-                        <img src="images/demo/f9ee68e029af637.jpg" alt="img04" class="img-responsive" />
+                        <img src="images/demo/4370572_p0.jpg" alt="img04" class="img-responsive" />
                         <div class="modal-works"><span>Top 4</span><span>Anime Title</span></div>
                         <p>Anime's information shows below...</p>
                     </div>
@@ -248,14 +206,19 @@
             </div>
         </div>
 
-        <jsp:include page="view/footer.jsp" />
+    <!-------------------------- footer section ---------------------------->
+    <jsp:include page="view/footer.jsp" />
 
-        <!-- Bootstrap core JavaScript -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/SmoothScroll.js"></script>
-        <script src="js/theme-scripts.js"></script>
-        <script src="js/navbar.js" type="text/javascript"></script>
-        <script src="js/jquery.min.js"></script>
-    </body>
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/SmoothScroll.js"></script>
+    <script src="js/theme-scripts.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="subpage_js/jquery.min.js" type="text/javascript"></script>
+    <script src="subpage_js/jquery.scrolly.min.js" type="text/javascript"></script>
+    <script src="subpage_js/main.js" type="text/javascript"></script>
+    <script src="subpage_js/skel.min.js" type="text/javascript"></script>
+    <script src="subpage_js/util.js" type="text/javascript"></script>
+</body>
 </html>

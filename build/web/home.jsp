@@ -18,7 +18,6 @@
         <title>Emmine Anime - Popular Animes Streaming Online</title>
 
         <!-- Bootstrap ,CSS & Fonts -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,700,900" rel="stylesheet">
@@ -34,6 +33,7 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <div class="section-title">
+                            <p>1111</p>
                         </div>
                     </div>
                 </div>	
@@ -47,22 +47,43 @@
                 <div class="col-lg-12 text-center">
                     <div class="section-title">                            
                         <div class="iframe"> <!-- overflow display effect -->
-                                <i class="fas fa-arrow-left " id="prevBtn"></i>
-                                <i class="fas fa-arrow-right" id="nextBtn"></i>
                             <div class="card-container">
-                               <img src="images/demo/f9ee68e029af637.jpg" id="lastClone"/>  
-                               <img src="images/demo/65572695_p2_master1200.jpg" alt="News Image 01"/> 
-                               <img src="images/demo/img-bandai01.jpg" alt="News Image 01"/> 
-                                <img src="images/demo/38564e26f2905a3.jpg" alt="News Image 01"/> 
-                                <img src="images/demo/65572695_p2_master1200.jpg" id="firstClone" alt="News Image 01"/>
+                                <!-- news display card 1 -->
+                                <figure class="figure-card">
+                                    <img src="images/demo/70034222_p0.jpg" alt="News Image 01"/>
+                                    <figcaption class="fig-card">
+                                        <div class="news-anime">news anime</div>
+                                        <div class="news-title">news title</div>
+                                    </figcaption>
+                                </figure>
+                                <!-- /. news display card 1 -->
+
+                                <!-- news display card 2 -->
+                                <figure class="figure-card">
+                                    <img src="images/demo/70034222_p0.jpg" alt="News Image 01"/>
+                                    <figcaption class="fig-card">
+                                        <div class="news-anime">news anime</div>
+                                        <div class="news-title">news title</div>
+                                    </figcaption>
+                                </figure>
+                                <!-- /. news display card 2 -->
+
+                                <!-- news display card 3 -->
+                                <figure class="figure-card">
+                                    <img src="images/demo/70034222_p0.jpg" alt="News Image 01"/>
+                                    <figcaption class="fig-card">
+                                        <div class="news-anime">news anime</div>
+                                        <div class="news-title">news title</div>
+                                    </figcaption>
+                                </figure>
+                                <!-- news display card 3 -->
+
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>	
-
-        </section>      
-
+            </div>				
+        </section>                
         <!--iframe container-->
 
         <!-- container -->
@@ -236,6 +257,5 @@
         <script src="js/theme-scripts.js"></script>
         <script src="js/navbar.js" type="text/javascript"></script>
         <script src="js/jquery.min.js"></script>
-        <script src="js/app.js"></script>
     </body>
 </html>

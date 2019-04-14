@@ -7,34 +7,30 @@
 <!-- header -->
 <form action="Servlet" method="post">
     <header class="header-default">
-
-
         <%
             User user = (User) session.getAttribute("loggedInUser");
-            if (user != null) {
+            //session.setAttribute("Status", user.getStatus());
         %>
-     
-        
-        <!--  search bar -->
-
-        <div class="wrap">
-            <div class="search">                                    
-                <input name="anime_name" size=30 type="text" class="searchTerm" placeholder="Search Anime " autocomplete="off">
-                <button type="submit" class="searchButton">
-                    <i class="fa fa-search"> </i>
-                    <input type="hidden" name="action" value="searchAnimebyWords"  />
-                </button>                                        
-            </div>
-        </div>
-        <!-- /.search bar -->
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default">
-            <ul class="nav navbar-nav navbar-right">
+        <nav>
+            <ul>
+                <li>
+                    <!--  search bar -->
+                    <div class="search">                                    
+                        <input name="anime_name" type="text" class="searchTerm" placeholder="Search Anime " autocomplete="off">
+                        <button type="submit" class="searchButton">
+                            <i class="fa fa-search"> </i>
+                            <input type="hidden" name="action" value="searchAnimebyWords"  />
+                        </button>                                        
+                    </div>
+                    <!-- /.search bar -->   
+                </li>
+                
                 <!-- menu bar -->
-                <li class="list">
-                    <a class="page-scroll" href="#Genre">Anime</a>
-                    <ul class="nav dropdown">
+                <li>
+                    <a href="#Genre">Anime</a>
+                    <ul class="">
                         <li><a href="searchAnimeByGenre.jsp?genre_name=Action#">Action</a></li>
                         <li><a href="searchAnimeByGenre.jsp?genre_name=Adventure">Adventure</a></li>
                         <li><a href="searchAnimeByGenre.jsp?genre_name=Comedy">Drama</a></li>
@@ -43,9 +39,9 @@
                     </ul>
                 </li>
 
-                <li class="list">
-                    <a class="page-scroll" href="">Charts</a>
-                    <ul class="nav dropdown">
+                <li >
+                    <a href="">Charts</a>
+                    <ul>
                         <li>
                             <a href="mostPopularAnime.jsp">Top Anime</a>
                         </li>
@@ -56,17 +52,17 @@
                 </li>
 
                 <li>
-                    <a class="page-scroll" href="contactpage.jsp">About Us</a>
+                    <a href="contactpage.jsp">About Us</a>
                 </li>
 
-                <li class="list">
+                <li>
                     <%
                         if (user != null) {
                     %>
 
-                    <a class="page-scroll" href=""><%=user.getUsername()%></a>
-                    
-                    <ul class="nav dropdown">
+                    <a><%=user.getUsername()%></a>
+
+                    <ul>
                         <li>
                             <a href="profile.jsp">My Profile</a>
                         </li>
@@ -76,38 +72,30 @@
                     </ul>                     
                     <%
                     } else {
+                        String sessionExpired = "You must be logged in to use this service";
+                        session.setAttribute("sessionExpired", sessionExpired);
+                        response.sendRedirect("login.jsp");
                     %>
-                    <li class="list">
-               
-                    <a class="page-scroll" href="account.jsp">Account</a>
-                    <ul class="nav dropdown">
+                <li>
+                    <a href="account.jsp">Account</a>
+                    <ul>
                         <li><a href="login.jsp">Login</a></li>
                         <li><a href="register.jsp">Register</a></li>
                     </ul>
                 </li>
-                    <%
-                        }
-                }
-            else {
-                        String sessionExpired = "You must be logged in to use this service";
-                        session.setAttribute("sessionExpired", sessionExpired);
-                        response.sendRedirect("login.jsp");
-            }
-                    %>
-
-                </li>
+                <%
+                    }
+                %>
             </ul>
-
-            <div class="container">
-                <div class="logo">
-                    <a class=" page-scroll logo" href="#page-top">
-                        <img  src="images/logo.png" alt="website logo">
-                    </a>
-                </div>
-
-            </div>
-                    
         </nav>
+                    <div class="container">
+            <div class="logo">
+                <a class=" page-scroll logo" href="#page-top">
+                    <img  src="images/logo1.png" alt="website logo">
+                </a>
+            </div>
+        </div>
+
 
     </header>
 
