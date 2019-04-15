@@ -14,11 +14,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="CSS/Favourite.css" rel="stylesheet" type="text/css"/>
-        <link href="CSS/home.css" rel="stylesheet" type="text/css"/>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <a href="header.jsp"></a>
-        <jsp:include page="view/header.jsp" />
+         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,700,900" rel="stylesheet">
+        <link href="css/favourite.css" rel="stylesheet">
+         <jsp:include page="view/header.jsp" />  
         <title>Most popular Animes</title>
     </head>
      <script src="https://www.w3schools.com/lib/w3.js"></script>
@@ -35,6 +35,7 @@
                     <th>Animator</th>
                     <th>Release Date</th>
                     <th onclick="w3.sortHTML('#myTable', '.item','td:nth-child(5)')"style="cursor:pointer"> Rating</th>
+                    <th>Picture</th>
                     <th> Add to your Favorites</th>
                 </tr>
               
@@ -78,8 +79,7 @@
                     <td><%=rDao.getAverageRating(a.getAnime_id())%></td>
                     <td><img src="images/<%=a.getImageUrl()%>" height="260" width="100"><td>
                     <form action="Servlet" method="post" name="addFavourite">
-                <td><button name="" type="text" class="heart"/></td> 
-                    
+                <td><button name="Heart" type="text" class="heart" value="<%=a.getAnime_id()%>"/></td> 
                 <input type="hidden" name ="action" value="addFavourite" />
                     </form>
                 </tr>

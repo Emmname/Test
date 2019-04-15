@@ -23,9 +23,11 @@ public class RegisterCommand implements Command {
             
             String username = request.getParameter("Username");
             String password = request.getParameter("Password");
+            String password2=request.getParameter("Password2");
             String email = request.getParameter("Email");
             
-            if(username !=null && password !=null && email!=null && !username.equals("")&&!password.equals("")&&!email.equals("")){
+            if(username !=null && password !=null && email!=null && password2 !=null && !username.equals("")&&!password.equals("")&&!email.equals("")&&!password2.equals("")){
+                if(password.equalsIgnoreCase(password2) && password.length()>=8){
                 UserDao uDao = new UserDao("anime");
                 int newId = uDao.registerUser(username, password, email);
             if(newId!=-1){
@@ -38,9 +40,11 @@ public class RegisterCommand implements Command {
                
                forwardToJsp="home.jsp";
             }
+            }
+            
             else{
              
-                String errorMessage = "registerError1";
+                String errorMessage = "Passwords Dont match and password must be atleast 8 characters";
                 HttpSession session = request.getSession();
                 session.setAttribute("errorMessage", errorMessage);
                 forwardToJsp = "error.jsp";
@@ -48,7 +52,7 @@ public class RegisterCommand implements Command {
         }
             else{
     
-            String errorMessage = "registerError2";
+            String errorMessage = "All Fields must be filled in";
             HttpSession session = request.getSession();
             session.setAttribute("errorMessage", errorMessage);
             forwardToJsp = "error.jsp";

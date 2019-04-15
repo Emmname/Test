@@ -28,6 +28,15 @@ public class RatingDao extends Dao implements RatingDaoInterface{
         super(databaseName);
     }
 
+    
+    /**
+     * Adds a rating to an anime
+     * @param anime_id   The anime id of the user is trying to add a rating to
+     * @param ratingNumber   The rating number given by the user currently logged in we are looking for
+     * @param user_id   The user id of the user currently logged in we are looking for
+     * @return  A new ratingId.
+     * If the new Id is -1, appropriate message will be returned.
+     */
     @Override
     public int addRating(int anime_id,int ratingNumber, int user_id) {
         Connection con = null;
@@ -84,6 +93,12 @@ public class RatingDao extends Dao implements RatingDaoInterface{
             
     }
     
+    /**
+     * Gets the average of the ratings for a given anime
+     * @param anime_id  The anime id 
+     * @return  A double that is the average of the rating for that one anime.
+     * If no anime matches the animeId, appropriate message will be returned.
+     */
     @Override
     public double getAverageRating(int anime_id) {
         Connection con = null;
@@ -130,6 +145,13 @@ public class RatingDao extends Dao implements RatingDaoInterface{
         }
     return average;
 }
+    
+    /**
+     * Gets the anime Ids that is rated by a given rating id
+     * @param ratingId  The rating id of the user currently logged in we are looking for
+     * @return An arraylist of integers containing the animeIds that are rated by the rating Id
+     * If none matches the ratingId, appropriate message will be returned.
+     */
     @Override
      public ArrayList<Integer> getAnimeIdByRatingId(int ratingId){
            Connection con = null;
@@ -173,6 +195,11 @@ public class RatingDao extends Dao implements RatingDaoInterface{
         return animeId;
            
 }
+     
+     /**
+     * Returns the number if rating Ids in the database
+     * @return a number that is the number of rating ids in the database
+     */
 
     @Override
     public int getNumberOfRatingIds() {
@@ -214,6 +241,13 @@ public class RatingDao extends Dao implements RatingDaoInterface{
         
     }
 
+    
+    /**
+     * Checks if that user already added a rating to that anime.
+     * @param user_id The user id of the user currently logged in we are looking for
+     * @param anime_id The Id of the anime we are trying to add a rating to.
+     * @return True if it was found or false otherwise
+     */
     @Override
     public boolean checkRatingUser(int user_id, int anime_id) {
         Connection con = null;

@@ -24,6 +24,14 @@ public class UserDao extends Dao implements UserDaoInterface {
     public UserDao(String dbName){
         super(dbName);
     }
+    /**
+     * Get the user by the username and password given
+     * 
+     * @param username The username of the user.
+     * @param password The password of the user.
+     * @return The user if both parameters match in the database. 
+     * If none matches the username and password, appropriate message will be returned.
+     */
     @Override
     public User getUserByUsernamePassword(String username, String password) {
         
@@ -76,6 +84,15 @@ public class UserDao extends Dao implements UserDaoInterface {
         }
         return u;
     }
+    /**
+     * Adds a user to the database
+     * 
+     * @param username The username of the user.
+     * @param password The password of the user.
+     * @param email The password of the user.
+     * @return The user if is registered correctly
+     * If not registered, appropriate message will be returned.
+     */
     
         @Override
     public int registerUser(String username, String password, String email) {
@@ -88,7 +105,7 @@ public class UserDao extends Dao implements UserDaoInterface {
         try {
             conn = this.getConnection();
 
-            String query = "INSERT INTO user(Username, Email,Password,salt) VALUES (?, ?, ?, ?)";
+            String query = "INSERT INTO user(Username, Email,Password,Status,salt) VALUES (?, ?, ?,?, ?)";
             
             ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
@@ -96,7 +113,8 @@ public class UserDao extends Dao implements UserDaoInterface {
             ps.setString(1, username);
             ps.setString(2, email);
             ps.setString(3, Hashing.getSecurePassword(password, salt));
-            ps.setBytes(4, salt);
+            ps.setInt(4, 0);
+            ps.setBytes(5, salt);
          
 
             ps.executeUpdate();
@@ -138,6 +156,15 @@ public class UserDao extends Dao implements UserDaoInterface {
         }
         return newId;
     }
+    
+    /**
+     * Updates a user's status
+     * 
+     * @param userId The id of the user.
+     * @param Status The status of the user.
+     * @return The user if is registered correctly
+     * If not updated, appropriate message will be returned.
+     */
     @Override
     public int updateUserStatus(int userId, int Status){
         Connection con = null;
@@ -174,6 +201,14 @@ public class UserDao extends Dao implements UserDaoInterface {
         return returnValue = -1;
 }
 
+    
+    /**
+     * Gets the salt by the username
+     * 
+     * @param username The username of the user.
+     * @return The salt of that user.
+     * If not returned, appropriate message will be returned.
+     */
     @Override
     public byte[] getSaltByUsername(String username) {
         Connection conn = null;
@@ -218,6 +253,13 @@ public class UserDao extends Dao implements UserDaoInterface {
         }
         return salt;
     }
+    
+    /**
+     * Gets a user by their Id.
+     * @param userId The username of the user.
+     * @return The user that mathces the id
+     * If not returned, appropriate message will be returned.
+     */
 
     @Override
     public User getUserById(int userId) {

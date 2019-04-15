@@ -91,7 +91,7 @@
                     <div class="container">
             <div class="logo">
                 <a class=" page-scroll logo" href="#page-top">
-                    <img  src="images/logo1.png" alt="website logo">
+                    
                 </a>
             </div>
         </div>

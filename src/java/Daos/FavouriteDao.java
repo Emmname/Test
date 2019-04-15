@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -26,6 +26,14 @@ public class FavouriteDao extends Dao implements FavouriteDaoInterface{
         super(dbName);
     }
 
+     /**
+     * Get all the favourites from the database
+     * 
+     * @param user_id The user id of the user currently logged in we are looking for
+     * @return All the IDs of Favourites in the database
+     * If no favourites found, appropriate message will be returned.
+     */
+    
     @Override
     public ArrayList<Integer> getFavourites(int user_id) {
         Connection con = null;
@@ -64,6 +72,14 @@ public class FavouriteDao extends Dao implements FavouriteDaoInterface{
         }
     }
 
+    
+    /**
+     * Adds a favourite to a user's favourites list
+     * @param user_id The user id of the user currently logged in we are looking for
+     * @param anime_id The Id of the anime we are adding to favourite
+     * @return All the new id of Favourites in the database
+     * If returned id is -1, appropriate message will be returned.
+     */
     @Override
     public int addFavourite(int user_id, int anime_id) {
         Connection con = null;
@@ -118,6 +134,12 @@ public class FavouriteDao extends Dao implements FavouriteDaoInterface{
             
     }
     
+    /**
+     * Gets the anime id based off of a given favourite id.
+     * @param favouriteId The Id of the favourite list.
+     * @return An Aarray of animeIDs in this favourite list.
+     * If the favourite id doesnt exsist, appropriate message will be returned.
+     */
     @Override
      public ArrayList<Integer> getAnimeIdByFavouriteId(int favouriteId){
            Connection con = null;
@@ -161,6 +183,12 @@ public class FavouriteDao extends Dao implements FavouriteDaoInterface{
         return animeId;
            
 }
+     /**
+     * Checks if that user already added that anime to his/her favourites
+     * @param user_id The user id of the user currently logged in we are looking for
+     * @param anime_id The Id of the anime we are trying to add to favourite
+     * @return True if it was found or false otherwise
+     */
     @Override
     public boolean checkExist(int user_id, int anime_id) {
         Connection con = null;

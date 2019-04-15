@@ -38,6 +38,10 @@
                         <label for="exampleInputPassword">Password</label>
                         <input name="Password" required size=10  class="form-control" id="password"  type="password" placeholder="Enter Password"/> </td> 
                    </div>
+                 <div class="form-group">
+                        <label for="exampleInputPassword">Re-Enter Password</label>
+                        <input name="Password2" required size=10  class="form-control" id="password"  type="password" placeholder="Enter Password"/> </td> 
+                   </div>
                     <div class="form-group">                  
                     <label for="exampleInputEmail1">Email </label>
                         <input name="Email" required size=20 class="form-control" id="email" type="email" placeholder="Enter email" /> </td> 

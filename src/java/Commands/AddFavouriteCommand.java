@@ -23,35 +23,32 @@ public class AddFavouriteCommand implements Command {
          String forwardToJsp = "mostPopularAnime.jsp";
         
         int user_id=(int) session.getAttribute("ID");
-        int anime_id=(int) session.getAttribute("Anime_ID");
+        String anime_id=request.getParameter("Heart");
         
-        int animeId=0;
+        
+        
+        int animeId=Integer.parseInt(anime_id);
         int userId=0;
         
         FavouriteDao fDao = new FavouriteDao("anime");
        
-        if(user_id !=-1 && anime_id!=-1 ){
+        if(user_id !=-1 && !anime_id.equals("") ){
                 
-                userId= (int) session.getAttribute("ID");
-                animeId= (int) session.getAttribute("Anime_ID");
                 
                 if(userId==-1){
                     forwardToJsp="login.jsp";
                     session.setAttribute("errorMessage", "You must be logged in");
                 }
             
-           
-                
-                
                  if(!fDao.checkExist(userId, animeId)){
                     
                 String errorMessage = "This anime is already inside your favourites";
                 session.setAttribute("errorMessage", errorMessage);
                 forwardToJsp = "error.jsp";
                 }
-                 else{
-                     int newId = fDao.addFavourite(userId,animeId);
-                     if(newId==-1){
+                else{
+                int newId = fDao.addFavourite(userId,animeId);
+                if(newId==-1){
                 String errorMessage = "There was a problem adding this to your favourites";
                 session.setAttribute("errorMessage", errorMessage);
                 forwardToJsp = "error.jsp";

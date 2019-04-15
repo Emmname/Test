@@ -102,8 +102,8 @@
         <!-- Anime display card -->
         <section>
             <!--------------------------------------------------------------------------------------------------------->
-            <div class="row row-0-gutter">
-                <!-- start anime item1 -->
+            <!--<div class="row row-0-gutter">
+                <!-- start anime item1 
                 <div class="ot-anime-item">
                     <figure class="effect-bubba">
                         <img src="images/demo/f3bce122f452164.jpg" alt="img01" class="img-responsive" />
@@ -114,7 +114,7 @@
                         </figcaption>
                     </figure>
                 </div>
-            </div>
+            </div>-->
             <!-- end anime item1 -->
             <!--------------------------------------------------------------------------------------------------------->
             <!-- start anime item2 -->
