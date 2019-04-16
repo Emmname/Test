@@ -11,7 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-//import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -37,17 +37,22 @@ public class UserDao extends Dao implements UserDaoInterface {
         PreparedStatement ps = null;
         ResultSet rs = null;
         User u = null;
-        password=Hashing.getSecurePassword(password, getSaltByUsername(username));
         try{
             conn = getConnection();
             
-            String query = "SELECT * FROM user WHERE username = ? AND password = ?";
+            String query = "SELECT * FROM user WHERE username = ? ";
             ps = conn.prepareStatement(query);
             ps.setString(1, username);
-            ps.setString(2, password);
+            
             rs = ps.executeQuery();
             
             if(rs.next()){
+                boolean passwordMatches = false;
+                String passwordFromDB = rs.getString("password");
+                if(BCrypt.checkpw(password, passwordFromDB)){
+                    passwordMatches=true;
+                }
+                if(passwordMatches){
                 int user_Id = rs.getInt("user_id");
                 String email = rs.getString("email");
                 int status = rs.getInt("Status");
@@ -55,6 +60,7 @@ public class UserDao extends Dao implements UserDaoInterface {
                 
                 
                 u = new User(user_Id, username, password, email, status);
+                }
             }
         } catch (SQLException ex) {
             System.out.println("A problem occurred while attempting to select a specific user in the getUserByUsernamePassword() method");
@@ -102,16 +108,18 @@ public class UserDao extends Dao implements UserDaoInterface {
         try {
             conn = this.getConnection();
 
-            String query = "INSERT INTO user(Username, Email,Password,Status) VALUES (?, ?, ?,?)";
-//            String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+            String query = "INSERT INTO user(Username, Email,Password,Status,salt) VALUES (?, ?, ?,?,?)";
+            String salt = BCrypt.gensalt();
+            String hashed = BCrypt.hashpw(password, salt);
             
             
             ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
             ps.setString(1, username);
             ps.setString(2, email);
-            ps.setString(3, password);
+            ps.setString(3, hashed);
             ps.setInt(4, 0);
+            ps.setString(5, salt);
          
 
             ps.executeUpdate();
