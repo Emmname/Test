@@ -6,6 +6,7 @@
 package Daos;
 
 import Dtos.Anime;
+import java.sql.Date;
 import java.util.ArrayList;
 
 /**
@@ -17,4 +18,5 @@ public interface AnimeDaoInterface {
    public Anime getAnimeById(int animeId);
    public ArrayList<Anime> getAllAnimesDescByRating();
      public ArrayList<Anime> getAnimebyWords(String animeName);
+     public int addAnime( String animeName , Date releaseDate, String animator , String imageUrl );
 }

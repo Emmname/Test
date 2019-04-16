@@ -49,13 +49,21 @@ private CommandFactory(){
                 case "addFavourite":
                     c = new AddFavouriteCommand();
                     break;
-                 case "searchAnimebyWords":
+                case "searchAnimebyWords":
                     c = new GetAnimebyWordsCommand();
                     break;
+                case "addAnime":
+                    c = new AddAnime();
+                    break;
+                case "addMessage":
+                    c = new  AddMessage();
+                     break;
                 case "addOrder":
                     c = new  AddNewOrder();
+                    break;
                 case "viewUserProfile" :
                     c = new viewUserProfileCommand();
+                    break;
                     
                 default:
                     c = new NoActionSuppliedCommand();

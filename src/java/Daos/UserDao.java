@@ -11,7 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import org.springframework.security.crypto.bcrypt.BCrypt;
+//import org.springframework.security.crypto.bcrypt.BCrypt;
 
 /**
  *
@@ -103,7 +103,7 @@ public class UserDao extends Dao implements UserDaoInterface {
             conn = this.getConnection();
 
             String query = "INSERT INTO user(Username, Email,Password,Status) VALUES (?, ?, ?,?)";
-            String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+//            String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
             
             
             ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);

@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -21,7 +22,45 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
     public AnimeDao(String dbName){
         super(dbName);
     }
+ @Override
+    public int addAnime( String animeName , Date releaseDate, String animator , String imageUrl ){
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet generatedKeys = null;
+        int newId = -1;
+        try{
+            con = this.getConnection();
+            String query = "INSERT INTO anime(anime_name,release_date,animator,imageUrl) VALUES(?,?,?,?)";
+            ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
+            ps.setString(1, animeName);
+            ps.setDate(2, releaseDate);
+            ps.setString(3, animator);
+            ps.setString(4, imageUrl);
+            ps.executeUpdate();
+            generatedKeys = ps.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                newId = generatedKeys.getInt(10);
+            }
+            }catch (SQLException ex) {
+                System.out.println("An error occurred in addAnime() " + ex.getMessage());
+        }finally {
+            try {
+                if (generatedKeys != null) {
+                    generatedKeys.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    freeConnection(con);
+                }
+            } catch (SQLException e) {
+                System.err.println("A problem occurred when closing down the addAnime():\n" + e.getMessage());
+            }
+        }
+        return newId; 
+    }
     @Override
     public ArrayList<Anime> getAllAnimes(){
         Connection con = null;
