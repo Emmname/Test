@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Servlet extends HttpServlet  {
     
      protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, ServletException  {
         String forwardToJsp = null;
         String action = request.getParameter("action");
         Command c = CommandFactory.createCommand(action);

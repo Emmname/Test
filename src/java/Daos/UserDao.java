@@ -6,14 +6,12 @@
 package Daos;
 
 import Dtos.User;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 /**
  *
@@ -99,22 +97,21 @@ public class UserDao extends Dao implements UserDaoInterface {
         Connection conn = null;
         PreparedStatement ps = null; 
         ResultSet generatedKeys = null;
-        byte [] salt=null;
         
         int newId = -1;
         try {
             conn = this.getConnection();
 
-            String query = "INSERT INTO user(Username, Email,Password,Status,salt) VALUES (?, ?, ?,?, ?)";
+            String query = "INSERT INTO user(Username, Email,Password,Status) VALUES (?, ?, ?,?)";
+            String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+            
             
             ps = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            salt=Hashing.getSalt();
             ps.setString(1, username);
             ps.setString(2, email);
-            ps.setString(3, Hashing.getSecurePassword(password, salt));
+            ps.setString(3, password);
             ps.setInt(4, 0);
-            ps.setBytes(5, salt);
          
 
             ps.executeUpdate();
@@ -130,8 +127,6 @@ public class UserDao extends Dao implements UserDaoInterface {
             System.err.println("\tA problem occurred during the registerUser method:");
             System.err.println("\t"+e.getMessage());
             newId = -1;
-        } catch (NoSuchAlgorithmException ex) {
-            System.out.println("Failed to hash password");
         } 
         finally 
         {

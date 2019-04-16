@@ -208,8 +208,6 @@ public class FavouriteDao extends Dao implements FavouriteDaoInterface{
                    checked=false;
                    
                }
-           
-           
            }catch (SQLException e) {
             System.out.println("Exception occured in the checkExist(int user_id, int anime_id) method: " + e.getMessage());
         } finally {
