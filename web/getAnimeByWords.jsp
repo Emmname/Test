@@ -54,10 +54,10 @@
             <tr>
                     
                  <td><%=a.getAnime_id()%></td>
-                 <td><%=a.getAnimename()%></td>
+                 <td><a href="animeVideo.jsp"><%=a.getAnimename()%></td>
                  <td><%=a.getAnimator()%></td>
                  <td><%=a.getReleasedate()%></td>
-                 <td><img src="images/<%=a.getImageUrl() %>" alt="<%=a.getImageUrl() %>" height="260" width="200"></td>
+                 <td><a href="animeVideo.jsp"><img src="images/<%=a.getImageUrl() %>" alt="<%=a.getImageUrl() %>" height="260" width="200"></td>
             </tr>
                  <%
                     }

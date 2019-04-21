@@ -33,19 +33,16 @@ private CommandFactory(){
             switch(action){
                 case "login":
                     c = new LoginCommand();
-                    break;
-                    
+                    break;      
                 case "logout":
                     c = new LogoutCommand();
                     break;
                 case "register":
                     c = new RegisterCommand();
-                    break;
-                    
+                    break;   
                 case "addRating":
                     c = new AddRatingCommand();
-                    break;
-                    
+                    break;    
                 case "addFavourite":
                     c = new AddFavouriteCommand();
                     break;
@@ -60,6 +57,9 @@ private CommandFactory(){
                      break;
                 case "addOrder":
                     c = new  AddNewOrder();
+                    break;
+                case "getMessage":
+                    c = new GetMessageByAnimeId();
                     break;
                 case "resetPassword":
                     c = new resetPasswordCommand();

@@ -4,6 +4,7 @@
     Author     : user
 --%>
 
+
 <%@page import="Dtos.Anime"%>
 <%@page import="Daos.MessageDao"%>
 <%@page import="Dtos.Message"%>
@@ -13,12 +14,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <jsp:include page="view/header.jsp" />
         <title>JSP Page</title>
     </head>
     <body>
+
         <table>
             <tr>
-                    <th>message_id</th>    
+                    <th>message_id</th>      
                     <th>message_title</th>
                     <th>message_context</th>
                     <th>messzge_wholeft</th>
@@ -30,14 +34,13 @@
           session = request.getSession();
           ArrayList<Message> messages = new ArrayList<>();
           MessageDao mDao = new MessageDao("anime");
-          Anime anime = (Anime) session.getAttribute("Anime_ID");
-          for(int i =0; i<mDao.getMsgByAnimeId(anime.getAnime_id()).size(); i++){
-                Message m = mDao.getMsgByAnimeId(anime.getAnime_id()).get(i);
+          int animeId = (int) session.getAttribute("Anime_ID");
+          for(int i =0; i<mDao.getMsgByAnimeId(animeId).size(); i++){
+                Message m = mDao.getMsgByAnimeId(animeId).get(i);
                 messages.add(m);
               }
             
-         Object resultAnime = session.getAttribute("message");
-            if(resultAnime != null){}
+
         %>
         
         <%
@@ -63,7 +66,12 @@
                 <%
                     }
                 }
+                else{
+                    System.out.println("can't get message");
+
+                }
+
             %>
-        https://www.jianshu.com/p/00bbdcd8d698
+
     </body>
 </html>

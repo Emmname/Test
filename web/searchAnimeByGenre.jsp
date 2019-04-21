@@ -58,10 +58,11 @@
                      
                      Anime a = aDao.getAnimeById(animeId);
                      animes.add(a);
-
+                     
                  }
              }
              }
+             
          }
            
           Object resultAnime = session.getAttribute("genre");
@@ -80,15 +81,21 @@
                 <%
                     for(Anime a: animes)
                     {
+                        session.setAttribute("Anime_ID", a.getAnime_id());
                 %>
                 
                 <tr>
-                    
-                    <td><%=a.getAnime_id()%></td>
+
+                    <td><%=a.getAnime_id()%></td> 
                     <td><%=a.getAnimename()%></td>
                     <td><%=a.getAnimator()%></td>
                     <td><%=a.getReleasedate()%></td>
                     <td><img src="images/<%=a.getImageUrl() %>" alt="<%=a.getImageUrl() %>" height="260" width="200"></td>
+                              
+                      <form action="Servlet" method="post" name="getMessage">
+                        <td><button name="Watch" type="text"  value="<%=a.getAnime_id()%>"/></td> 
+                        <input type="hidden" name ="action" value="getMessage" />
+                        </form>
                 </tr>
                 
                 <%

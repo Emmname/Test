@@ -26,45 +26,82 @@ public class AddNewOrder implements Command {
        String forwardToJsp = null;
        
        String paymentType = request.getParameter("PaymentType");
-       int AmountPaid=0;
-       if(paymentType !=null && AmountPaid !=-1 && paymentType.equals("")){
-           if(paymentType != "Visa" && paymentType !="Paypal" && paymentType != "Google Wallet"){
-              try{
-               if((AmountPaid < 5) &&(AmountPaid > 5)){
+       String AmountPaid = request.getParameter("AmountPaid");
+       String cardNumber = request.getParameter("CardNumber");
+       String cvc = request.getParameter("cvc");
+       int amountP = 0;
+       amountP=Integer.parseInt(AmountPaid);
+       if(paymentType !=null && AmountPaid !=null && cardNumber !=null && cvc !=null && !paymentType.equals("") && !cardNumber.equals("")&& !cvc.equals("")){
+           if(!paymentType.equalsIgnoreCase("Visa") || !paymentType.equalsIgnoreCase("Paypal") || !paymentType.equalsIgnoreCase("Google Wallet")){
+              if(cardNumber.length()<16){
+                  String errorMessage = "Card Number needs to be 16 characters";
+                   HttpSession session = request.getSession();
+                   session.setAttribute("errorMessage", errorMessage);
+                   forwardToJsp = "error.jsp";}
+              else if(!cardNumber.substring(0, 3).equals("4319")){
+                  String errorMessage = "Card Number must start with 4319";
+                   HttpSession session = request.getSession();
+                   session.setAttribute("errorMessage", errorMessage);
+                   forwardToJsp = "error.jsp";}
+              
+              
+           else if(cvc.length()<3 || cvc.length()>3){
+               String errorMessage = "CVC Must be 3 chraacters long";
+                   HttpSession session = request.getSession();
+                   session.setAttribute("errorMessage", errorMessage);
+                   forwardToJsp = "error.jsp";
+           }
+           
+              
+       else{
+               try{
+               if(amountP==5){
                 HttpSession session = request.getSession();
-                int userId = (int) session.getAttribute("user_id");
+                int userId = (int) session.getAttribute("ID");
                 Date date = new Date(); 
                 DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
                 String formattedDate= dateFormat.format(date);
-                 java.sql.Date datePaid = (java.sql.Date) dateFormat.parse(formattedDate);
+                java.sql.Date datePaid = (java.sql.Date) dateFormat.parse(formattedDate);
                 
+                       
                 OrderDao oDao = new OrderDao("anime");
-                int newOId = oDao.addOrder(userId, datePaid, paymentType, AmountPaid);
+                int newOId = oDao.addOrder(userId, datePaid, paymentType, amountP);
                 if(newOId!=-1){
-                    forwardToJsp ="PremiumHome.jsp";    
-                }else{
+                    forwardToJsp ="Home.jsp";    
+                }
+                else{
                     String errorMessage = "Pay is unsucessful" + "Please <a href='pay.jsp'>go back</a> and try again.";
                     session.setAttribute("errorMessage", errorMessage);
-                    forwardToJsp = "error.jsp";
+                    forwardToJsp = "error.jsp"; 
                 }
-               }else{
+               }
+               else{
                    String errorMessage = "You only can pay 5 €";
                    HttpSession session = request.getSession();
                    session.setAttribute("errorMessage", errorMessage);
                     forwardToJsp = "error.jsp";
                }
-              }catch( ParseException ex){
+              }
+               catch( ParseException ex){
                 System.out.println("This date should be an integer " + ex.getMessage());
                }
+            }
                 
-        }else{String errorMessage = "You must use these three payment methods ";
+           }
+   
+           else{
+           String errorMessage = "You must use these three payment methods ";
                    HttpSession session = request.getSession();
                    session.setAttribute("errorMessage", errorMessage);
                     forwardToJsp = "error.jsp";}
-        }else{String errorMessage = "You paymentType and/or AmountPaid was missing";
+        }
+   
+
+       else{
+                   String errorMessage = "You paymentType and/or AmountPaid was missing";
                    HttpSession session = request.getSession();
                    session.setAttribute("errorMessage", errorMessage);
-                    forwardToJsp = "error.jsp";}
+                   forwardToJsp = "error.jsp";}
        return forwardToJsp;
 }
 }

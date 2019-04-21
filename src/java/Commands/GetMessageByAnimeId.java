@@ -22,17 +22,17 @@ public class GetMessageByAnimeId implements Command {
             String forwardToJsp="";
             
             HttpSession session = request.getSession();
-            int anime_id=(int) session.getAttribute("Anime_ID");
+//            int anime_id=(int) session.getAttribute("Anime_ID");
+            String anime_id = request.getParameter("Watch");
+            int animeId=Integer.parseInt(anime_id);
             
-            int animeId=0;
             MessageDao mDao = new MessageDao("anime");
-            if(anime_id != -1){
+            if(animeId != -1){
                 
             ArrayList<Message> m = mDao.getMsgByAnimeId(animeId);
             session.setAttribute("Message", m);
             
-             forwardToJsp = " animeViedo.jsp";
-
+             forwardToJsp = "animeVideo.jsp";
             }
               else{
             String errorMessage = "The animeId don't find.";

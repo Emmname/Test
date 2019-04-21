@@ -29,7 +29,7 @@ public class AddMessage implements Command{
                 int animeId = (int) session.getAttribute("Anime_ID");
                 int newMId = mDao.addMessage(userId, animeId, title, context, wholeft);
                   if(newMId!=-1){
-                    forwardToJsp ="Home.jsp";    
+                    forwardToJsp ="home.jsp";    
                 }
                 else{
                     String errorMessage = "Message is unsucessful to add" + "Please <a href='addMessage.jsp'>go back</a> and try again.";

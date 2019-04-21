@@ -19,7 +19,7 @@
         <link href="CSS/home.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <a href="header.jsp"></a>
-        <jsp:include page="menu.jsp" />
+       <jsp:include page="view/header.jsp" />
 
         <title>Your Favorites</title>
     </head>
