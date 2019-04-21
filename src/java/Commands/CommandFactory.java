@@ -64,6 +64,9 @@ private CommandFactory(){
                 case "resetPassword":
                     c = new resetPasswordCommand();
                     
+                case "updateUserName":
+                    c = new updateUserNameCommand();
+                    
                 default:
                     c = new NoActionSuppliedCommand();
                     break;

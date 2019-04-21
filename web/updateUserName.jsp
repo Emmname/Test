@@ -36,18 +36,14 @@
                             <form action="servlet" method="post">
                                 <table>
                                     <tr>
-                                        <th>Old Password: </th>
-                                        <th>New Password: </th>
-                                        <th>Confirm New Password: </th>
+                                        <th>Enter Your Password: </th>
                                     </tr>
                                     <tr>
-                                        <th><input type="password" name="oldPassword"></th>
-                                        <th><input type="password" name="newPassword"></th>
-                                        <th><input type="password" name="reenter_Password"></th>
+                                        <th><input type="password" name="Password"></th>
+
                                     </tr>
-                                    
                                     <tr>
-                                        <th><input type="submit" name="updatePassword"></th>                                                                   
+                                        <th><input type="submit" name="updateName"></th>                                                                   
                                     </tr>
                                 </table>
                             </form>

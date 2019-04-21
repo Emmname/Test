@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/AnimeProject/web/home.jsp</file>
-            <file>file:/C:/xampp/htdocs/AnimeProject/web/searchAnimeByGenre.jsp</file>
-            <file>file:/C:/xampp/htdocs/AnimeProject/web/animeInfo.jsp</file>
-            <file>file:/C:/xampp/htdocs/AnimeProject/nbproject/build-impl.xml</file>
-            <file>file:/C:/xampp/htdocs/AnimeProject/src/java/Servlet/Servlet.java</file>
-            <file>file:/C:/xampp/htdocs/AnimeProject/web/mostPopularAnime.jsp</file>
+            <file>file:/C:/Users/omy/Desktop/backupproject/AnimeProject/web/resetPassword.jsp</file>
+            <file>file:/C:/Users/omy/Desktop/backupproject/AnimeProject/src/java/Commands/CommandFactory.java</file>
+            <file>file:/C:/Users/omy/Desktop/backupproject/AnimeProject/web/userProfile.jsp</file>
+            <file>file:/C:/Users/omy/Desktop/backupproject/AnimeProject/src/java/Commands/resetPasswordCommand.java</file>
+            <file>file:/C:/Users/omy/Desktop/backupproject/AnimeProject/web/updateUserName.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -64,7 +64,7 @@
 
                     <ul>
                         <li>
-                            <a href="profile.jsp">My Profile</a>
+                            <a href="userProfile.jsp">My Profile</a>
                         </li>
                         <li>
                             <a href="favourites.jsp">My Favorites</a>
