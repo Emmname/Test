@@ -54,7 +54,7 @@
                                     <!-- Email -->
                                     <th><%=user.getEmail()%></th>
                                     <!-- Password -->
-                                    <th><a href="resetPassword.jsp">Change Your Password</a></th>
+                                    <th><a href="verification.jsp">Change Your Password</a></th>
                                     <!-- Status -->
                                     <% int userstatus = (int) session.getAttribute("Status");//premium
                                         if (userstatus == 1) {  %> 
