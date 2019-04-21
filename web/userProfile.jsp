@@ -33,17 +33,16 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <div class="section-title">
-                            <%  User user = ( User) session.getAttribute("");
+                            <%  User user = ( User) session.getAttribute("loggedInUser");
                             if( user != null){
                             %>
                             <table>
                                 <tr>
-                                    <!-- User name can be update -->
+
                                     <th>Account Name:</th>
-                                    <!-- Email displays but no available to update-->
+
                                     <th>Email Address:</th>
-                                    <!-- password won's appear and follow a changePassword link. -->
-                                    <th>Password:</th>
+                                    
                                     <!-- 1=>premium, NULL=>free user, 2=>admin -->
                                     <th>Status:</th>
                                 </tr>
@@ -52,27 +51,23 @@
                                     <th><%=user.getUsername() %></th>
                                     <!-- Email -->
                                     <th><%=user.getEmail() %></th>
-                                    <!-- Password -->
-                                    <th><a href="changePassword.jsp">Change Your Password</a></th>
                                     <!-- Status -->
-                                    <th><%
-                                        int userstatus= (int)session.getAttribute("Status");//premium
+                                    <% int userstatus= (int)session.getAttribute("Status");//premium
                                         if(userstatus==1) {  %> 
-                                    <th>You are a premium</th>
-                                        <%}%>
-                                    
-                                    <th><%
-                                        else if(userstatus==2) {  %> 
-                                    <th>You are a admin</th>
-                                        <%}%>
-                                    
-                                    <th><%
-                                        else if(userstatus==0) {  %> 
-                                    <th>You are a free user</th>
+                                    <th>Premium Account</th>
+                                        <% } else if(userstatus==2) {  %> 
+                                    <th>Admin Account</th>
+                                        <% } else if(userstatus==0) {  %> 
+                                    <th>Free Account</th>
                                     <% } %>                                    
                                 </tr>
+                                <a href="updateUser.jsp">Change Your Details</a>
                             </table>
-                            
+                            <% } else { 
+                    String sessionExpired = "You must be logged in to use this service";
+                    session.setAttribute("sessionExpired", sessionExpired);
+                    response.sendRedirect("login.jsp");
+}%>
                         </div>
                     </div>
                 </div>	

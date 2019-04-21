@@ -61,9 +61,8 @@ private CommandFactory(){
                 case "addOrder":
                     c = new  AddNewOrder();
                     break;
-                case "viewUserProfile" :
-                    c = new viewUserProfileCommand();
-                    break;
+                case "resetPassword":
+                    c = new resetPasswordCommand();
                     
                 default:
                     c = new NoActionSuppliedCommand();
