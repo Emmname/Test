@@ -48,9 +48,11 @@
                                 </tr>
                                 <tr>
                                     <!-- User name -->
-                                    <th><%=user.getUsername() %></th>
+                                    <th><%=user.getUsername() %> | <a href="updateUserName.jsp">Change Your Name</a></th>
                                     <!-- Email -->
                                     <th><%=user.getEmail() %></th>
+                                    <!-- Password -->
+                                    <th><a href="resetPassword.jsp">Change Your Password</a></th>
                                     <!-- Status -->
                                     <% int userstatus= (int)session.getAttribute("Status");//premium
                                         if(userstatus==1) {  %> 
@@ -61,7 +63,6 @@
                                     <th>Free Account</th>
                                     <% } %>                                    
                                 </tr>
-                                <a href="updateUser.jsp">Change Your Details</a>
                             </table>
                             <% } else { 
                     String sessionExpired = "You must be logged in to use this service";
