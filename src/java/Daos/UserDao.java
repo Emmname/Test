@@ -307,4 +307,46 @@ public class UserDao extends Dao implements UserDaoInterface {
         return user;
     }
 
+    @Override
+    public User getUserByEmail(String email) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet result = null;
+        User user = null;
+
+        try {
+            con = getConnection();
+
+            String query = "SELECT * FROM user WHERE Email = ? ";
+            ps = con.prepareStatement(query);
+
+            ps.setString(1, email);
+            result = ps.executeQuery();
+            
+            if(result.next()){
+                user = new User();
+                user.setUser_id(result.getInt("user_id"));
+                user.setUsername(result.getString("Username"));
+                user.setEmail(result.getString("Email"));
+                user.setPassword(result.getString("Password"));
+                user.setStatus(result.getInt("Status"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Exception occured in the getUserByEmail() method: " + e.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    freeConnection(con);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section of the getUserByEmail() method");
+                e.getMessage();
+            }
+        }
+        return user;
+    }
 }

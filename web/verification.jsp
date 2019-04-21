@@ -33,12 +33,12 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <div class="section-title"> 
-                            <form action="servlet" method="post">
+                            <form action="resetPassword" method="post">
                                 <table>
                                     <tr>
-                                        <th>Confirm Your Email Address:</th>
+                                        <th>Enter Your Email Address:</th>
                                         <th> <input type="text" name="emailAddress"> </th>
-                                        <th> <input type="submit" name="sendVerifyEmail"></th>                                   
+                                        <th> <input type="submit" name="cEmailAddress" value="Click"></th>                                   
                                     </tr>
                                     <tr>
                                         <th> Need help to reset your password? </th>

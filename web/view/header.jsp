@@ -9,7 +9,6 @@
     <header class="header-default">
         <%
             User user = (User) session.getAttribute("loggedInUser");
-            //session.setAttribute("Status", user.getStatus());
         %>
 
         <!-- Navigation -->
@@ -68,7 +67,8 @@
                         </li>
                         <li>
                             <a href="favourites.jsp">My Favorites</a>
-                        </li>   
+                        </li>
+                        <li><a href="login.jsp">Logout</a></li>
                     </ul>                     
                     <%
                     } else {

@@ -48,6 +48,9 @@
                 <div class="col-md-12 text-center ">
                      <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
                  </div>
+                 <div class="form-group">
+                   <p class="text-center"><a href="verification.jsp">Forgot Your Password?</a></p>
+                </div>
                 
                  </div>
                 <div class="form-group">
