@@ -5,6 +5,8 @@
  */
 package Commands;
 
+import Daos.UserDao;
+import Dtos.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,7 +18,23 @@ public class resetPasswordCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String forwardToJsp = null;
+
+        //get email address as parameter
+        String email = request.getParameter("emailAddress");
+        //when email is valid
+        if (email != null && email.equals("")) {
+            //get user by given email
+            UserDao uDao = new UserDao("anime");
+            User user1 = uDao.getUserByEmail(email);
+            
+            if(user1 != null){
+                
+            }
+        }
+        return forwardToJsp;
     }
     
+    
+
 }
