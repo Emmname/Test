@@ -25,7 +25,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,700,900" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
+        <link href="css/animeInfo.css" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
               integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     </head>
@@ -44,96 +44,33 @@
                     <%
                         session=request.getSession();
                         int animeID=Integer.parseInt(request.getParameter("aID"));
+                        session.setAttribute("aID", animeID);
                         String animeName=request.getParameter("anime");
                         AnimeDao aDao = new AnimeDao("anime");
                         Anime anime= aDao.getAnimeById(animeID);
                     
                     %>
                     <h2><%=anime.getAnimename()%></h2>
-                    <p>This anime is animated by <%=anime.getAnimator()%></p>
                 </header>
                 <div class="video">
                     <div class="video-wrapper">
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/<%=anime.getVideoUrl()%>" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <p class="caption">
-                        Set in year 2045, Emma is an 11-year-old orphan living in Grace Field House, 
-                        a small orphanage housing her and her 37 siblings.</p> 
+                        This anime is animated by <%=anime.getAnimator()%> and was released on <%=anime.getReleasedate()%></p> 
+                    <section>
+                    To add this Anime to your Favorites click the heart
+                    <form action="Servlet" method="post" name="addFavourite">
+                <button name="Heart" type="text" class="heart"/>
+                <input type="hidden" name ="action" value="addFavourite" />
+                    </form>
+                </section>
                 </div>
-                <p>Life had never been better; with food that tasted gourmet, 
-                    plush beds, snow-white uniforms, and the love of their "Mother" 
-                    (the caretaker) Isabella, as well the litany of daily exams that 
-                    Emma always aced with her two best friends Ray and Norman. </p> 
-                <p>The orphans are basically allowed to do whatever they want, 
-                    except venture out of the compounds or the gate that connects 
-                    the house to the outside world.</p>
+                
             </div>
         </section>
-    <!-- /.container -->
-    
-        <!-- Anime display card -->
-        <section>         
-            <div class="row row-0-gutter">
-                <!-- start anime item1 -->
-                <div class="col-md-6 col-0-gutter">
-                    <div class="ot-anime-item">
-                        <figure class="effect-bubba">
-                            <img src="images/demo/f3bce122f452164.jpg" alt="img01" class="img-responsive" />
-                            <figcaption>
-                                <h2>Top 1 anime</h2>
-                                <p>information1</p>
-                                <a href="#" data-toggle="modal" data-target="#Modal-1">View more</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-                <!-- end anime item1 -->
-                <!-- start anime item2 -->
-                <div class="col-md-6 col-0-gutter">
-                    <div class="ot-anime-item">
-                        <figure class="effect-bubba">
-                            <img src="images/demo/img-bandai01.jpg" alt="img02" class="img-responsive" />
-                            <figcaption>
-                                <h2>Top 2 anime</h2>
-                                <p>information2</p>
-                                <a href="#" data-toggle="modal" data-target="#Modal-2">View more</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-                <!-- end anime item2 -->
-            </div>
-            <div class="row row-0-gutter">
-                <!-- start anime item3 -->
-                <div class="col-md-6 col-0-gutter">
-                    <div class="ot-anime-item">
-                        <figure class="effect-bubba">
-                            <img src="images/demo/38564e26f2905a3.jpg"  alt="img03" class="img-responsive" />
-                            <figcaption>
-                                <h2>Top 3 anime</h2>
-                                <p>information3</p>
-                                <a href="#" data-toggle="modal" data-target="#Modal-3">View more</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-                <!-- end anime item3 -->
-                <!-- start anime item4 -->
-                <div class="col-md-6 col-0-gutter">
-                    <div class="ot-anime-item">
-                        <figure class="effect-bubba">
-                            <img src="images/demo/4370572_p0.jpg" alt="img04" class="img-responsive" />
-                            <figcaption>
-                                <h2>Top 4 Anime</h2>
-                                <p>information4</p>
-                                <a href="#" data-toggle="modal" data-target="#Modal-4">View more</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-                <!-- end anime item4 -->
-        </section>
-        <!-- Anime display card -->
+                
+                
 
         <!-- Modal for anime item 1 -->
         <div class="modal fade" id="Modal-1" tabindex="-1" role="dialog" aria-labelledby="Modal-label-1">

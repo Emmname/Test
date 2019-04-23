@@ -41,10 +41,12 @@
               
                 
                 <%
+                    
                 session =  request.getSession();
                 ArrayList<Anime> animes = new ArrayList<>();
                 AnimeDao aDao = new AnimeDao("anime");
                 RatingDao rDao = new RatingDao("anime");
+                String message=(String)session.getAttribute("FavouriteMessage");
                 double rating=0;
                 for(int i=0; i<aDao.getAllAnimes().size();i++){
                     rating=rDao.getAverageRating(aDao.getAllAnimes().get(i).getAnime_id());

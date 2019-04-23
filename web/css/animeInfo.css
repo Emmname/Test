@@ -1,3 +1,13 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23-Apr-2019, 13:52:51
+    Author     : D00195567
+*/
+
 
 /*--------------------
 Import Google Fonts
@@ -963,7 +973,6 @@ and (max-width : 480px) {
 .wrapper.style1 input[type="button"],
 .wrapper.style1 button,
 .wrapper.style1 .button {
-    background-color: #04162;
     color: #ffffff !important;
 }
 
@@ -972,7 +981,6 @@ and (max-width : 480px) {
 .wrapper.style1 input[type="button"]:hover,
 .wrapper.style1 button:hover,
 .wrapper.style1 .button:hover {
-    background-color: #06243c;
 }
 
 .wrapper.style1 input[type="submit"]:active,
@@ -980,7 +988,6 @@ and (max-width : 480px) {
 .wrapper.style1 input[type="button"]:active,
 .wrapper.style1 button:active,
 .wrapper.style1 .button:active {
-    background-color: #02080e;
 }
 
 .wrapper.style1 input[type="submit"].alt,
