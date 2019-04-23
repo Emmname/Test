@@ -90,7 +90,9 @@
 
 <!-- Load Hosted Fields component. -->
 <script src="https://js.braintreegateway.com/web/3.43.0/js/hosted-fields.min.js"></script>
+<script src="js/pay.js" type="text/javascript"></script>
            <select>
+               
                     <option value="Visa" name="PaymentType"  >Visa</option>
                     <option value="PayPal" name="PaymentType"  >Pay Pal</option>
                     <option value="GooglePay" name="PaymentType"  >Google Pay</option>
@@ -116,6 +118,6 @@
        
          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/346994/Card%20Icon.svg" alt="" />
           <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/346994/Pp%20Icon.svg" alt="" />
-          <script src="js/pay.js" type="text/javascript"></script>
-    </body>
+         
 </html>
+

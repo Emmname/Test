@@ -26,7 +26,7 @@ public class AddMessage implements Command{
              MessageDao mDao = new MessageDao("anime");
                 HttpSession session = request.getSession();
                 int userId = (int) session.getAttribute("ID");
-                int animeId = (int) session.getAttribute("Anime_ID");
+                int animeId = (int) session.getAttribute("aID");
                 int newMId = mDao.addMessage(userId, animeId, title, context, wholeft);
                   if(newMId!=-1){
                     forwardToJsp ="home.jsp";    

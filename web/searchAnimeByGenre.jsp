@@ -21,11 +21,11 @@
         <table>
             <tr>
                     
-                    <th>search_id</th>
-                    <th>search_name</th>
-                    <th>search_animator</th>
-                    <th>search_releasedate</th>
-                    <th>search_image</th>
+                    <th>Genre ID</th>
+                    <th>Genre Name</th>
+                    <th>Search Animator</th>
+                    <th>Search Release Date</th>
+                    <th>Search Image</th>
                 </tr>
         </table>
         <a href="home.jsp">Go home</a>
@@ -66,7 +66,7 @@
          }
            
           Object resultAnime = session.getAttribute("genre");
-            if(resultAnime != null){}
+            
               
 
         %>
@@ -81,21 +81,18 @@
                 <%
                     for(Anime a: animes)
                     {
-                        session.setAttribute("Anime_ID", a.getAnime_id());
+                       
                 %>
                 
                 <tr>
 
                     <td><%=a.getAnime_id()%></td> 
-                    <td><%=a.getAnimename()%></td>
+                    <td><a href="animeVideo.jsp?anime=<%=a.getAnimename()%>&aID=<%=a.getAnime_id()%>"><%=a.getAnimename()%></td>
                     <td><%=a.getAnimator()%></td>
                     <td><%=a.getReleasedate()%></td>
                     <td><img src="images/<%=a.getImageUrl() %>" alt="<%=a.getImageUrl() %>" height="260" width="200"></td>
                               
-                      <form action="Servlet" method="post" name="getMessage">
-                        <td><button name="Watch" type="text"  value="<%=a.getAnime_id()%>"/></td> 
-                        <input type="hidden" name ="action" value="getMessage" />
-                        </form>
+                 
                 </tr>
                 
                 <%

@@ -162,6 +162,28 @@ INSERT INTO `genreanime` (`genreanime_id`, `anime_id`, `genre_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `message`
+--
+
+CREATE TABLE `message` (
+  `message_id` int(5) NOT NULL,
+  `user_id` int(5) NOT NULL,
+  `anime_id` int(5) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `context` varchar(255) NOT NULL,
+  `wholeft` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`message_id`, `user_id`, `anime_id`, `title`, `context`, `wholeft`) VALUES
+(1, 10, 6, 'the first message', 'i like it ', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orders`
 --
 
@@ -293,6 +315,14 @@ ALTER TABLE `genreanime`
   ADD KEY `fk_genre_genreanime` (`genre_id`);
 
 --
+-- Indexes for table `message`
+--
+ALTER TABLE `message`
+  ADD PRIMARY KEY (`message_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `anime_id` (`anime_id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -353,6 +383,11 @@ ALTER TABLE `genre`
 ALTER TABLE `genreanime`
   MODIFY `genreanime_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
+-- AUTO_INCREMENT for table `message`
+--
+ALTER TABLE `message`
+  MODIFY `message_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
@@ -395,6 +430,13 @@ ALTER TABLE `favourite`
 ALTER TABLE `genreanime`
   ADD CONSTRAINT `fk_anime_genreanime` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`),
   ADD CONSTRAINT `fk_genre_genreanime` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`genre_id`);
+
+--
+-- Constraints for table `message`
+--
+ALTER TABLE `message`
+  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`);
 
 --
 -- Constraints for table `orders`

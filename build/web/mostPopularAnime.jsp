@@ -87,7 +87,7 @@ if(message!=null){
                 <input type="hidden" name ="action" value="addFavourite" />
                     </form>
                 </tr>
-                
+                <a href="animeVideo.jsp?anime=<%=a.getAnimename()%>">
                 <%
                     
                     }

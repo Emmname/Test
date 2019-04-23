@@ -5,6 +5,7 @@
 --%>
 
 
+<%@page import="Dtos.User"%>
 <%@page import="Dtos.Anime"%>
 <%@page import="Daos.MessageDao"%>
 <%@page import="Dtos.Message"%>
@@ -17,15 +18,19 @@
 
         <jsp:include page="view/header.jsp" />
         <title>JSP Page</title>
+        
     </head>
     <body>
-
+ <%
+            User user = (User) session.getAttribute("loggedInUser");
+            
+        %>
         <table>
             <tr>
-                    <th>message_id</th>      
-                    <th>message_title</th>
-                    <th>message_context</th>
-                    <th>message_wholeft</th>
+                    <th>Message ID</th>      
+                    <th>Message Title</th>
+                    <th>Message Context</th>
+                    <th>Message Who Left</th>
                 </tr>
         </table>
         
@@ -34,7 +39,7 @@
           session = request.getSession();
           ArrayList<Message> messages = new ArrayList<>();
           MessageDao mDao = new MessageDao("anime");
-          int animeId = (int) session.getAttribute("Anime_ID");
+          int animeId=Integer.parseInt(request.getParameter("aID"));
           for(int i =0; i<mDao.getMsgByAnimeId(animeId).size(); i++){
                 Message m = mDao.getMsgByAnimeId(animeId).get(i);
                 messages.add(m);

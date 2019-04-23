@@ -4,6 +4,9 @@
     Author     : Emmine Team (Rui Hu, Jordan Donnelly, Haiyun Yu)
 --%>
 
+<%@page import="Daos.MessageDao"%>
+<%@page import="Dtos.Message"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="Dtos.Anime"%>
 <%@page import="Daos.AnimeDao"%>
 <%@page import="Dtos.User"%>
@@ -66,94 +69,71 @@
                     </form>
                 </section>
                 </div>
-                
+                 
             </div>
+                    
         </section>
+             
+                 <%
+            User user = (User) session.getAttribute("loggedInUser");
+            
+        %>
+        <table>
+            <tr>
+                    <th>Message ID</th>      
+                    <th>Message Title</th>
+                    <th>Message Context</th>
+                    <th>Message Who Left</th>
+                </tr>
+        </table>
+        
+        
+        <%
+          ArrayList<Message> messages = new ArrayList<>();
+          MessageDao mDao = new MessageDao("anime");
+         
+          for(int i =0; i<mDao.getMsgByAnimeId(animeID).size(); i++){
+                Message m = mDao.getMsgByAnimeId(animeID).get(i);
+                messages.add(m);
+              }
+            
+
+        %>
+        
+        <%
+            if(messages.size() > 0)
+            {
+        %>       
+             <table>
                 
+                <%
+                    for(Message m: messages)
+                    {
+                %>
                 
+                <tr>
+                    
+                    <td><%=m.getMessage_id()%></td>
+                    <td><%=m.getTitle()%></td>
+                    <td><%=m.getContext()%></td>
+                    <td><%=m.getWholeft()%></td>
+                    
+                </tr>
+                
+                <%
+                    }
+                }
+                else{
+                    System.out.println("can't get message");
 
-        <!-- Modal for anime item 1 -->
-        <div class="modal fade" id="Modal-1" tabindex="-1" role="dialog" aria-labelledby="Modal-label-1">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="Modal-label-1">Anime Name</h4>
-                    </div>
-                    <div class="modal-body">
-                        <img src="images/demo/f3bce122f452164.jpg" alt="img01" class="img-responsive" />
-                        <div class="modal-works"><span>Top 1</span><span>Anime</span></div>
-                        <p>Anime's information shows below...</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+                }
 
-        <!-- Modal for anime item 2 -->
-        <div class="modal fade" id="Modal-2" tabindex="-1" role="dialog" aria-labelledby="Modal-label-2">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="Modal-label-2">Anime Name</h4>
-                    </div>
-                    <div class="modal-body">
-                        <img src="images/demo/img-bandai01.jpg" alt="img02" class="img-responsive" />
-                        <div class="modal-works"><span>Top 2</span><span>Anime Title</span></div>
-                        <p>Anime's information shows below...</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+            %> 
+             </table>
 
-        <!-- Modal for anime item 3 -->
-        <div class="modal fade" id="Modal-3" tabindex="-1" role="dialog" aria-labelledby="Modal-label-3">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="Modal-label-3">Anime Name</h4>
-                    </div>
-                    <div class="modal-body">
-                        <img src="images/demo/38564e26f2905a3.jpg" alt="img03" class="img-responsive" />
-                        <div class="modal-works"><span>Top 3</span><span>Anime Title</span></div>
-                        <p>Anime's information shows below...</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal for anime item 4 -->
-        <div class="modal fade" id="Modal-4" tabindex="-1" role="dialog" aria-labelledby="Modal-label-4">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="Modal-label-4">Anime Name</h4>
-                    </div>
-                    <div class="modal-body">
-                        <img src="images/demo/4370572_p0.jpg" alt="img04" class="img-responsive" />
-                        <div class="modal-works"><span>Top 4</span><span>Anime Title</span></div>
-                        <p>Anime's information shows below...</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
     <!-------------------------- footer section ---------------------------->
-    <jsp:include page="view/footer.jsp" />
+    
 
     <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -166,5 +146,7 @@
     <script src="subpage_js/main.js" type="text/javascript"></script>
     <script src="subpage_js/skel.min.js" type="text/javascript"></script>
     <script src="subpage_js/util.js" type="text/javascript"></script>
+    <jsp:include page="view/footer.jsp" />
+    
 </body>
 </html>
