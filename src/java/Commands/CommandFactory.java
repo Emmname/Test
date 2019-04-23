@@ -66,6 +66,9 @@ private CommandFactory(){
                     
                 case "updateUserName":
                     c = new updateUserNameCommand();
+                
+                case "mailSender":
+                    c = new mailSenderCommand();
                     
                 default:
                     c = new NoActionSuppliedCommand();
