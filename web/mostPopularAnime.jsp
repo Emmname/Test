@@ -73,7 +73,7 @@
                 <tr class="item">
                     
                     <td><%=a.getAnime_id()%></td>
-                    <td><a href="animeInfo.jsp?anime=<%=a.getAnimename()%>&aID=<%=a.getAnime_id()%>"<%=a.getAnimename()%>></td>
+                    <td><a href="animeInfo.jsp?anime=<%=a.getAnimename()%>&aID=<%=a.getAnime_id()%>"><%=a.getAnimename()%></td>
                     <td><%=a.getAnimator()%></td>
                     <td><%=a.getReleasedate()%></td>
                     <td><%=rDao.getAverageRating(a.getAnime_id())%></td>

@@ -79,8 +79,9 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
                     Date releaseDate = rs.getDate("release_date");
                     String animator = rs.getString("animator");
                     String imageUrl = rs.getString("imageUrl");
+                    String videoUrl = rs.getString("videoUrl");
                     
-                    Anime a = new Anime(animeId, name, releaseDate, animator,imageUrl);
+                    Anime a = new Anime(animeId, name, releaseDate, animator,imageUrl,videoUrl);
                     animeArry.add(a);
                 }
         }  catch (SQLException e) {
@@ -119,7 +120,7 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
             Anime a =null;
                 while(rs.next()){
                     
-                    a = new Anime(rs.getInt("anime_id"), rs.getString("anime_name"), rs.getDate("release_date"), rs.getString("animator"),rs.getString("imageUrl"));
+                    a = new Anime(rs.getInt("anime_id"), rs.getString("anime_name"), rs.getDate("release_date"), rs.getString("animator"),rs.getString("imageUrl"),rs.getString("videoUrl"));
                     animesArrys.add(a);
                 }
         }  catch (SQLException e) {
@@ -164,7 +165,7 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
             
             while(rs.next()){
             
-                a = new Anime(rs.getInt("anime_id"),rs.getString("anime_name"),rs.getDate("release_date"),rs.getString("animator"),rs.getString("imageUrl"));
+                a = new Anime(rs.getInt("anime_id"),rs.getString("anime_name"),rs.getDate("release_date"),rs.getString("animator"),rs.getString("imageUrl"),rs.getString("videoUrl"));
             
             }
 
@@ -210,8 +211,9 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
                     Date releaseDate = rs.getDate("release_date");
                     String animator = rs.getString("animator");
                     String imageUrl = rs.getString("imageUrl");
+                    String videoUrl = rs.getString("videoUrl");
                     
-                    Anime a = new Anime(animeId, name, releaseDate, animator,imageUrl);
+                    Anime a = new Anime(animeId, name, releaseDate, animator,imageUrl,videoUrl);
                     animeArry.add(a);
                 }
         }  catch (SQLException e) {

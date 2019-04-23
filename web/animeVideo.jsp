@@ -25,7 +25,7 @@
                     <th>message_id</th>      
                     <th>message_title</th>
                     <th>message_context</th>
-                    <th>messzge_wholeft</th>
+                    <th>message_wholeft</th>
                 </tr>
         </table>
         

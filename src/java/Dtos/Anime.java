@@ -18,6 +18,7 @@ public class Anime {
     private Date releasedate;
     private String animator;
     private String imageUrl;
+    private String videoUrl;
 
     public Anime() {
         this.anime_id = -1;
@@ -25,22 +26,22 @@ public class Anime {
         this.releasedate = null;
         this.animator = null;
         this.imageUrl = null;
+        this.videoUrl = null;
         
     }
 
-    public Anime(int anime_id, String animename, Date releasedate, String animator,String imageUrl) {
+    public Anime(int anime_id, String animename, Date releasedate, String animator,String imageUrl,String videoUrl) {
         this.anime_id = anime_id;
         this.animename = animename;
         this.releasedate = releasedate;
         this.animator = animator;
         this.imageUrl = imageUrl;
+        this.videoUrl = videoUrl;
     }
 
     public int getAnime_id() {
         return anime_id;
     }
-
-
 
     public String getAnimename() {
         return animename;
@@ -69,8 +70,11 @@ public class Anime {
     public String getImageUrl() {
         return imageUrl;
     }
-
-
+    
+     public String getVideoUrl() {
+        return videoUrl;
+    }
+    
 
     @Override
     public int hashCode() {

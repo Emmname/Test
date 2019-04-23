@@ -4,6 +4,8 @@
     Author     : Emmine Team (Rui Hu, Jordan Donnelly, Haiyun Yu)
 --%>
 
+<%@page import="Dtos.Anime"%>
+<%@page import="Daos.AnimeDao"%>
 <%@page import="Dtos.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -39,13 +41,20 @@
         <section class="wrapper style1">
             <div class="inner">
                 <header class="align-center">
-                    <h2>THE PROMISED NEVERLAND</h2>
-                    <p>The Promised Neverland is a Japanese manga series written by 
-                        Kaiu Shirai and illustrated by Posuka Demizu.</p>
+                    <%
+                        session=request.getSession();
+                        int animeID=Integer.parseInt(request.getParameter("aID"));
+                        String animeName=request.getParameter("anime");
+                        AnimeDao aDao = new AnimeDao("anime");
+                        Anime anime= aDao.getAnimeById(animeID);
+                    
+                    %>
+                    <h2><%=anime.getAnimename()%></h2>
+                    <p>This anime is animated by <%=anime.getAnimator()%></p>
                 </header>
                 <div class="video">
                     <div class="video-wrapper">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/uMUjZs0HbwE" frameborder="0" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%=anime.getVideoUrl()%>" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <p class="caption">
                         Set in year 2045, Emma is an 11-year-old orphan living in Grace Field House, 
