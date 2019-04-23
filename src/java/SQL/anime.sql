@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2019 at 11:53 AM
+-- Generation Time: Apr 23, 2019 at 03:59 PM
 -- Server version: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
@@ -33,24 +33,25 @@ CREATE TABLE `anime` (
   `anime_name` varchar(255) NOT NULL,
   `release_date` date NOT NULL,
   `animator` varchar(255) NOT NULL,
-  `imageUrl` varchar(200) NOT NULL
+  `imageUrl` varchar(200) NOT NULL,
+  `videoUrl` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `anime`
 --
 
-INSERT INTO `anime` (`anime_id`, `anime_name`, `release_date`, `animator`, `imageUrl`) VALUES
-(1, 'One Punch Man', '2015-10-05', 'Tomohiro Suzuki\r\n', 'One Punch Man.jpg'),
-(2, 'Dragon Ball Super', '2015-07-05', 'Akira Toriyama', 'Dragon Ball Super.jpg'),
-(3, 'Fullmetal Alchemist: Brotherhood', '2009-04-05', 'Hiroshi ?nogi', 'Fullmetal Alchemist: Brotherhood.jpg'),
-(4, 'Attack on Titan', '2013-04-07', 'Yasuko Kobayashi', 'Attack on Titan.jpg'),
-(5, 'Naruto Shippuden', '2007-02-15', 'Masashi Kishimoto', 'Naruto Shippuden.jpg'),
-(6, 'Sword Art Online', '2012-07-08', 'Reki Kawahara', 'Sword Art Online.jpg'),
-(7, 'Bleach', '2004-10-05', 'Masashi Sogo \r\n\r\n\r\n', 'Bleach.jpg'),
-(8, 'Code Geass', '2006-10-06', 'Ichir? ?kouchi', 'Code Geass.jpeg'),
-(9, 'Hunter x Hunter', '1999-10-16', 'Yoshihiro Togashi', 'Hunter x Hunter.png'),
-(10, 'Tokyo Ghoul', '2014-07-04', 'Ch?ji Mikasano', 'Tokyo Ghoul.jpg');
+INSERT INTO `anime` (`anime_id`, `anime_name`, `release_date`, `animator`, `imageUrl`, `videoUrl`) VALUES
+(1, 'One Punch Man', '2015-10-05', 'Tomohiro Suzuki\r\n', 'One Punch Man.jpg', '2JAElThbKrI'),
+(2, 'Dragon Ball Super', '2015-07-05', 'Akira Toriyama', 'Dragon Ball Super.jpg', 'wuIbeQv3v7c'),
+(3, 'Fullmetal Alchemist: Brotherhood', '2009-04-05', 'Hiroshi ?nogi', 'Fullmetal Alchemist Brotherhood.jpg', 'dqDB6gQLbPM'),
+(4, 'Attack on Titan', '2013-04-07', 'Yasuko Kobayashi', 'Attack on Titan.jpg', 'a3mo2TZGXlM'),
+(5, 'Naruto Shippuden', '2007-02-15', 'Masashi Kishimoto', 'Naruto Shippuden.jpg', '1WLO0Owi5-A'),
+(6, 'Sword Art Online', '2012-07-08', 'Reki Kawahara', 'Sword Art Online.jpg', '6ohYYtxfDCg'),
+(7, 'Bleach', '2004-10-05', 'Masashi Sogo \r\n\r\n\r\n', 'Bleach.jpg', 'oZ67d9XSjFs&t'),
+(8, 'Code Geass', '2006-10-06', 'Ichir? ?kouchi', 'Code Geass.jpeg', 'v-AGjx0N24U'),
+(9, 'Hunter x Hunter', '1999-10-16', 'Yoshihiro Togashi', 'Hunter x Hunter.png', 'd6kBeJjTGnY'),
+(10, 'Tokyo Ghoul', '2014-07-04', 'Ch?ji Mikasano', 'Tokyo Ghoul.jpg', 'ETHpMMV8rJU');
 
 -- --------------------------------------------------------
 
@@ -97,7 +98,11 @@ CREATE TABLE `favourite` (
 --
 
 INSERT INTO `favourite` (`favourite_id`, `user_id`, `anime_id`) VALUES
-(1, 1, 5);
+(7, 9, 1),
+(8, 9, 4),
+(9, 9, 7),
+(10, 9, 8),
+(11, 9, 9);
 
 -- --------------------------------------------------------
 
@@ -174,15 +179,13 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `user_id`, `date_paid`, `date_expired`, `PaymentType`, `AmountPaid`) VALUES
-(1, 1, '2019-03-31', '2019-04-30', 'visa', 20),
-(2, 2, '2019-03-10', '2019-04-09', 'visa', 20),
-(3, 4, '2019-03-10', '2019-04-09', 'visa', 20);
+(1, 1, '2019-03-31', '2019-04-30', 'visa', 20);
 
 --
 -- Triggers `orders`
 --
 DELIMITER $$
-CREATE TRIGGER `Update date` AFTER UPDATE ON `orders` FOR EACH ROW Update orders SET date_expired = DATE_ADD(date_paid,INTERVAL 30 DAY) where date_expired IS null
+CREATE TRIGGER `addOrder` AFTER INSERT ON `orders` FOR EACH ROW Update orders SET date_expired = DATE_ADD(date_paid,INTERVAL 30 DAY) where date_expired IS null
 $$
 DELIMITER ;
 
@@ -205,20 +208,12 @@ CREATE TABLE `rating` (
 
 INSERT INTO `rating` (`rating_id`, `anime_id`, `user_id`, `ratingNumber`) VALUES
 (1, 4, 1, 5),
-(2, 7, 4, 3),
-(3, 7, 2, 5),
-(4, 8, 4, 1),
 (5, 5, 1, 1),
 (6, 1, 1, 1),
 (7, 3, 1, 3),
 (8, 4, 1, 4),
 (9, 5, 1, 5),
-(10, 6, 2, 5),
-(11, 6, 4, 3),
-(12, 7, 1, 4),
-(13, 8, 2, 3),
-(14, 9, 4, 2),
-(15, 10, 2, 2);
+(12, 7, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -245,7 +240,7 @@ CREATE TABLE `user` (
   `Username` varchar(24) NOT NULL,
   `Email` varchar(50) NOT NULL,
   `Password` varchar(1024) NOT NULL,
-  `Status` int(10) NOT NULL,
+  `Status` int(10) DEFAULT NULL,
   `salt` varchar(1024) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -254,9 +249,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `Username`, `Email`, `Password`, `Status`, `salt`) VALUES
-(1, '1234', '1234@gmail.com', '1234', 2, ''),
-(2, 'ItsMeBaby', 'DrinkMe@gmail.com', 'b060dc3e37c6952d0128f207882cae02', 1, '¬ŽäËZ*Þ{-×	Ï'),
-(4, 'ItsMeBaby69;)', 'ItsMe@hotmail.com', 'eb14bb84404dd20ffd5c0ee0c55cea12', 0, 'µÜ¹1W¶åê‡–ÏÑšËþL6/µ8-ù!£áü=ä&¥9ƒGk\'[„}§ÀÐëtîhø³ð@Ä84VÞx}1¤JìÂn0þ­/HÎ–%\Z!Ü¦‘qÁ›¬M‰dçÄ ­u^ðèw<\"©kš—{;[@ª,‘¸´ «v¿ñpøx!ùêùø¦ÑKä¾KÂòÄp`a|YC±4ã´“ŒA?þäÃÉx~ÛÄÄ²›æiý’€_—­Ñ[Xz«¶~,îtÒÛßìy5Þ e7±ß3|þåõ>•ðÇ+“;œ-»Ç÷ƒæ„ZnXZ©@Ô  m¿’ÿmëXKÂ¿Ì«ñÄÁ_çè´5ž+lrMÈdLüB|×Œèª@Ñ ”Îb&\\]“üîqõ¿¶š‹ÏK¿´}–íd30x:…‰\r›+¬jeðþsØ‘ßBéfñ™=ÕUJõ;å¥–PÙ(¶VuÁèÎ›1•Îf\"ÿ‘þf…êKétÐˆ/‰¥k§ØCI\\Æ³>Þ,¹šÚônfÃŽ–+âÚÿQ6H9·÷½ÜòÏ’ˆ3ùqŒ¬4;§Í4\"·¶ÝPyT~à¼Àé«•}×;™u°/µ©‹ë>äý\n9ñ&ÞJƒÒx!±Òåì¿8y‹Ôº(Q6');
+(1, '1234', '1234@gmail.com', '1234', 1, ''),
+(9, 'Jordan123', 'jordang111@gmail.com', '$2a$10$zKT1xgyOuc1zMOXv4C2CdemUtmYgzgug.u.YX0uM.KtTcxPNv8tJK', 0, '$2a$10$zKT1xgyOuc1zMOXv4C2Cde');
 
 --
 -- Indexes for dumped tables
@@ -347,7 +341,7 @@ ALTER TABLE `episode`
 -- AUTO_INCREMENT for table `favourite`
 --
 ALTER TABLE `favourite`
-  MODIFY `favourite_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `favourite_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `genre`
 --
@@ -362,7 +356,7 @@ ALTER TABLE `genreanime`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `rating`
 --
@@ -377,7 +371,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- Constraints for dumped tables
 --

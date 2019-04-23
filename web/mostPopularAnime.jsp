@@ -55,10 +55,11 @@
           Rating resultAnime = (Rating)session.getAttribute("animeRatings");
             if(resultAnime != null){}
               
-
+if(message!=null){
         %>
         
-        
+        <p><%=message%></p>
+                <%}%>
         <%
             if(animes.size() > 0)
             {
@@ -70,6 +71,7 @@
                     {
                         session.setAttribute("Anime_ID", a.getAnime_id());
                     
+                        
                 %>
                 
                 <tr class="item">
@@ -87,6 +89,7 @@
                 </tr>
                 
                 <%
+                    
                     }
                 }
             
