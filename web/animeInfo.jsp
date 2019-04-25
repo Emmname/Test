@@ -62,8 +62,10 @@
                     <p class="caption">
                         This anime is animated by <%=anime.getAnimator()%> and was released on <%=anime.getReleasedate()%></p> 
                     <section>
-                    To add this Anime to your Favorites click the heart
-                    <form action="Servlet" method="post" name="addFavourite">
+                        <div class="HeartText">
+                            <p>To add this Anime to your Favorites click the heart.</p>
+                    </div>
+                        <form action="Servlet" method="post" name="addFavourite">
                 <button name="Heart" type="text" class="heart"/>
                 <input type="hidden" name ="action" value="addFavourite" />
                     </form>

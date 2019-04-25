@@ -36,7 +36,6 @@
                     <th>Release Date</th>
                     <th onclick="w3.sortHTML('#myTable', '.item','td:nth-child(5)')"style="cursor:pointer"> Rating</th>
                     <th>Picture</th>
-                    <th> Add to your Favorites</th>
                 </tr>
               
                 
@@ -82,12 +81,9 @@ if(message!=null){
                     <td><%=a.getReleasedate()%></td>
                     <td><%=rDao.getAverageRating(a.getAnime_id())%></td>
                     <td><img src="images/<%=a.getImageUrl()%>" height="260" width="100"><td>
-                    <form action="Servlet" method="post" name="addFavourite">
-                <td><button name="Heart" type="text" class="heart" value="<%=a.getAnime_id()%>"/></td> 
-                <input type="hidden" name ="action" value="addFavourite" />
-                    </form>
+                   
                 </tr>
-                <a href="animeVideo.jsp?anime=<%=a.getAnimename()%>">
+                <!--<a href="animeVideo.jsp?anime=<%//=a.getAnimename()%>">-->
                 <%
                     
                     }

@@ -11,6 +11,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -104,6 +114,7 @@ public class UserDao extends Dao implements UserDaoInterface {
         PreparedStatement ps = null; 
         ResultSet generatedKeys = null;
         
+        
         int newId = -1;
         try {
             conn = this.getConnection();
@@ -129,8 +140,48 @@ public class UserDao extends Dao implements UserDaoInterface {
             {
                 newId = generatedKeys.getInt(1);
             }
-        } 
-        catch (SQLException e) 
+              String host="smtp.outlook.com"; 
+            
+            final String gmail = "D00195567@student.dkit.ie";
+            final String emailPassword = "MMmanchester88";
+            
+
+        Properties prop = new Properties();
+        
+        prop.put("mail.smtp.auth", "true");
+        prop.put("mail.smtp.starttls.enable", "true");
+        prop.put("mail.smtp.host", "smtp.outlook.com");
+        prop.put("mail.smtp.port", "587");
+        prop.put("mail.smtp.user",gmail );
+        
+        Session session = Session.getInstance(prop,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(gmail, emailPassword);
+                    }
+                });
+
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(gmail));
+            message.setRecipients(
+                    Message.RecipientType.TO,
+                    InternetAddress.parse(email)
+            );
+            message.setSubject("Testing Gmail SSL");
+            message.setText("Dear Mail Crawler,"
+                    + "\n\n Please do not spam my email!");
+
+            Transport.send(message);
+
+            System.out.println("Done");
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }   
+        }
+          catch (SQLException e) 
         {
             System.err.println("\tA problem occurred during the registerUser method:");
             System.err.println("\t"+e.getMessage());
@@ -151,12 +202,13 @@ public class UserDao extends Dao implements UserDaoInterface {
                 {
                     freeConnection(conn);
                 }
+            } catch (SQLException ex) {
+                Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
             } 
-            catch (SQLException e) 
-            {
-                System.err.println("A problem occurred when closing down the registerUser method:\n" + e.getMessage());
-            }
+          
+            
         }
+        
         return newId;
     }
     

@@ -31,6 +31,7 @@ body {
 }
 
 .heart{
+    float: right;
     position: relative;
     width: 100px;
     height: 90px;
@@ -52,8 +53,15 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
     background-color: #9acfea
 }
+.HeartText{
+    float:right;
+    margin:-19px;
+    
+    
+}
 .heart:before,
 .heart:after{
+    
     position: absolute;
     content: "";
     left: 50px;
