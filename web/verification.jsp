@@ -42,7 +42,7 @@
                                     </tr>
                                     <tr>
                                         <th> Need help to reset your password? </th>
-                                        <th> <a href="contactpage.jsp"> Contact Us </a> </th>
+                                        <th> <a href="contactUs.jsp"> Contact Us </a> </th>
                                     </tr>
                                 </table>
                             </form>

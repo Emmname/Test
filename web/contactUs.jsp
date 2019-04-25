@@ -62,7 +62,7 @@
                             <div class="row">
                                 <div class="col-lg-12 text-center">
                                     <div id="success"></div>
-                                    <button type="submit" class="btn">Send Message</button>
+                                    <button type="submit" class="btn" >Send Message</button>
                                 </div>
                             </div>
                         </form>
