@@ -154,28 +154,30 @@ public class MessageDao extends Dao implements MessageDaoInterface{
 
     }
      @Override
-    public int addMessage( int userId,int animeId,String title , String context, String wholeft ){
+    public int addMessage( int userId,int animeId,String title,String context,String wholeft ){
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet generatedKeys = null;
         int newId = -1;
         try{
             con = this.getConnection();
-            String query = "INSERT INTO message(user_id,anime_id,title,context,wholeft) VALUES(?,?,?,?)";
+            String query = "INSERT INTO message(user_id,anime_id,title,context,wholeft) VALUES(?,?,?,?,?)";
             ps = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             ps.setInt(1, userId);
             ps.setInt(2, animeId);
             ps.setString(3, title);
             ps.setString(4, context);
-            ps.setString(4, wholeft);         
+            ps.setString(5, wholeft);         
             ps.executeUpdate();
             generatedKeys = ps.getGeneratedKeys();
             if (generatedKeys.next()) {
-                newId = generatedKeys.getInt(10);
+                newId = generatedKeys.getInt(1);
             }
             }catch (SQLException ex) {
                 System.out.println("An error occurred in addMessage() " + ex.getMessage());
+                 System.err.println("\t"+ex.getMessage());
+                 newId = -1;
         }finally {
             try {
                 if (generatedKeys != null) {

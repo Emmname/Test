@@ -28,6 +28,7 @@ public class AddMessage implements Command{
                 int userId = (int) session.getAttribute("ID");
                 int animeId = (int) session.getAttribute("aID");
                 int newMId = mDao.addMessage(userId, animeId, title, context, wholeft);
+                
                   if(newMId!=-1){
                     forwardToJsp ="home.jsp";    
                 }
@@ -37,6 +38,12 @@ public class AddMessage implements Command{
                     forwardToJsp = "error.jsp"; 
                 }
 
+        }else{
+    
+            String errorMessage = "All Fields must be filled in";
+            HttpSession session = request.getSession();
+            session.setAttribute("errorMessage", errorMessage);
+            forwardToJsp = "error.jsp";
         }
      return forwardToJsp;
     }

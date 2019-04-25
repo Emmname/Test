@@ -117,7 +117,7 @@
                     <td><%=m.getTitle()%></td>
                     <td><%=m.getContext()%></td>
                     <td><%=m.getWholeft()%></td>
-                    
+                    <a href="addMessage.jsp?aID=<%=m.getAnime_id()%>">add</a>
                 </tr>
                 
                 <%
@@ -131,7 +131,7 @@
             %> 
              </table>
 
-
+            
     <!-------------------------- footer section ---------------------------->
     
 

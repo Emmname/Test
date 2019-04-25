@@ -17,26 +17,21 @@
     <body>
           <%
             User user = (User) session.getAttribute("loggedInUser");
-            
-                        session=request.getSession();
-                        int animeID=Integer.parseInt(request.getParameter("aID"));
-                        session.setAttribute("aID", animeID);
-                        String animeName=request.getParameter("anime");
-                        AnimeDao aDao = new AnimeDao("anime");
-                        Anime anime= aDao.getAnimeById(animeID);
+
                     
-                    
+     
         %>
-      <form action="Servlet" method="post">
+      <form action="Servlet" method="post" name="addMessage">
           
-                        Commenter：<input type = "hidden" vlaue="" name = "wholeft"/>
+                        
                         Comment Title：<input type = "text" name = "title"/>
                         Comment Context：<input type = "text" name = "context"/>
-
-                <button type = "submit" value = "comment">
-                <input type="hidden" name="action" value="addMessage"  />
-                </button> 
-                <input type = "reset" value = "reset"/>
+                        <input type = "hidden" name = "wholeft" value="<%=user.getUsername()%>"/>
+                        
+                <input type="hidden" name ="action" value="addMessage" />
+                <input type="submit" value="click" />       
+               
+      </form>
 
     </body>
 </html>
