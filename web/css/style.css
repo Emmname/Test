@@ -25,10 +25,15 @@ body {
     width: 100px;
     height: 90px;
 }
-        table {
+table {
   border-spacing: 0;
   width: 100%;
   border: 1px solid #ddd;
+}
+
+.table{
+    table-layout: fixed;
+    width: 100%;
 }
 
 th, td {
@@ -780,7 +785,6 @@ footer p a span {
 
 .btn {
     display: inline-block;
-    padding: 8px 20px;
     margin-bottom: 0;
     font-size: 14px;
     font-weight: 400;

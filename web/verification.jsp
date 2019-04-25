@@ -3,6 +3,7 @@
     Created on : 27-Jan-2019, 23:00:31
     Author     : Jordan
 --%>
+<%@page import="Daos.UserDao"%>
 <%@page import="Dtos.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,7 +26,12 @@
     </head>
 
     <body id="page-top" lang="en">
-        <jsp:include page="view/header.jsp" />       
+        <jsp:include page="view/header.jsp" />      
+
+        <%  session = request.getSession();
+            UserDao userlist = new UserDao("anime");        
+
+        %>
 
         <!-- container -->
         <section id="about" class="mz-module">
@@ -33,17 +39,18 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <div class="section-title"> 
-                            <form action="resetPassword" method="post">
+                            <form action="Servlet" method="post">
                                 <table>
-                                    <tr>
+                                    <tr><form action="Servlet" method="post">
                                         <th>Enter Your Email Address:</th>
-                                        <th> <input type="text" name="emailAddress"> </th>
-                                        <th> <input type="submit" name="cEmailAddress" value="Click"></th>                                   
-                                    </tr>
-                                    <tr>
-                                        <th> Need help to reset your password? </th>
-                                        <th> <a href="contactUs.jsp"> Contact Us </a> </th>
-                                    </tr>
+                                        <th> <input type="text"size="40" name="emailAddress"> </th>
+                                        <th> <button type="submit" class=" btn">Send</button></th>                                   
+                                        </tr>
+                                        <tr>
+                                            <th> Need help to reset your password? </th>
+                                            <th> <a href="contactUs.jsp"> Contact Us </a> </th>
+                                            <th></th>
+                                        </tr>
                                 </table>
                             </form>
                         </div>

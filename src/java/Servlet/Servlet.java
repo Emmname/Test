@@ -42,6 +42,6 @@ public class Servlet extends HttpServlet  {
     }
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Enime Project Description";
     }
 }
