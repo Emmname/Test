@@ -75,7 +75,8 @@
                     </div>
                 </div>	
             </div>
-        </section>		
+        </section>
+        <a href="Pay.jsp">Pay</a>
         <!-- /.container -->
 
         <jsp:include page="view/footer.jsp" />

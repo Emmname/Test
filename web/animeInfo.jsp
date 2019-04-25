@@ -74,10 +74,7 @@
                     
         </section>
              
-                 <%
-            User user = (User) session.getAttribute("loggedInUser");
-            
-        %>
+ 
         <table>
             <tr>
                     <th>Message ID</th>      
@@ -117,7 +114,7 @@
                     <td><%=m.getTitle()%></td>
                     <td><%=m.getContext()%></td>
                     <td><%=m.getWholeft()%></td>
-                    <a href="addMessage.jsp?aID=<%=m.getAnime_id()%>">add</a>
+                   
                 </tr>
                 
                 <%
@@ -130,8 +127,26 @@
 
             %> 
              </table>
-
-            
+                 <%
+            User user = (User) session.getAttribute("loggedInUser");
+             if (user != null) {
+        %>            
+ <form action="Servlet" method="post" name="addMessage">
+          
+                        
+                        Comment Title：<input type = "text" name = "title"/>
+                        Comment Context：<input type = "text" name = "context"/>
+                        <input type = "hidden" name = "wholeft" value="<%=user.getUsername()%>"/>
+                        
+                <input type="hidden" name ="action" value="addMessage" />
+                <input type="submit" value="click" />       
+               
+</form>
+      <% } else {
+             String sessionExpired = "You must be logged in to use this service";
+             session.setAttribute("sessionExpired", sessionExpired);
+             response.sendRedirect("login.jsp");
+                                }%>        
     <!-------------------------- footer section ---------------------------->
     
 

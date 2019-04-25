@@ -87,7 +87,7 @@
                 <tr>
 
                     <td><%=a.getAnime_id()%></td> 
-                    <td><a href="animeVideo.jsp?anime=<%=a.getAnimename()%>&aID=<%=a.getAnime_id()%>"><%=a.getAnimename()%></td>
+                    <td><a href="animeInfo.jsp?anime=<%=a.getAnimename()%>&aID=<%=a.getAnime_id()%>"><%=a.getAnimename()%></td>
                     <td><%=a.getAnimator()%></td>
                     <td><%=a.getReleasedate()%></td>
                     <td><img src="images/<%=a.getImageUrl() %>" alt="<%=a.getImageUrl() %>" height="260" width="200"></td>
