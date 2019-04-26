@@ -26,6 +26,7 @@
 
         <!-- Bootstrap ,CSS & Fonts -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/comment.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,700,900" rel="stylesheet">
         <link href="css/animeInfo.css" rel="stylesheet">
@@ -77,14 +78,7 @@
         </section>
              
  
-        <table>
-            <tr>
-                    <th>Message ID</th>      
-                    <th>Message Title</th>
-                    <th>Message Context</th>
-                    <th>Message Who Left</th>
-                </tr>
-        </table>
+
         
         
         <%
@@ -111,11 +105,33 @@
                 %>
                 
                 <tr>
-                    
-                    <td><%=m.getMessage_id()%></td>
-                    <td><%=m.getTitle()%></td>
-                    <td><%=m.getContext()%></td>
-                    <td><%=m.getWholeft()%></td>
+                    <div class="box">
+
+	<div class="comments-section">
+
+		<div class="row">
+
+			<div class="comment-post">
+
+				<div class="col-xs-2"><img src="http://i63.tinypic.com/2ypkhte.jpg"/></div>
+				<div class="col-xs-9">
+					<p><span class="comment-author"><%=m.getWholeft()%></span><span class="comment-time">30 minutes ago</span></p>
+                                        <p class="comment-content"><%=m.getTitle()%></p>
+                                       <p class="comment-content"><%=m.getContext()%></p>
+				</div>
+
+			</div>
+
+
+			
+
+
+		</div>
+	  
+	</div>
+  
+</div>
+              
                    
                 </tr>
                 
@@ -129,26 +145,61 @@
 
             %> 
              </table>
-                 <%
+   <%
             User user = (User) session.getAttribute("loggedInUser");
              if (user != null) {
-        %>            
+        %>  
  <form action="Servlet" method="post" name="addMessage">
-          
-                        
-                        Comment Title：<input type = "text" name = "title"/>
-                        Comment Context：<input type = "text" name = "context"/>
-                        <input type = "hidden" name = "wholeft" value="<%=user.getUsername()%>"/>
+                        <div class="comment-add">
+				<div class="col-xs-12">
+                                    
+                                    Comment Title：<input type = "text" name = "title"/>
+                                    Comment Context：<textarea type = "text" name = "context"></textarea>
+                                    <input type = "hidden" name = "wholeft" value="<%=user.getUsername()%>"/>
+				</div>
+			</div>
+                       
                         
                 <input type="hidden" name ="action" value="addMessage" />
-                <input type="submit" value="click" />       
+                <input class="btn btn-default pull-right" type="submit" value="click"></a>
+                      
                
 </form>
       <% } else {
              String sessionExpired = "You must be logged in to use this service";
              session.setAttribute("sessionExpired", sessionExpired);
              response.sendRedirect("login.jsp");
-                                }%>        
+                                }%>           
+        
+
+<p id="demo"></p>
+
+<script>
+var countDownDate = new Date("Apri 30, 2019 15:37:25").getTime();
+
+var x = setInterval(function() {
+
+  var now = new Date().getTime();
+
+  var distance = countDownDate - now;
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+  document.getElementById("demo").innerHTML = days + "days " + hours + "hours "
+  + minutes + "min " + seconds + "s ";
+
+
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+      
     <!-------------------------- footer section ---------------------------->
     
 

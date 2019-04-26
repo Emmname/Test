@@ -23,9 +23,9 @@
                     
                     <th>Genre ID</th>
                     <th>Genre Name</th>
-                    <th>Search Animator</th>
-                    <th>Search Release Date</th>
-                    <th>Search Image</th>
+                    <th>Genre Animator</th>
+                    <th>Genre Release Date</th>
+                    <th>Genre Image</th>
                 </tr>
         </table>
         <a href="home.jsp">Go home</a>

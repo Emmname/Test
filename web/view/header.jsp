@@ -45,7 +45,7 @@
                             <a href="mostPopularAnime.jsp">Top Anime</a>
                         </li>
                         <li>
-                            <a href="#">New Update</a>
+                            <a href="newUpdate.jsp">New Update</a>
                         </li>
                     </ul>
                 </li>
