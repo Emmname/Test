@@ -35,7 +35,7 @@
                         <h2>Contact Us</h2>
                     </div>
                     <div class="col-lg-12 text-center">
-                        <form id="contactForm" novalidate="" method="post" action="Servlet">
+                        <form id="contactForm" novalidate="" method="post" action="Servlet" name="mailSender">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">

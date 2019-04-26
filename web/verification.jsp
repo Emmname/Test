@@ -28,29 +28,24 @@
     <body id="page-top" lang="en">
         <jsp:include page="view/header.jsp" />      
 
-        <%  session = request.getSession();
-            UserDao userlist = new UserDao("anime");        
-
-        %>
-
         <!-- container -->
         <section id="about" class="mz-module">
             <div class="container light-bg">
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <div class="section-title"> 
-                            <form action="Servlet" method="post">
+                            <form action="Servlet" method="post" name="mailSender">
                                 <table>
-                                    <tr><form action="Servlet" method="post">
+                                    <tr>
                                         <th>Enter Your Email Address:</th>
-                                        <th> <input type="text"size="40" name="emailAddress"> </th>
+                                        <th> <input type="text"size="40" name=""> </th>
                                         <th> <button type="submit" class=" btn">Send</button></th>                                   
-                                        </tr>
-                                        <tr>
-                                            <th> Need help to reset your password? </th>
-                                            <th> <a href="contactUs.jsp"> Contact Us </a> </th>
-                                            <th></th>
-                                        </tr>
+                                    </tr>
+                                    <tr>
+                                        <th> Need help to reset your password? </th>
+                                        <th> <a href="contactUs.jsp"> Contact Us </a> </th>
+                                        <th></th>
+                                    </tr>
                                 </table>
                             </form>
                         </div>
