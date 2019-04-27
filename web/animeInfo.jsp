@@ -119,12 +119,9 @@
                                         <p class="comment-content"><%=m.getTitle()%></p>
                                        <p class="comment-content"><%=m.getContext()%></p>
 				</div>
-
 			</div>
 		</div>
-	  
 	</div>
-  
 </div>
         
                 </tr>
@@ -142,7 +139,31 @@
             <p id="demo"></p>
 
 <script>
-var countDownDate = new Date("Apri 30, 2019 15:37:25").getTime();
+    <%
+        if(anime.getAnime_id()==1){
+           %>
+   var countDownDate = new Date("Apri 30, 2019 15:37:25").getTime();       
+               
+               
+        <%}else if (anime.getAnime_id()==2){%>
+    var countDownDate = new Date("May 30, 2019 15:37:25").getTime();                
+        <%}else if (anime.getAnime_id()==3){%>
+    var countDownDate = new Date("May 18, 2019 15:37:25").getTime();               
+        <%}else if (anime.getAnime_id()==4){%>
+    var countDownDate = new Date("May 17, 2019 15:37:25").getTime();              
+        <%}else if (anime.getAnime_id()==5){%>
+    var countDownDate = new Date("May 16, 2019 15:37:25").getTime();                
+        <%}else if (anime.getAnime_id()==6){%>
+    var countDownDate = new Date("May 15, 2019 15:37:25").getTime();                
+        <%}else if (anime.getAnime_id()==7){%>
+    var countDownDate = new Date("May 18, 2019 15:37:25").getTime();               
+        <%}else if (anime.getAnime_id()==8){%>
+    var countDownDate = new Date("May 14, 2019 15:37:25").getTime();                
+        <%}else if (anime.getAnime_id()==9){%>
+    var countDownDate = new Date("May 13, 2019 15:37:25").getTime();                
+        <%}else if (anime.getAnime_id()==10){%>
+    var countDownDate = new Date("May 12, 2019 15:37:25").getTime();       
+ <%}%>
 
 var x = setInterval(function() {
 
