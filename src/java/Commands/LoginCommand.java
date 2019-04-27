@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
  * @author Jordan
  */
 public class LoginCommand implements Command{
+    @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         String forwardToJsp = null;
         
