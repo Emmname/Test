@@ -9,7 +9,6 @@ import Daos.MailDispatch;
 import Daos.UserDao;
 import Dtos.User;
 import javax.mail.MessagingException;
-//import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
