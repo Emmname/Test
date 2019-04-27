@@ -25,7 +25,7 @@
     <body>
         <%
             User user = (User) session.getAttribute("loggedInUser");
-            if(user != null){
+            
         %>
         <table id="myTable">
             <tr>
@@ -89,7 +89,7 @@ if(message!=null){
                     }
                 }
             
-            }
+            
             else{
                 String sessionExpired = "You must be logged in to use this service";
                 session.setAttribute("sessionExpired", sessionExpired);

@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2019 at 02:36 PM
--- Server version: 10.1.24-MariaDB
--- PHP Version: 7.1.6
+-- Generation Time: 2019-04-27 12:30:44
+-- 服务器版本： 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -25,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `anime`
+-- 表的结构 `anime`
 --
 
 CREATE TABLE `anime` (
@@ -38,7 +36,7 @@ CREATE TABLE `anime` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `anime`
+-- 转存表中的数据 `anime`
 --
 
 INSERT INTO `anime` (`anime_id`, `anime_name`, `release_date`, `animator`, `imageUrl`, `videoUrl`) VALUES
@@ -56,7 +54,7 @@ INSERT INTO `anime` (`anime_id`, `anime_name`, `release_date`, `animator`, `imag
 -- --------------------------------------------------------
 
 --
--- Table structure for table `episode`
+-- 表的结构 `episode`
 --
 
 CREATE TABLE `episode` (
@@ -68,7 +66,7 @@ CREATE TABLE `episode` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `episode`
+-- 转存表中的数据 `episode`
 --
 
 INSERT INTO `episode` (`video_id`, `anime_id`, `episode_id`, `episode_name`, `episode_link`) VALUES
@@ -84,7 +82,7 @@ INSERT INTO `episode` (`video_id`, `anime_id`, `episode_id`, `episode_name`, `ep
 -- --------------------------------------------------------
 
 --
--- Table structure for table `favourite`
+-- 表的结构 `favourite`
 --
 
 CREATE TABLE `favourite` (
@@ -94,7 +92,7 @@ CREATE TABLE `favourite` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `favourite`
+-- 转存表中的数据 `favourite`
 --
 
 INSERT INTO `favourite` (`favourite_id`, `user_id`, `anime_id`) VALUES
@@ -107,7 +105,7 @@ INSERT INTO `favourite` (`favourite_id`, `user_id`, `anime_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `genre`
+-- 表的结构 `genre`
 --
 
 CREATE TABLE `genre` (
@@ -116,7 +114,7 @@ CREATE TABLE `genre` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `genre`
+-- 转存表中的数据 `genre`
 --
 
 INSERT INTO `genre` (`genre_id`, `genre_name`) VALUES
@@ -134,7 +132,7 @@ INSERT INTO `genre` (`genre_id`, `genre_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `genreanime`
+-- 表的结构 `genreanime`
 --
 
 CREATE TABLE `genreanime` (
@@ -144,7 +142,7 @@ CREATE TABLE `genreanime` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `genreanime`
+-- 转存表中的数据 `genreanime`
 --
 
 INSERT INTO `genreanime` (`genreanime_id`, `anime_id`, `genre_id`) VALUES
@@ -162,7 +160,7 @@ INSERT INTO `genreanime` (`genreanime_id`, `anime_id`, `genre_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `message`
+-- 表的结构 `message`
 --
 
 CREATE TABLE `message` (
@@ -175,7 +173,7 @@ CREATE TABLE `message` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `message`
+-- 转存表中的数据 `message`
 --
 
 INSERT INTO `message` (`message_id`, `user_id`, `anime_id`, `title`, `context`, `wholeft`) VALUES
@@ -184,7 +182,7 @@ INSERT INTO `message` (`message_id`, `user_id`, `anime_id`, `title`, `context`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- 表的结构 `orders`
 --
 
 CREATE TABLE `orders` (
@@ -197,7 +195,7 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `orders`
+-- 转存表中的数据 `orders`
 --
 
 INSERT INTO `orders` (`order_id`, `user_id`, `date_paid`, `date_expired`, `PaymentType`, `AmountPaid`) VALUES
@@ -206,7 +204,7 @@ INSERT INTO `orders` (`order_id`, `user_id`, `date_paid`, `date_expired`, `Payme
 (3, 4, '2019-03-10', '2019-04-09', 'visa', 20);
 
 --
--- Triggers `orders`
+-- 触发器 `orders`
 --
 DELIMITER $$
 CREATE TRIGGER `addOrder` AFTER INSERT ON `orders` FOR EACH ROW Update orders SET date_expired = DATE_ADD(date_paid,INTERVAL 30 DAY) where date_expired IS null
@@ -216,7 +214,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rating`
+-- 表的结构 `rating`
 --
 
 CREATE TABLE `rating` (
@@ -227,7 +225,7 @@ CREATE TABLE `rating` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rating`
+-- 转存表中的数据 `rating`
 --
 
 INSERT INTO `rating` (`rating_id`, `anime_id`, `user_id`, `ratingNumber`) VALUES
@@ -250,7 +248,7 @@ INSERT INTO `rating` (`rating_id`, `anime_id`, `user_id`, `ratingNumber`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reviews`
+-- 表的结构 `reviews`
 --
 
 CREATE TABLE `reviews` (
@@ -264,7 +262,7 @@ CREATE TABLE `reviews` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- 表的结构 `user`
 --
 
 CREATE TABLE `user` (
@@ -277,17 +275,17 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- 转存表中的数据 `user`
 --
 
 INSERT INTO `user` (`user_id`, `Username`, `Email`, `Password`, `Status`, `salt`) VALUES
 (1, '1234', '1234@gmail.com', '1234', 1, ''),
 (2, 'ItsMeBaby', 'DrinkMe@gmail.com', 'b060dc3e37c6952d0128f207882cae02', NULL, '¬ŽäËZ*Þ{-×	Ï'),
-(4, 'ItsMeBaby69;)', 'ItsMe@hotmail.com', 'eb14bb84404dd20ffd5c0ee0c55cea12', NULL, 'µÜ¹1W¶åê‡–ÏÑšËþL6/µ8-ù!£áü=ä&¥9ƒGk\'[„}§ÀÐëtîhø³ð@Ä84VÞx}1¤JìÂn0þ­/HÎ–%\Z!Ü¦‘qÁ›¬M‰dçÄ ­u^ðèw<\"©kš—{;[@ª,‘¸´ «v¿ñpøx!ùêùø¦ÑKä¾KÂòÄp`a|YC±4ã´“ŒA?þäÃÉx~ÛÄÄ²›æiý’€_—­Ñ[Xz«¶~,îtÒÛßìy5Þ e7±ß3|þåõ>•ðÇ+“;œ-»Ç÷ƒæ„ZnXZ©@Ô  m¿’ÿmëXKÂ¿Ì«ñÄÁ_çè´5ž+lrMÈdLüB|×Œèª@Ñ ”Îb&\\]“üîqõ¿¶š‹ÏK¿´}–íd30x:…‰\r›+¬jeðþsØ‘ßBéfñ™=ÕUJõ;å¥–PÙ(¶VuÁèÎ›1•Îf\"ÿ‘þf…êKétÐˆ/‰¥k§ØCI\\Æ³>Þ,¹šÚônfÃŽ–+âÚÿQ6H9·÷½ÜòÏ’ˆ3ùqŒ¬4;§Í4\"·¶ÝPyT~à¼Àé«•}×;™u°/µ©‹ë>äý\n9ñ&ÞJƒÒx!±Òåì¿8y‹Ôº(Q6'),
-(5, '12345', '12345@qq.com', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'XHèæ€moV]©ºÀ¯@Äè|æóµ[Vè…ãoÄ½vs\0ÞC³u£²Zè®k¼=Ã¹Š8^>ØÅÇføPyIÃì©TQÀš¨,?··ã¾*ÕB½YÏnçd;Â^æžU_Ï¾^2\r©mûªß÷Øf;Íƒ¬£ÞÔšž{9¶ù¹}¼è‰…Jç=wßJt×2·D¥ò ¶û„nkH¾õ„÷ZnÈæ»!=T¶Ú\0ŠNY!¨m\"ô°îz±t=(D)`Ý+øí‡¢ÃÕì—Z¨5¡T~Û…÷<éÂÈºd­ó\\u5	¬™¯Çæ]Ý“eÈ€\\ÊºNú~Úö°DQØªA9nÚn^òaö_gEß.òÂ½™_CÚÕY¸NsÃ³ÓÇg€a½ä|#gèGîÅT#t;!\'qæ¶Ä“Á…B*hrPûºÔb%¤ØžôÀ^5SÛ·ÄžÛï¶¢ØwTß’Í^‚ñnf1>ÿj*‰ 8È¯{êëX_Á2ú»þ^ŠjV(BòHb·Ò_<59˜0bµsvïÒN‹ë…ƒ?€?^+=Ô¯öé­\Z¾0”‰`ãpâe&³Í?ð¯	 \0 ]jM> ¨by~¬f,ÀZ7\n»é¢9‘‚ Ý£Ü®³ŒÆþ]Ìi£ÚâM§ó‹öÐk‹H™'),
-(6, '123456', '123456@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'àdBé\"Á>ÇzwŽ¾d‹ÔžX>±&\"´((ºÓx÷“Ë©-Ÿƒ4àO›¼Ú˜°Ó-ú\'^o4úYgKQÆ!«ï{¾ÛÁêYü¥×FŸíÄ÷í^n)Ë1šÂ¥›RTV&w:_ØâØ‚ìRÀ#U˜ÌÚ»´Úì^ãÚ\nÎÙ«‡%åcÖÉÊ”¨$\\wìêÔœ’k-‘?”UÂ.ã~µ\Z`þ)£&Ý1“$SÜÎ²œb\\Av–GGtMXºŠAÛBšEYPtHééV-Pø&Ë—(¼â]üÏñÚf©6 îá}Om»÷â¹¨×|Ø§P¨¹ÏÐÁ.D¥\0]\Zk;2ó‡\'¢ª¯7²uUAúHë‹SÞÄué#i´°£Í·6Ë·u®\0»i‹š™X<è;òÆóNú ¬›à†÷«Y¼iÒõTëÖ ÔÝŽ¦$yy\'à&œ÷\nÆZ?ÖOBlŽ:àèì¸üÇ?PÓŽ„ˆÂñÛ\\¬wsÄ·«€²:o\rüjù5Oˆï¤ÞÎ´I&ÈÛ/D i3¾uVr™xmtl{n\nò0þ ýµ1:KÊ±œcÀù[Ö\0ûY)\rbüo»´ÛgåýÌý•ß³äøý9ñ™½*9õŽó»Õ+ËÐœØ‰Bñ¬-ZÅnC\'[J'),
-(7, 'Jordan', 'jordang@gmail.com', 'b5a682162aea3da64953e04ea820dad4', NULL, '-´:êBü8BKÓ°q9LÜáJ¾¬±\rœåùÌ4:Öd‡!‹¿Wù ÿü¼¿\'Ë@Q†I†À!jQÙ.A¾tÂaó²(ò\0†Ë+ °À„ˆôZ=š²ý*‡	fêË©lž¾ˆ*°ØQÙR\r41¯§ƒ\0È²Ä_½‰E	3qK=Û•ù(\Z§SíÁ£°SÌˆR\\,’™”wIHDvæ¹÷æC3—Ü;´;ª®+JJæ\0Tï•ôîš+Öª„›öÑ^_…¹`·m6Ó7\"‚y³œŠ½Ï ’éf\"ž[äzJ|É¿¬h£ý*aEB¬Ÿ/¹¬ÞIÈ†ë1ëS–µäÙŸ,ÉU‚|ï˜]A°;#ýióú\nkíËÇ8½%MÌt!­È}’ùD„ŸHÞ–Ô™c¸K:}ÌªA+µÇ<dÈL³ºø™µht“û–c¡-sì=$4ãjyT¸ÆJ~œy&Qy¶lÐºïµèw/E¾H Ô×£ÃDV1nzB	9.i_þn”ú\\îG§#ÛG\\ŸP°Î´¿œO[ŒŠozžmô P‚¢5\r9þl×³¦ß²zmÒóé4‡I;ž’A±œÝ¿ry’D/\nA‘;|È³aí‘cÈ3iv¿å”ÐŽñ­PÉeû¥fBÀÑk#ñ~/È9†œ¹|`Ü¸àoF¨	yä>B˜ÞÞ8p['),
-(8, 'Joe', 'Joe@gmail.com', 'b5a682162aea3da64953e04ea820dad4', NULL, 'õŠSùê¢³‘ÞïRè3.Þ|‰	j$]|‘žTHT¥¥1õš–À‘‘wÛr:ÍBãÒerñ¿÷Yrä(Uº*)PÂxbY84$é…ê“$=x%L»ØrŽOsqÿo4ŒÖ|L\0é\r\'	/‘‚ŽÇm8?©¬ÀAÄî´ÚPÌð«í´FYÉe_ÑFìôI«ÛD–.Ÿ!Z¦+oýöŽk½õø½°Û$Š¨òÂ	fÙâî¼êlAÒW‡\\qƒÎì©|¤·:¡¨`ÍÔlçþéA‡€³ä.1ÌLÙ¤\ZŠàã¹ÕTLx÷dS¿Ôç;>™æª®¾°5}þXáÏÇ‹c‡åÚk´_ê¯ëd’­T/Îàåí\"ŸÕàtx±ˆ8õ‘ÞÊ\\\0k7»}š1éîÔ\\ßÖ€!Žm:ÐÐUC+\rrP&@º}»1	P·\'	i\"†„§iaâŠE/OÂÈ¢°¿š…Nù°öA·KFÓ…ðùÔž´sÏ¯égIÿs™æ¨\ZúKˆc›ý×†®ãfKà\"Á&&·D¤Vç`¨rÍkG¯N,\ráŸj¬odž«02óXŒœíñ\'ô`°Q*Ñ¥ÜÌò·¸¿îrã}”VvÎ1Ø›¦gÐCUg½ƒ\nbE\r,z-±À¥&v@¨f’YØ3¾U”Û¸íËmS’'),
+(4, 'ItsMeBaby69;)', 'ItsMe@hotmail.com', 'eb14bb84404dd20ffd5c0ee0c55cea12', NULL, 'µÜ¹1W¶åê‡–ÏÑšËþL6/µ8-ù!£áü=ä&¥9ƒGk''[„}§ÀÐëtîhø³ð@Ä84VÞx}1¤JìÂn0þ­/HÎ–%\Z!Ü¦‘qÁ›¬M‰dçÄ ­u^ðèw<"©kš—{;[@ª,‘¸´ «v¿ñpøx!ùêùø¦ÑKä¾KÂòÄp`a|YC±4ã´“ŒA?þäÃÉx~ÛÄÄ²›æiý’€_—­Ñ[Xz«¶~,îtÒÛßìy5Þ e7±ß3|þåõ>•ðÇ+“;œ-»Ç÷ƒæ„ZnXZ©@Ô  m¿’ÿmëXKÂ¿Ì«ñÄÁ_çè´5ž+lrMÈdLüB|×Œèª@Ñ ”Îb&\\]“üîqõ¿¶š‹ÏK¿´}–íd30x:…‰\r›+¬jeðþsØ‘ßBéfñ™=ÕUJõ;å¥–PÙ(¶VuÁèÎ›1•Îf"ÿ‘þf…êKétÐˆ/‰¥k§ØCI\\Æ³>Þ,¹šÚônfÃŽ–+âÚÿQ6H9·÷½ÜòÏ’ˆ3ùqŒ¬4;§Í4"·¶ÝPyT~à¼Àé«•}×;™u°/µ©‹ë>äý\n9ñ&ÞJƒÒx!±Òåì¿8y‹Ôº(Q6'),
+(5, '12345', '12345@qq.com', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'XHèæ€moV]©ºÀ¯@Äè|æóµ[Vè…ãoÄ½vs\0ÞC³u£²Zè®k¼=Ã¹Š8^>ØÅÇføPyIÃì©TQÀš¨,?··ã¾*ÕB½YÏnçd;Â^æžU_Ï¾^2\r©mûªß÷Øf;Íƒ¬£ÞÔšž{9¶ù¹}¼è‰…Jç=wßJt×2·D¥ò ¶û„nkH¾õ„÷ZnÈæ»!=T¶Ú\0ŠNY!¨m"ô°îz±t=(D)`Ý+øí‡¢ÃÕì—Z¨5¡T~Û…÷<éÂÈºd­ó\\u5	¬™¯Çæ]Ý“eÈ€\\ÊºNú~Úö°DQØªA9nÚn^òaö_gEß.òÂ½™_CÚÕY¸NsÃ³ÓÇg€a½ä|#gèGîÅT#t;!''qæ¶Ä“Á…B*hrPûºÔb%¤ØžôÀ^5SÛ·ÄžÛï¶¢ØwTß’Í^‚ñnf1>ÿj*‰ 8È¯{êëX_Á2ú»þ^ŠjV(BòHb·Ò_<59˜0bµsvïÒN‹ë…ƒ?€?^+=Ô¯öé­\Z¾0”‰`ãpâe&³Í?ð¯	 \0 ]jM> ¨by~¬f,ÀZ7\n»é¢9‘‚ Ý£Ü®³ŒÆþ]Ìi£ÚâM§ó‹öÐk‹H™'),
+(6, '123456', '123456@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'àdBé"Á>ÇzwŽ¾d‹ÔžX>±&"´((ºÓx÷“Ë©-Ÿƒ4àO›¼Ú˜°Ó-ú''^o4úYgKQÆ!«ï{¾ÛÁêYü¥×FŸíÄ÷í^n)Ë1šÂ¥›RTV&w:_ØâØ‚ìRÀ#U˜ÌÚ»´Úì^ãÚ\nÎÙ«‡%åcÖÉÊ”¨$\\wìêÔœ’k-‘?”UÂ.ã~µ\Z`þ)£&Ý1“$SÜÎ²œb\\Av–GGtMXºŠAÛBšEYPtHééV-Pø&Ë—(¼â]üÏñÚf©6 îá}Om»÷â¹¨×|Ø§P¨¹ÏÐÁ.D¥\0]\Zk;2ó‡''¢ª¯7²uUAúHë‹SÞÄué#i´°£Í·6Ë·u®\0»i‹š™X<è;òÆóNú ¬›à†÷«Y¼iÒõTëÖ ÔÝŽ¦$yy''à&œ÷\nÆZ?ÖOBlŽ:àèì¸üÇ?PÓŽ„ˆÂñÛ\\¬wsÄ·«€²:o\rüjù5Oˆï¤ÞÎ´I&ÈÛ/D i3¾uVr™xmtl{n\nò0þ ýµ1:KÊ±œcÀù[Ö\0ûY)\rbüo»´ÛgåýÌý•ß³äøý9ñ™½*9õŽó»Õ+ËÐœØ‰Bñ¬-ZÅnC''[J'),
+(7, 'Jordan', 'jordang@gmail.com', 'b5a682162aea3da64953e04ea820dad4', NULL, '-´:êBü8BKÓ°q9LÜáJ¾¬±\rœåùÌ4:Öd‡!‹¿Wù ÿü¼¿''Ë@Q†I†À!jQÙ.A¾tÂaó²(ò\0†Ë+ °À„ˆôZ=š²ý*‡	fêË©lž¾ˆ*°ØQÙR\r41¯§ƒ\0È²Ä_½‰E	3qK=Û•ù(\Z§SíÁ£°SÌˆR\\,’™”wIHDvæ¹÷æC3—Ü;´;ª®+JJæ\0Tï•ôîš+Öª„›öÑ^_…¹`·m6Ó7"‚y³œŠ½Ï ’éf"ž[äzJ|É¿¬h£ý*aEB¬Ÿ/¹¬ÞIÈ†ë1ëS–µäÙŸ,ÉU‚|ï˜]A°;#ýióú\nkíËÇ8½%MÌt!­È}’ùD„ŸHÞ–Ô™c¸K:}ÌªA+µÇ<dÈL³ºø™µht“û–c¡-sì=$4ãjyT¸ÆJ~œy&Qy¶lÐºïµèw/E¾H Ô×£ÃDV1nzB	9.i_þn”ú\\îG§#ÛG\\ŸP°Î´¿œO[ŒŠozžmô P‚¢5\r9þl×³¦ß²zmÒóé4‡I;ž’A±œÝ¿ry’D/\nA‘;|È³aí‘cÈ3iv¿å”ÐŽñ­PÉeû¥fBÀÑk#ñ~/È9†œ¹|`Ü¸àoF¨	yä>B˜ÞÞ8p['),
+(8, 'Joe', 'Joe@gmail.com', 'b5a682162aea3da64953e04ea820dad4', NULL, 'õŠSùê¢³‘ÞïRè3.Þ|‰	j$]|‘žTHT¥¥1õš–À‘‘wÛr:ÍBãÒerñ¿÷Yrä(Uº*)PÂxbY84$é…ê“$=x%L»ØrŽOsqÿo4ŒÖ|L\0é\r''	/‘‚ŽÇm8?©¬ÀAÄî´ÚPÌð«í´FYÉe_ÑFìôI«ÛD–.Ÿ!Z¦+oýöŽk½õø½°Û$Š¨òÂ	fÙâî¼êlAÒW‡\\qƒÎì©|¤·:¡¨`ÍÔlçþéA‡€³ä.1ÌLÙ¤\ZŠàã¹ÕTLx÷dS¿Ôç;>™æª®¾°5}þXáÏÇ‹c‡åÚk´_ê¯ëd’­T/Îàåí"ŸÕàtx±ˆ8õ‘ÞÊ\\\0k7»}š1éîÔ\\ßÖ€!Žm:ÐÐUC+\rrP&@º}»1	P·''	i"†„§iaâŠE/OÂÈ¢°¿š…Nù°öA·KFÓ…ðùÔž´sÏ¯égIÿs™æ¨\ZúKˆc›ý×†®ãfKà"Á&&·D¤Vç`¨rÍkG¯N,\ráŸj¬odž«02óXŒœíñ''ô`°Q*Ñ¥ÜÌò·¸¿îrã}”VvÎ1Ø›¦gÐCUg½ƒ\nbE\r,z-±À¥&v@¨f’YØ3¾U”Û¸íËmS’'),
 (9, 'Jordan123', 'jordang111@gmail.com', '$2a$10$zKT1xgyOuc1zMOXv4C2CdemUtmYgzgug.u.YX0uM.KtTcxPNv8tJK', 0, '$2a$10$zKT1xgyOuc1zMOXv4C2Cde'),
 (10, '12345678', '12345678@gmail.com', '$2a$10$63UUya1E7FQjeTJx89.XsOQ060iwmIix7PI5HN.DJw0WzzNXGmmjS', 0, '$2a$10$63UUya1E7FQjeTJx89.XsO');
 
@@ -371,98 +369,98 @@ ALTER TABLE `user`
   ADD UNIQUE KEY `Email` (`Email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- 在导出的表使用AUTO_INCREMENT
 --
 
 --
--- AUTO_INCREMENT for table `anime`
+-- 使用表AUTO_INCREMENT `anime`
 --
 ALTER TABLE `anime`
   MODIFY `anime_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT for table `episode`
+-- 使用表AUTO_INCREMENT `episode`
 --
 ALTER TABLE `episode`
   MODIFY `video_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
--- AUTO_INCREMENT for table `favourite`
+-- 使用表AUTO_INCREMENT `favourite`
 --
 ALTER TABLE `favourite`
   MODIFY `favourite_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT for table `genre`
+-- 使用表AUTO_INCREMENT `genre`
 --
 ALTER TABLE `genre`
   MODIFY `genre_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT for table `genreanime`
+-- 使用表AUTO_INCREMENT `genreanime`
 --
 ALTER TABLE `genreanime`
   MODIFY `genreanime_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT for table `message`
+-- 使用表AUTO_INCREMENT `message`
 --
 ALTER TABLE `message`
   MODIFY `message_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `orders`
+-- 使用表AUTO_INCREMENT `orders`
 --
 ALTER TABLE `orders`
   MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `rating`
+-- 使用表AUTO_INCREMENT `rating`
 --
 ALTER TABLE `rating`
   MODIFY `rating_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
--- AUTO_INCREMENT for table `reviews`
+-- 使用表AUTO_INCREMENT `reviews`
 --
 ALTER TABLE `reviews`
   MODIFY `review_id` int(5) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `user`
+-- 使用表AUTO_INCREMENT `user`
 --
 ALTER TABLE `user`
   MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- Constraints for dumped tables
+-- 限制导出的表
 --
 
 --
--- Constraints for table `episode`
+-- 限制表 `episode`
 --
 ALTER TABLE `episode`
   ADD CONSTRAINT `FK_anime_id` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`);
 
 --
--- Constraints for table `favourite`
+-- 限制表 `favourite`
 --
 ALTER TABLE `favourite`
   ADD CONSTRAINT `fk_anime_anime` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`),
   ADD CONSTRAINT `fk_user_favourite` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
--- Constraints for table `genreanime`
+-- 限制表 `genreanime`
 --
 ALTER TABLE `genreanime`
   ADD CONSTRAINT `fk_anime_genreanime` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`),
   ADD CONSTRAINT `fk_genre_genreanime` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`genre_id`);
 
 --
--- Constraints for table `message`
+-- 限制表 `message`
 --
 ALTER TABLE `message`
   ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`);
 
 --
--- Constraints for table `orders`
+-- 限制表 `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `FK_user_order` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
--- Constraints for table `rating`
+-- 限制表 `rating`
 --
 ALTER TABLE `rating`
   ADD CONSTRAINT `fk_anime_rating` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`),
@@ -470,12 +468,11 @@ ALTER TABLE `rating`
   ADD CONSTRAINT `fk_user_rating` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
--- Constraints for table `reviews`
+-- 限制表 `reviews`
 --
 ALTER TABLE `reviews`
   ADD CONSTRAINT `FK_user_reviews` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `fk_anime_reviews` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

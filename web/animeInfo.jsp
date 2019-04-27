@@ -121,18 +121,12 @@
 				</div>
 
 			</div>
-
-
-			
-
-
 		</div>
 	  
 	</div>
   
 </div>
-              
-                   
+        
                 </tr>
                 
                 <%
@@ -145,34 +139,7 @@
 
             %> 
              </table>
-   <%
-            User user = (User) session.getAttribute("loggedInUser");
-             if (user != null) {
-        %>  
- <form action="Servlet" method="post" name="addMessage">
-                        <div class="comment-add">
-				<div class="col-xs-12">
-                                    
-                                    Comment Title：<input type = "text" name = "title"/>
-                                    Comment Context：<textarea type = "text" name = "context"></textarea>
-                                    <input type = "hidden" name = "wholeft" value="<%=user.getUsername()%>"/>
-				</div>
-			</div>
-                       
-                        
-                <input type="hidden" name ="action" value="addMessage" />
-                <input class="btn btn-default pull-right" type="submit" value="click"></a>
-                      
-               
-</form>
-      <% } else {
-             String sessionExpired = "You must be logged in to use this service";
-             session.setAttribute("sessionExpired", sessionExpired);
-             response.sendRedirect("login.jsp");
-                                }%>           
-        
-
-<p id="demo"></p>
+            <p id="demo"></p>
 
 <script>
 var countDownDate = new Date("Apri 30, 2019 15:37:25").getTime();
@@ -199,6 +166,30 @@ var x = setInterval(function() {
   }
 }, 1000);
 </script>
+   <%
+            User user = (User) session.getAttribute("loggedInUser");
+             if (user != null) {
+        %>  
+ <form action="Servlet" method="post" name="addMessage">
+                        <div class="comment-add">
+				<div class="col-xs-12">
+                                    
+                                    Comment Title：<input type = "text" name = "title"/>
+                                    Comment Context：<textarea type = "text" name = "context"></textarea>
+                                    <input type = "hidden" name = "wholeft" value="<%=user.getUsername()%>"/>
+				</div>
+			</div>
+                       
+                        
+                <input type="hidden" name ="action" value="addMessage" />
+                <input class="btn btn-default pull-right" type="submit" value="click"></a>
+                      
+               
+</form>
+      <%} %>           
+        
+
+
       
     <!-------------------------- footer section ---------------------------->
     

@@ -68,7 +68,7 @@
                         <li>
                             <a href="favourites.jsp">My Favorites</a>
                         </li>
-                        <li><a href="login.jsp">Logout</a></li>
+                        <li><a href="Servlet?action=logout">Logout</a></li> 
                     </ul>                     
                     <%
                     } else {
