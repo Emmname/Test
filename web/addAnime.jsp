@@ -8,19 +8,35 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <link href="CSS/home.css" rel="stylesheet" type="text/css"/>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <a href="view/header.jsp"></a>
-        <jsp:include page="view/header.jsp" />
+    <head>        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Add New Anime</title>
+        <!-- page content -->
+        <meta name="Description" content="Anime Steaming Online">
+        <meta name="Author" content="Emmine Anime">
+        <title>Emmine Anime - Popular Animes Streaming Online</title>
+
+        <!-- Bootstrap ,CSS & Fonts -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,700,900" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
     </head>
-    <body>
-        <script src="https://www.w3schools.com/lib/w3.js"></script>
-        <%
+
+    <body id="page-top" lang="en">
+        <jsp:include page="view/header.jsp" />       
+
+        <!-- container -->
+        <section id="about" class="mz-module">
+            <div class="container light-bg">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+ <%
             User user = (User) session.getAttribute("loggedInUser");
-            if(user != null){
+            int userid = user.getStatus();
+            if(user != null && userid == 2){
         %>
             <h1> <%=user.getUsername()%>'s </h1>
             
@@ -47,5 +63,20 @@
               <%
             }
         %>
+                    </div>
+                </div>	
+            </div>
+        </section>
+        <!-- /.container -->
+
+        <jsp:include page="view/footer.jsp" />
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/SmoothScroll.js"></script>
+        <script src="js/theme-scripts.js"></script>
+        <script src="js/navbar.js" type="text/javascript"></script>
+        <script src="js/jquery.min.js"></script>
     </body>
 </html>
