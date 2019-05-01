@@ -4,13 +4,18 @@
     Author     : Emmine Team (Rui Hu, Jordan Donnelly, Haiyun Yu)
 --%>
 <%@page import="Dtos.User"%>
+
 <!-- header -->
+
 <form action="Servlet" method="post">
+
     <header class="header-default">
         <%
             User user = (User) session.getAttribute("loggedInUser");
         %>
-
+        <%--<%@include file="internationalisationHeader.jsp" %>--%>
+    
+     
         <!-- Navigation -->
         <nav>
             <ul>
@@ -28,30 +33,32 @@
                 
                 <!-- menu bar -->
                 <li>
-                    <a href="#Genre">Anime</a>
+                    
+                    <a href="#Genre"><%--<%=dataBundle.getString("menu_first")%>--%>Anime</a>
                     <ul class="">
-                        <li><a href="searchAnimeByGenre.jsp?genre_name=Action#">Action</a></li>
-                        <li><a href="searchAnimeByGenre.jsp?genre_name=Adventure">Adventure</a></li>
-                        <li><a href="searchAnimeByGenre.jsp?genre_name=Comedy">Drama</a></li>
-                        <li><a href="searchAnimeByGenre.jsp?genre_name=Horror">Horror</a></li>
-                        <li><a href="searchAnimeByGenre.jsp?genre_name=Fantasy">Fantasy</a></li>
+                        
+                        <li><a href="searchAnimeByGenre.jsp?genre_name=Action#"><%--<%=dataBundle.getString("genre_action")%>--%>Action</a></li>
+                        <li><a href="searchAnimeByGenre.jsp?genre_name=Adventure"><%--<%=dataBundle.getString("genre_adventure")%>--%>Adventure</a></li>
+                        <li><a href="searchAnimeByGenre.jsp?genre_name=Comedy"><%--<%=dataBundle.getString("genre_drama")%>--%>Drama</a></li>
+                        <li><a href="searchAnimeByGenre.jsp?genre_name=Horror"><%--<%=dataBundle.getString("genre_horror")%>--%>Horror</a></li>
+                        <li><a href="searchAnimeByGenre.jsp?genre_name=Fantasy"><%--<%=dataBundle.getString("genre_fantasy")%>--%>Fantasy</a></li>
                     </ul>
                 </li>
 
                 <li >
-                    <a href="">Charts</a>
+                    <a href=""><%--<%=dataBundle.getString("menu_second")%>--%>Charts</a>
                     <ul>
                         <li>
-                            <a href="mostPopularAnime.jsp">Top Anime</a>
+                            <a href="mostPopularAnime.jsp"><%--<%=dataBundle.getString("genre_top")%>--%>Top Anime</a>
                         </li>
                         <li>
-                            <a href="newUpdate.jsp">New Update</a>
+                            <a href="newUpdate.jsp"><%--<%=dataBundle.getString("genre_new")%>--%>New Update</a>
                         </li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="contactpage.jsp">About Us</a>
+                    <a href="contactpage.jsp"><%--<%=dataBundle.getString("menu_third")%>--%>About Us</a>
                 </li>
 
                 <li>
@@ -63,12 +70,12 @@
 
                     <ul>
                         <li>
-                            <a href="userProfile.jsp">My Profile</a>
+                            <a href="userProfile.jsp"><%--<%=dataBundle.getString("menu_profile")%>--%>My Profile</a>
                         </li>
                         <li>
-                            <a href="favourites.jsp">My Favorites</a>
+                            <a href="favourites.jsp"><%--<%=dataBundle.getString("menu_favorite")%>--%>My Favorites</a>
                         </li>
-                        <li><a href="Servlet?action=logout">Logout</a></li> 
+                        <li><a href="Servlet?action=logout"><%--<%=dataBundle.getString("menu_lougout")%>--%>Logout</a></li> 
                     </ul>                     
                     <%
                     } else {
@@ -77,10 +84,10 @@
                         response.sendRedirect("login.jsp");
                     %>
                 <li>
-                    <a href="account.jsp">Account</a>
+                    <a href="account.jsp"><%--<%=dataBundle.getString("menu_account")%>--%>Account</a>
                     <ul>
-                        <li><a href="login.jsp">Login</a></li>
-                        <li><a href="register.jsp">Register</a></li>
+                        <li><a href="login.jsp"><%--<%=dataBundle.getString("menu_login")%>--%>Login</a></li>
+                        <li><a href="register.jsp"><%--<%=dataBundle.getString("menu_register")%>--%>Register</a></li>
                     </ul>
                 </li>
                 <%

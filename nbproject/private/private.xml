@@ -6,9 +6,15 @@
             <file>file:/C:/xampp/htdocs/AnimeProject/src/java/Daos/MailDispatch.java</file>
             <file>file:/C:/xampp/htdocs/AnimeProject/web/verification.jsp</file>
             <file>file:/C:/xampp/htdocs/AnimeProject/web/index.jsp</file>
+            <file>file:/C:/xampp/htdocs/AnimeProject/src/java/Daos/JavaMailDao.java</file>
+            <file>file:/C:/xampp/htdocs/AnimeProject/src/java/Properties/MessageBundle.properties</file>
+            <file>file:/C:/xampp/htdocs/AnimeProject/web/internationalisationHeader.jsp</file>
             <file>file:/C:/xampp/htdocs/AnimeProject/web/contactUs.jsp</file>
+            <file>file:/C:/xampp/htdocs/AnimeProject/src/java/Properties/MessageBundle_zz.properties</file>
             <file>file:/C:/xampp/htdocs/AnimeProject/src/java/Commands/mailSenderCommand.java</file>
+            <file>file:/C:/xampp/htdocs/AnimeProject/build.xml</file>
             <file>file:/C:/xampp/htdocs/AnimeProject/src/java/Commands/CommandFactory.java</file>
+            <file>file:/C:/xampp/htdocs/AnimeProject/web/updateUserName.jsp</file>
         </group>
     </open-files>
 </project-private>

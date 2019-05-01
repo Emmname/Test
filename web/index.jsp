@@ -17,6 +17,7 @@
         <!-- page content -->
         <meta name="Description" content="Anime Steaming Online">
         <meta name="Author" content="Emmine Anime">
+        
         <title>Emmine Anime - Popular Animes Streaming Online</title>
 
         <!-- Bootstrap ,CSS & Fonts -->
@@ -29,7 +30,7 @@
 
         <!-------------------------- header  menu ---------------------------->
         <jsp:include page="view/header.jsp" />
-
+        <%@include file="internationalisationHeader.jsp" %>
 
         <!-------------------------- body content ---------------------------->             
         <!--iframe container-->  
@@ -85,7 +86,7 @@
             <div class="container light-bg">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <h2>Discover Anime</h2>
+                    <h2><%=dataBundle.getString("index_first")%></h2>
                         <p>Anime and manga have had a strong, pervasive and lasting impact 
                             on the Japanese culture in particular, and the global culture 
                             in general. The characters are a representation of the 

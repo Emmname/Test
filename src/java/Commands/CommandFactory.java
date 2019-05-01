@@ -61,6 +61,9 @@ private CommandFactory(){
                 case "getMessage":
                     c = new GetMessageByAnimeId();
                     break;
+                case "changeLanguage":
+                    c = new ChangeLanguageCommand();
+                    break;
                 case "resetPassword":
                     c = new resetPasswordCommand();
                     

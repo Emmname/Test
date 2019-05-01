@@ -142,8 +142,11 @@
     <%
         if(anime.getAnime_id()==1){
            %>
-   var countDownDate = new Date("Apri 30, 2019 15:37:25").getTime();       
+               var check=true;
                
+               
+   var countDownDate = new Date("May 2, 2019 15:37:25").getTime();       
+                var startDate  = countDownDate ;
                
         <%}else if (anime.getAnime_id()==2){%>
     var countDownDate = new Date("May 30, 2019 15:37:25").getTime();                
@@ -182,10 +185,12 @@ var x = setInterval(function() {
 
 
   if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
+      
+      countDownDate = date.toString(Date.parse(startDate)+604800000);
+      return countDownDate;
   }
 }, 1000);
+
 </script>
    <%
             User user = (User) session.getAttribute("loggedInUser");
