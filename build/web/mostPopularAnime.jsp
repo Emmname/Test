@@ -14,12 +14,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <%@include file="internationalisationHeader.jsp" %>
          <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,700,900" rel="stylesheet">
         <link href="css/favourite.css" rel="stylesheet">
          <jsp:include page="view/header.jsp" />  
-        <title>Most popular Animes</title>
+        <title><%=dataBundle.getString("popular_title")%></title>
     </head>
      <script src="https://www.w3schools.com/lib/w3.js"></script>
     <body>
@@ -30,12 +31,12 @@
         <table id="myTable">
             <tr>
                     
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Animator</th>
-                    <th>Release Date</th>
-                    <th onclick="w3.sortHTML('#myTable', '.item','td:nth-child(5)')"style="cursor:pointer"> Rating</th>
-                    <th>Picture</th>
+                    <th><%=dataBundle.getString("popular_id")%></th>
+                    <th><%=dataBundle.getString("popular_name")%></th>
+                    <th><%=dataBundle.getString("popular_animator")%></th>
+                    <th><%=dataBundle.getString("popular_releasedate")%></th>
+                    <th onclick="w3.sortHTML('#myTable', '.item','td:nth-child(5)')"style="cursor:pointer"><%=dataBundle.getString("popular_rating")%> </th>
+                    <th><%=dataBundle.getString("popular_picture")%></th>
                 </tr>
               
                 

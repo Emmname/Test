@@ -13,18 +13,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <html>
     <head>
+        <%@include file="internationalisationHeader.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>The latest upload</title>
+        <title><%=dataBundle.getString("update_title")%></title>
     </head>
     <body>
         <table>
             <tr>
                     
-                    <th>Anime ID</th>
-                    <th>Anime Name</th>
-                    <th>Anime Animator</th>
-                    <th>Anime Release Date</th>
-                    <th>Anime Image</th>
+                    <th><%=dataBundle.getString("update_id")%></th>
+                    <th><%=dataBundle.getString("update_name")%></th>
+                    <th><%=dataBundle.getString("update_animator")%></th>
+                    <th><%=dataBundle.getString("update_releasedate")%></th>
+                    <th><%=dataBundle.getString("update_picture")%></th>
                 </tr>
         </table>
          <%

@@ -13,22 +13,23 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <%@include file="internationalisationHeader.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Search By Genre</title>
+        <title><%=dataBundle.getString("genre_title")%></title>
     </head>
     <body>
         
         <table>
             <tr>
                     
-                    <th>Genre ID</th>
-                    <th>Genre Name</th>
-                    <th>Genre Animator</th>
-                    <th>Genre Release Date</th>
-                    <th>Genre Image</th>
+                    <th><%=dataBundle.getString("genre_id")%></th>
+                    <th><%=dataBundle.getString("genre_name")%></th>
+                    <th><%=dataBundle.getString("genre_animator")%></th>
+                    <th><%=dataBundle.getString("genre_releasedate")%></th>
+                    <th><%=dataBundle.getString("genre_picture")%></th>
                 </tr>
         </table>
-        <a href="home.jsp">Go home</a>
+        <a href="home.jsp"><%=dataBundle.getString("genre_back")%></a>
        <%
 //           int genreId;
 //           String genreName = request.getParameter("genre_name");

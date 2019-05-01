@@ -11,21 +11,22 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <%@include file="internationalisationHeader.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title><%=dataBundle.getString("search_title")%></title>
     </head>
     <body>
         <table>
             <tr>
                     
-                    <th>search_id</th>
-                    <th>search_name</th>
-                    <th>search_animator</th>
-                    <th>search_releasedate</th>
-                    <th>search_image</th>
+                    <th><%=dataBundle.getString("search_id")%></th>
+                    <th><%=dataBundle.getString("search_name")%></th>
+                    <th><%=dataBundle.getString("search_animator")%></th>
+                    <th><%=dataBundle.getString("search_releasedate")%></th>
+                    <th><%=dataBundle.getString("search_picture")%></th>
                 </tr>
         </table>
-        <a href="home.jsp">Go home</a>
+        <a href="home.jsp"><%=dataBundle.getString("search_back")%></a>
         <%
            Object resultAnime = session.getAttribute("Animes");
            if(resultAnime != null){
@@ -36,7 +37,7 @@
 
         %>
         
-        There were <%=animes.size()%> Animes found in the database containing that name.
+        <%=dataBundle.getString("search_text")%><%=animes.size()%> <%=dataBundle.getString("search_text1")%>
         
         <%
         if(animes.size() >0)

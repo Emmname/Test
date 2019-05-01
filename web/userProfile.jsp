@@ -7,7 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>        
+    <head>     
+        <%@include file="internationalisationHeader.jsp" %>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +16,7 @@
         <!-- page content -->
         <meta name="Description" content="Anime Steaming Online">
         <meta name="Author" content="Emmine Anime">
-        <title>Emmine Anime - Popular Animes Streaming Online</title>
+        <title><%=dataBundle.getString("profile_title")%></title>
 
         <!-- Bootstrap ,CSS & Fonts -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -39,30 +40,30 @@
                             <table>
                                 <tr>
 
-                                    <th>Account Name:</th>
+                                    <th><%=dataBundle.getString("profile_account")%></th>
 
-                                    <th>Email Address:</th>
+                                    <th><%=dataBundle.getString("profile_email")%></th>
 
-                                    <th>Password: </th>
+                                    <th><%=dataBundle.getString("profile_password")%> </th>
 
                                     <!-- 1=>premium, NULL=>free user, 2=>admin -->
-                                    <th>Status:</th>
+                                    <th><%=dataBundle.getString("profile_status")%></th>
                                 </tr>
                                 <tr>
                                     <!-- User name -->
-                                    <th><%=user.getUsername()%> | <a href="updateUserName.jsp"> Change Your Name </a></th>
+                                    <th><%=user.getUsername()%> | <a href="updateUserName.jsp"><%=dataBundle.getString("profile_changen")%> </a></th>
                                     <!-- Email -->
                                     <th><%=user.getEmail()%></th>
                                     <!-- Password -->
-                                    <th><a href="verification.jsp">Change Your Password</a></th>
+                                    <th><a href="verification.jsp"><%=dataBundle.getString("profile_changep")%></a></th>
                                     <!-- Status -->
                                     <% int userstatus = (int) session.getAttribute("Status");//premium
                                         if (userstatus == 1) {  %> 
-                                    <th>Premium Account</th>
+                                    <th><%=dataBundle.getString("profile_premium")%></th>
                                         <% } else if (userstatus == 2) {  %> 
-                                    <th>Admin Account</th>
+                                    <th><%=dataBundle.getString("profile_admin")%></th>
                                         <% } else if (userstatus == 0) {  %> 
-                                    <th>Free Account</th>
+                                    <th><%=dataBundle.getString("profile_free")%></th>
                                         <% } %>                                    
                                 </tr>
                             </table>

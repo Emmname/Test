@@ -9,12 +9,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <%@include file="internationalisationHeader.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="../src/java/css/login.css" rel="stylesheet" type="text/css"/>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <title>Register</title>
+        <title><%=dataBundle.getString("r_title")%></title>
     </head>
     <body>
             <div class="container">
@@ -24,34 +25,34 @@
 
 		<div class="logo mb-3">
 		<div class="col-md-12 text-center">
-         <h1>Register</h1>
+         <h1><%=dataBundle.getString("r_register")%></h1>
          
                     </div>
                 </div>
              <form action="Servlet" method="post" name="register">
                  <div class="form-group">
                     
-                    <label for="exampleInputUsername">User Name</label>
-                        <input name="Username" required size=20 class="form-control" id="username" type="text" placeholder="Enter Username" /> </td> 
+                    <label for="exampleInputUsername"><%=dataBundle.getString("r_username")%></label>
+                        <input name="Username" required size=20 class="form-control" id="username" type="text" placeholder="<%=dataBundle.getString("r_username1")%>" /> </td> 
                 </div>
                  <div class="form-group">
-                        <label for="exampleInputPassword">Password</label>
-                        <input name="Password" required size=10  class="form-control" id="password"  type="password" placeholder="Enter Password"/> </td> 
+                        <label for="exampleInputPassword"><%=dataBundle.getString("r_password")%></label>
+                        <input name="Password" required size=10  class="form-control" id="password"  type="password" placeholder="<%=dataBundle.getString("r_password1")%>"/> </td> 
                    </div>
                  <div class="form-group">
-                        <label for="exampleInputPassword">Re-Enter Password</label>
-                        <input name="Password2" required size=10  class="form-control" id="password"  type="password" placeholder="Enter Password"/> </td> 
+                        <label for="exampleInputPassword"><%=dataBundle.getString("r_re-enter")%></label>
+                        <input name="Password2" required size=10  class="form-control" id="password"  type="password" placeholder="<%=dataBundle.getString("r_password2")%>"/> </td> 
                    </div>
                     <div class="form-group">                  
-                    <label for="exampleInputEmail1">Email </label>
-                        <input name="Email" required size=20 class="form-control" id="email" type="email" placeholder="Enter email" /> </td> 
+                    <label for="exampleInputEmail1"><%=dataBundle.getString("r_email")%></label>
+                        <input name="Email" required size=20 class="form-control" id="email" type="email" placeholder="<%=dataBundle.getString("r_email1")%>" /> </td> 
                 </div>
                   
                 <div class="col-md-12 text-center ">
-                    <button type="submit"  class=" btn btn-block mybtn btn-primary tx-tfm" >Register</button>
+                    <button type="submit"  class=" btn btn-block mybtn btn-primary tx-tfm" ><%=dataBundle.getString("r_register1")%></button>
                  </div>
                 <div class="form-group">
-                   <p class="text-center"><a href="login.jsp" id="signup" >Back login</a></p>
+                   <p class="text-center"><a href="login.jsp" id="signup" ><%=dataBundle.getString("r_backlog")%></a></p>
                 </div>
  
                 

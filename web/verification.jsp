@@ -8,7 +8,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>        
+    <head>
+        <%@include file="internationalisationHeader.jsp" %>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +17,7 @@
         <!-- page content -->
         <meta name="Description" content="Anime Steaming Online">
         <meta name="Author" content="Emmine Anime">
-        <title>Emmine Anime - Popular Animes Streaming Online</title>
+        <title><%=dataBundle.getString("ver_title")%></title>
 
         <!-- Bootstrap ,CSS & Fonts -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -37,13 +38,13 @@
                             <form action="Servlet" method="post" name="mailSender">
                                 <table>
                                     <tr>
-                                        <th>Enter Your Email Address:</th>
+                                        <th><%=dataBundle.getString("ver_email")%></th>
                                         <th> <input type="text"size="40" name=""> </th>
-                                        <th> <button type="submit" class=" btn">Send</button></th>                                   
+                                        <th> <button type="submit" class=" btn"><%=dataBundle.getString("ver_send")%></button></th>                                   
                                     </tr>
                                     <tr>
-                                        <th> Need help to reset your password? </th>
-                                        <th> <a href="contactUs.jsp"> Contact Us </a> </th>
+                                        <th> <%=dataBundle.getString("ver_reset")%></th>
+                                        <th> <a href="contactUs.jsp"> <%=dataBundle.getString("ver_contact")%></a> </th>
                                         <th></th>
                                     </tr>
                                 </table>
