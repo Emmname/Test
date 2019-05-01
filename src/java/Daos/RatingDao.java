@@ -197,7 +197,7 @@ public class RatingDao extends Dao implements RatingDaoInterface{
 }
      
      /**
-     * Returns the number if rating Ids in the database
+     * Returns the number of rating Ids in the database
      * @return a number that is the number of rating ids in the database
      */
 
@@ -289,4 +289,49 @@ public class RatingDao extends Dao implements RatingDaoInterface{
 
         return checked;
     }
-}
+    /**
+     * Returns the amount of ratings for that anime
+     * @param anime_id The Id of the anime we are trying to get the rating from.
+     * @return number of ids
+     */
+    @Override
+    public int getNumberOfRatingIdsForAnime(int anime_id) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int ratingIds = 0;
+        
+        
+        try{
+            con = getConnection();
+            
+            String query = "Select Count(rating_id) as total from rating where anime_id = ?";
+            ps = con.prepareStatement(query);
+            ps.setInt(1,anime_id);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                ratingIds=rs.getInt("total");
+                
+            }
+        }catch (SQLException e) {
+            System.out.println("Exception occured in the getNumberOfRatingIdsForAnime() method: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    freeConnection(con);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section of the getNumberOfRatingIdsForAnime() method: " + e.getMessage());
+            }
+        }
+
+        return ratingIds;
+        
+    }
+    }

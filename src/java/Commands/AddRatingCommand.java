@@ -19,9 +19,10 @@ public class AddRatingCommand implements Command {
      public String execute(HttpServletRequest request, HttpServletResponse response) {
         String forwardToJsp = null;
         
-        String user_id=request.getParameter("user_id");
-        String ratingNumber=request.getParameter("ratingNumber");
-        String anime_id=request.getParameter("anime_id");
+        HttpSession session = request.getSession();
+        int user_id=(int)session.getAttribute("ID");
+        String ratingNumber=(String)(request.getParameter("rating"));
+        int anime_id=(int)session.getAttribute("aID");
         
         int ratingNum=0;
         int userId=0;
@@ -32,14 +33,14 @@ public class AddRatingCommand implements Command {
         boolean numberSupplied=true;
        
         
-        if(user_id !=null && ratingNumber !=null && anime_id!=null ){
+        if(user_id !=-1 && ratingNumber !=null && anime_id!=-1 ){
             
             
             try{
-                HttpSession session = request.getSession();
+                
                 userId= (int) session.getAttribute("ID");
-                animeId=(int) session.getAttribute("Anime_ID");
-                animeId=Integer.parseInt(anime_id);
+                animeId=(int) session.getAttribute("aID");
+                ratingNum = Integer.parseInt(request.getParameter("rating"));
                 
                 if(userId==-1){
                     forwardToJsp="login.jsp";
@@ -59,14 +60,12 @@ public class AddRatingCommand implements Command {
             {
                 numberSupplied=false;
                 forwardToJsp="error.jsp";
-                HttpSession session = request.getSession();
                 session.setAttribute("errorMessage", "Text was supplied instead of a nummber when rating an anime");
             }
                 
                 int newId = ratDao.addRating(animeId, ratingNum, userId);
                 if(newId==-1){
                     String errorMessage = "Rating could not be added";
-                 HttpSession session = request.getSession();
                 session.setAttribute("errorMessage", errorMessage);
                 forwardToJsp = "error.jsp";
                 }
@@ -76,7 +75,6 @@ public class AddRatingCommand implements Command {
         
         else{
             String errorMessage = "One or more fields were missing.";
-             HttpSession session = request.getSession();
             session.setAttribute("errorMessage", errorMessage);
             forwardToJsp = "error.jsp";
         }

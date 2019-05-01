@@ -9,6 +9,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="Dtos.Anime"%>
 <%@page import="Daos.AnimeDao"%>
+<%@page import="Daos.RatingDao"%>
 <%@page import="Dtos.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -52,6 +53,9 @@
                         String animeName=request.getParameter("anime");
                         AnimeDao aDao = new AnimeDao("anime");
                         Anime anime= aDao.getAnimeById(animeID);
+                        RatingDao ratingDao = new RatingDao("anime"); 
+                        int ratingCount = ratingDao.getNumberOfRatingIdsForAnime(animeID);
+                        double rating = ratingDao.getAverageRating(animeID);
                     
                     %>
                     <h2><%=anime.getAnimename()%></h2>
@@ -63,12 +67,31 @@
                     <p class="caption">
                         This anime is animated by <%=anime.getAnimator()%> and was released on <%=anime.getReleasedate()%></p> 
                     <section>
+                        <p>The rating of this is anime is <%=rating%>(<%=ratingCount%>)</p>
+                           
                         <div class="HeartText">
-                            <p>To add this Anime to your Favorites click the heart.</p>
+                            <p>To add this Anime to your Favorites click the heart. ----></p>
                     </div>
+                        
+                        <div>
                         <form action="Servlet" method="post" name="addFavourite">
-                <button name="Heart" type="text" class="heart"/>
-                <input type="hidden" name ="action" value="addFavourite" />
+                        <button name="Heart" type="text" class="heart"/>
+                        <input type="hidden" name ="action" value="addFavourite" />
+                        </form>
+                        </div>
+                        
+                        <p>Go ahead and add a rating to the anime</p>
+                        <form action="Servlet" method="post" name="addRating">
+                   <select>
+                        <option value="1" name="rating">1</option>
+                        <option value="2" name="rating">2</option>
+                        <option value="3" name="rating">3</option>
+                        <option value="4" name="rating">4</option>
+                        <option value="5" name="rating">5</option>
+                  </select>
+                            <button type="action"> ADD!</button>
+                            <input type="submit" value="Submit">
+                            <input type="hidden" name ="action" value="addRating" />
                     </form>
                 </section>
                 </div>

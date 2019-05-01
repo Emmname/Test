@@ -17,5 +17,6 @@ public interface RatingDaoInterface {
     public double getAverageRating(int anime_id);
     public ArrayList<Integer> getAnimeIdByRatingId(int ratingId);
     public int getNumberOfRatingIds();
+    public int getNumberOfRatingIdsForAnime(int anime_id);
     public boolean checkRatingUser(int user_id, int anime_id);
 }
