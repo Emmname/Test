@@ -66,13 +66,16 @@ private CommandFactory(){
                     break;
                 case "resetPassword":
                     c = new resetPasswordCommand();
-                    
+                    break;
                 case "updateUserName":
                     c = new updateUserNameCommand();
-                
+                break;
                 case "mailSender":
                     c = new mailSenderCommand();
-                    
+                    break;
+                case "downloadEpisode":
+                    c= new DownloadEpisode();
+                    break;
                 default:
                     c = new NoActionSuppliedCommand();
                     break;

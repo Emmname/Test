@@ -29,7 +29,14 @@
 
         <!-------------------------- header  menu ---------------------------->
         <jsp:include page="view/header.jsp" />
-
+        
+        <form action = "Servlet" method="post" name="downloadEpisode">
+                  
+                  <input type="hidden" name ="action" value="downloadEpisode" />
+                <input type="submit" value="DL" />
+              </form>
+        
+        <a href="episodeDownload.jsp" class="link"><span>Test download</span></a>
 
         <!-------------------------- body content ---------------------------->             
         <!--iframe container-->  
