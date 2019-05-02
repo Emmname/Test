@@ -61,6 +61,9 @@ private CommandFactory(){
                 case "getMessage":
                     c = new GetMessageByAnimeId();
                     break;
+                  case "removeMessage":
+                    c = new DeleteMessage();
+                    break;
                 case "changeLanguage":
                     c = new ChangeLanguageCommand();
                     break;

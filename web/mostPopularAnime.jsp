@@ -98,6 +98,32 @@ if(message!=null){
             }
         %>
            
+        <%if(user.getStatus()==2){%>
+        
+                <h1> <%=user.getUsername()%>'s </h1>
+            
+          <div>
+              <form action = "Servlet" method="post" name="addAnime">
+                  <table>
+                      <tr>
+                          <td>Anime Name</td><td><input type="text" name="anime_name" </td>
+                      </tr>
+                      <tr>
+                          <td>Release Date</td><td><input type="date" name="release_date" </td>
+                      </tr>
+                      <tr>
+                          <td>Animator</td><td><input type="text" name="animator" </td>
+                      </tr>
+                      <tr>
+                          <td>imageUrl</td><td><input type="text" name="imageUrl" </td>
+                      </tr>
+                  </table>
+                  <input type="hidden" name ="action" value="addAnime" />
+                <input type="submit" value="Save" />
+              </form>
+          </div>
+                
+                %}%>
              </table>
                 
                   <jsp:include page="view/footer.jsp" />

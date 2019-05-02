@@ -168,6 +168,12 @@
                                         <p class="comment-content"><%=m.getTitle()%></p>
                                        <p class="comment-content"><%=m.getContext()%></p>
 				</div>
+                                       <form action="Servlet" method="post" name="removeMessage">
+                             <input type="txt"  value="<%=m.getMessage_id()%>" />
+                            <button type="action"> ADD!</button>
+                            <input type="submit" value="Submit">
+                            <input type="hidden" name ="action" value="removeMessage" />
+                    </form>
 			</div>
 		</div>
 	</div>
