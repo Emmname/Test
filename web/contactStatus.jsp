@@ -34,7 +34,7 @@
                     <div class="col-lg-12 text-center">
                         <div class="section-title"> 
                             <h3>Mail Status</h3>
-                            <p>status should display here..</p>
+                            <p></p>
                         </div>
                     </div>
                 </div>	

@@ -80,8 +80,9 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
                     String animator = rs.getString("animator");
                     String imageUrl = rs.getString("imageUrl");
                     String videoUrl = rs.getString("videoUrl");
+                    String description = rs.getString("description");
                     
-                    Anime a = new Anime(animeId, name, releaseDate, animator,imageUrl,videoUrl);
+                    Anime a = new Anime(animeId, name, releaseDate, animator,imageUrl,videoUrl, description);
                     animeArry.add(a);
                 }
         }  catch (SQLException e) {

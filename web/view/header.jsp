@@ -34,7 +34,7 @@
                 <!-- menu bar -->
                 <li>
                     
-                    <a href="#Genre"><%--<%=dataBundle.getString("menu_first")%>--%>Anime</a>
+                    <a><%--<%=dataBundle.getString("menu_first")%>--%>Anime</a>
                     <ul class="">
                         
                         <li><a href="searchAnimeByGenre.jsp?genre_name=Action#"><%--<%=dataBundle.getString("genre_action")%>--%>Action</a></li>
@@ -46,7 +46,7 @@
                 </li>
 
                 <li >
-                    <a href=""><%--<%=dataBundle.getString("menu_second")%>--%>Charts</a>
+                    <a><%--<%=dataBundle.getString("menu_second")%>--%>Charts</a>
                     <ul>
                         <li>
                             <a href="mostPopularAnime.jsp"><%--<%=dataBundle.getString("genre_top")%>--%>Top Anime</a>
@@ -58,7 +58,7 @@
                 </li>
 
                 <li>
-                    <a href="contactpage.jsp"><%--<%=dataBundle.getString("menu_third")%>--%>About Us</a>
+                    <a href="contactUs.jsp"><%--<%=dataBundle.getString("menu_third")%>--%>About Us</a>
                 </li>
 
                 <li>

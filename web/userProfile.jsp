@@ -51,7 +51,7 @@
                                 </tr>
                                 <tr>
                                     <!-- User name -->
-                                    <th><%=user.getUsername()%> | <a href="updateUserName.jsp"><%=dataBundle.getString("profile_changen")%> </a></th>
+                                    <th><%=user.getUsername()%></th>
                                     <!-- Email -->
                                     <th><%=user.getEmail()%></th>
                                     <!-- Password -->

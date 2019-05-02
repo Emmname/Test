@@ -70,14 +70,8 @@ private CommandFactory(){
                 case "resetPassword":
                     c = new resetPasswordCommand();
                     break;
-                case "updateUserName":
-                    c = new updateUserNameCommand();
-                break;
                 case "mailSender":
                     c = new mailSenderCommand();
-                    break;
-                case "RandomAnimes":
-                    c = new randomAnimesCommand();
                     break;
                 case "downloadEpisode":
                     c= new DownloadEpisode();

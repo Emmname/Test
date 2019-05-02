@@ -4,6 +4,10 @@
     Author     : Emmine Team (Rui Hu, Jordan Donnelly, Haiyun Yu)
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="Daos.AnimeDao"%>
+<%@page import="java.util.Random"%>
+<%@page import="Dtos.Anime"%>
 <%@page import="Dtos.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +21,7 @@
         <!-- page content -->
         <meta name="Description" content="Anime Steaming Online">
         <meta name="Author" content="Emmine Anime">
-        
+
         <title>Emmine Anime - Popular Animes Streaming Online</title>
 
         <!-- Bootstrap ,CSS & Fonts -->
@@ -29,8 +33,8 @@
     <body>
 
         <!-------------------------- header  menu ---------------------------->
-        <jsp:include page="view/header.jsp" />
-        <%@include file="internationalisationHeader.jsp" %>
+        <jsp:include page="view/header.jsp" /><%@include file="internationalisationHeader.jsp" %>
+
 
         <!-------------------------- body content ---------------------------->             
         <!--iframe container-->  
@@ -82,11 +86,12 @@
         <!--iframe container-->
 
         <!-- container -->
+
         <section id="about" class="mz-module">
             <div class="container light-bg">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                    <h2><%=dataBundle.getString("index_first")%></h2>
+                        <h2><%=dataBundle.getString("index_first")%></h2>
                         <p>Anime and manga have had a strong, pervasive and lasting impact 
                             on the Japanese culture in particular, and the global culture 
                             in general. The characters are a representation of the 
@@ -96,8 +101,11 @@
             </div>
         </section>		
         <!-- /.container -->
-        
-                <section class="wrapper ">
+
+
+
+
+        <section class="wrapper ">
             <div class="inner">
                 <header class="align-center">
                     <h2>This Season's Lineup</h2>
@@ -105,53 +113,107 @@
                         You can also check out the release calendar for specific dates.</p>
                 </header>
 
+                <%
+                    Random rand = new Random();
+                    //connect to the Anime Dao from the database
+                    AnimeDao ad = new AnimeDao("anime");
+
+                    //assign it into new arraylist,create new anime
+                    ArrayList<Anime> list = ad.getAllAnimes();
+                    Anime a1 = new Anime();
+                    Anime a2 = new Anime();
+                    Anime a3 = new Anime();
+                    if (list != null && !list.equals("")) {
+                        int max = list.size();
+                        
+                        for (int i = 0; i <= max; i++) {
+                            max = (int) Math.random();
+                            a1 = list.get(max);
+
+                            if (a1 != null & !a1.equals("")) {
+                                a2 = list.get(max);
+
+                                if (a2 != null & !a2.equals("")) {
+                                    a3 = list.get(max);
+
+                                } else {
+                                    String errorMessage = "Sorry, Anime is not found."
+                                            + "Please <a href='login.jsp'>go back</a> and refresh the page.";
+                                    session.setAttribute("errorMessage", errorMessage);
+                                    response.sendRedirect("error.jsp");
+                                }
+                            } else {
+                                String errorMessage = "Sorry, Anime is not found."
+                                        + "Please <a href='login.jsp'>go back</a> and refresh the page.";
+                                session.setAttribute("errorMessage", errorMessage);
+                                response.sendRedirect("error.jsp");
+                            }
+                        }
+                        session.setAttribute("a1", a1);
+                        session.setAttribute("a2", a2);
+                        session.setAttribute("a3", a3);
+
+                    } else {
+                        String errorMessage = "Sorry, Anime List does not exited.."
+                                + "Please <a href='login.jsp'>go back</a> and try again.";
+                        session.setAttribute("errorMessage", errorMessage);
+                        response.sendRedirect("error.jsp");
+                    }
+                    Anime anime1 = (Anime) session.getAttribute("a1");
+                    Anime anime2 = (Anime) session.getAttribute("a2");
+                    Anime anime3 = (Anime) session.getAttribute("a3");
+
+                    if (anime1 != null || anime2 != null || anime3 != null) {
+                %>
                 <!-- 3 Column Video Section -->
                 <div class="flex flex-3">
                     <div class="video col">
                         <div class="image fit">
-                            <img src="images/JoJo's Bizarre Adventure.jpg" alt="" />
-                            <div class="arrow">
-                                <div class="icon fa-play"></div>
-                            </div>
+                            <a href="animeInfo.jsp?anime=<%=anime1.getAnimename()%>&aID=<%=anime1.getAnime_id()%>">
+                                <img src="images/<%=anime1.getImageUrl()%>" alt="<%=anime1.getImageUrl()%>">                            
+                                <div class="arrow">
+                                    <div class="icon fa-play"></div>
+                                </div>
+                            </a>
                         </div>
-                        <p class="caption">
-                            JoJo's Bizarre Adventure tells the story of the Joestar family, 
-                            a family whose various members discover they are destined to take 
-                            down supernatural foes using unique powers that they possess. 
-                        </p>
-                        <a href="index.jsp" class="link"><span>Read More</span></a>
+                        <p class="caption"><%=anime1.getDescription()%></p>
+                        <a href="animeInfo.jsp?anime=<%=anime1.getAnimename()%>&aID=<%=anime1.getAnime_id()%>">
+                            <span>Read More</span>
+                        </a>
                     </div>
+
                     <div class="video col">
                         <div class="image fit">
-                            <img src="images/BORUTO NARUTO NEXT GENERATIONS.jpg" alt="" />
-                            <div class="arrow">
-                                <div class="icon fa-play"></div>
-                            </div>
+                            <a href="animeInfo.jsp?anime=<%=anime2.getAnimename()%>&aID=<%=anime2.getAnime_id()%>">
+                                <img src="images/<%=anime2.getImageUrl()%>" alt="<%=anime2.getImageUrl()%>">
+                                <div class="arrow">
+                                    <div class="icon fa-play"></div>
+                                </div>
+                            </a>                            
                         </div>
-                        <p class="caption">
-                            Boruto originated from Shueisha's proposal to Kishimoto on making 
-                            a sequel to Naruto. 
-                            Boruto originated from Shueisha's proposal to Kishimoto on making 
-                            a sequel to Naruto. 
-                        </p>
-                        <a href="index.jsp" class="link"><span>Read More</span></a>
+                        <p class="caption"><%=anime2.getDescription()%></p>
+                        <a href="animeInfo.jsp?anime=<%=anime2.getAnimename()%>&aID=<%=anime2.getAnime_id()%>">
+                            <span>Read More</span>
+                        </a>
                     </div>
+
                     <div class="video col">
                         <div class="image fit">
-                            <img src="images/Demon Slayer Kimetsu no Yaiba.jpg" alt="" />
-                            <div class="arrow">
-                                <div class="icon fa-play"></div>
-                            </div>
+                            <a href="animeInfo.jsp?anime=<%=anime3.getAnimename()%>&aID=<%=anime3.getAnime_id()%>">
+                                <img src="images/<%=anime3.getImageUrl()%>" alt="<%=anime3.getImageUrl()%>">
+                                <div class="arrow">
+                                    <div class="icon fa-play"></div>
+                                </div>
+                            </a>                            
                         </div>
-                        <p class="caption">
-                            Tanjiro Kamado is a kindhearted, intelligent boy who lives with his
-                            family and makes money by selling charcoal. Everything changes when 
-                            his family is attacked and slaughtered by demons (oni).
-                        </p>
-                        <a href="index.jsp" class="link"><span>Read More</span></a>
+                        <p class="caption"><%=anime3.getDescription()%></p>
+                        <a href="animeInfo.jsp?anime=<%=anime3.getAnimename()%>&aID=<%=anime3.getAnime_id()%>">
+                            <span>Read More</span>
+                        </a>
                     </div>
                 </div>
             </div>
+            <% }%>
         </section>
 
 
