@@ -26,14 +26,15 @@ public class DownloadEpisode implements Command{
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
          String forwardToJsp = "episodes/Episode.html";
+         String url = request.getParameter("EpisodeLink");
          
          
          
          try{
              
-         URL website = new URL("https://drive.google.com/file/d/1K-OuOCdQvNpImOKBywFWK0hVeEkOCmCt/view");
+         URL website = new URL("https://drive.google.com/file/d/"+url);
                         ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-                        FileOutputStream fos = new FileOutputStream("AnimeProject\\web\\episodes\\Episode.html");
+                        FileOutputStream fos = new FileOutputStream("file:///C:/Users/omy/Desktop/Information.html");
                         
                         fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
          } catch (IOException ex) {

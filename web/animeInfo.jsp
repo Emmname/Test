@@ -40,7 +40,10 @@
 
         <!-------------------------- header  menu ---------------------------->
         <jsp:include page="view/header.jsp" />
-
+        <%
+            User user = (User) session.getAttribute("loggedInUser");
+            if(user != null){
+        %>
 
         <!-------------------------- body content ---------------------------->             
 
@@ -111,7 +114,7 @@
                             
                     <form action = "Servlet" method="post" name="downloadEpisode">
                             <input type="hidden" name ="action" value="downloadEpisode" />
-                            <input name="EpisdoeLink"type="submit" value="<%=eps.get(i).getEpisode_link()%>" />
+                            <a href="episode.jsp?EpisodeLink=<%=eps.get(i).getEpisode_link()%>"><%=eps.get(i).getEpisode_name()%></a>
                           </form>
                         
                         <%}
@@ -238,10 +241,6 @@ var x = setInterval(function() {
 }, 1000);
 
 </script>
-   <%
-            User user = (User) session.getAttribute("loggedInUser");
-             if (user != null) {
-        %>  
  <form action="Servlet" method="post" name="addMessage">
                         <div class="comment-add">
 				<div class="col-xs-12">
@@ -258,7 +257,13 @@ var x = setInterval(function() {
                       
                
 </form>
-      <%} %>           
+      <%}
+
+       else{
+                String sessionExpired = "You must be logged in to use this service";
+                session.setAttribute("sessionExpired", sessionExpired);
+                response.sendRedirect("login.jsp");
+            }%>           
         
 
 
