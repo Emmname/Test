@@ -27,7 +27,9 @@
         <%
             User user = (User) session.getAttribute("loggedInUser");
              if(user != null){
+                 
         %>
+        <a href="home.jsp">Go Home</a>
         <table id="myTable">
             <tr>
                     

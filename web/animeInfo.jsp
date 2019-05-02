@@ -44,7 +44,7 @@
             User user = (User) session.getAttribute("loggedInUser");
             if(user != null){
         %>
-
+        <a href="home.jsp">Go Home</a>
         <!-------------------------- body content ---------------------------->             
 
         <!-- container -->
@@ -170,7 +170,7 @@
 				</div>
                                        <form action="Servlet" method="post" name="removeMessage">
                              <input type="txt"  value="<%=m.getMessage_id()%>" />
-                            <button type="action"> ADD!</button>
+                            <button type="action"> Remove!</button>
                             <input type="submit" value="Submit">
                             <input type="hidden" name ="action" value="removeMessage" />
                     </form>
