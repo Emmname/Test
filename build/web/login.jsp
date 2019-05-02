@@ -49,7 +49,7 @@
                      <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm"><%=dataBundle.getString("log_log")%></button>
                  </div>
                  <div class="form-group">
-                   <p class="text-center"><a href="verification.jsp"><%=dataBundle.getString("log_forgot")%></a></p>
+                   <p class="text-center"><a href="resetPassword.jsp"><%=dataBundle.getString("log_forgot")%></a></p>
                 </div>
                 
                  </div>
