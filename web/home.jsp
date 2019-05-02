@@ -112,8 +112,7 @@
                         You can also check out the release calendar for specific dates.</p>
                 </header>
 
-                <%
-                    Random rand = new Random();
+                <% Random rand = new Random();
                     //connect to the Anime Dao from the database
                     AnimeDao ad = new AnimeDao("anime");
 
@@ -124,11 +123,11 @@
                     Anime a3 = new Anime();
                     if (list != null && !list.equals("")) {
                         int max = list.size();
-                        max = (int) Math.random();
-
-                        for (int i = 0; i <= max; i++) {
-
+                        
+                        for (int i = 0; i <= list.size(); i++) {
+                            max = (int) Math.random()+1;
                             a1 = list.get(max);
+                            list.remove(a1);
 
                             if (a1 != null & !a1.equals("")) {
                                 a2 = list.get(max);

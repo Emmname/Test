@@ -34,7 +34,7 @@
                     <div class="col-lg-12 text-center">
                         <div class="section-title"> 
                             <h3>Mail Status</h3>
-                            <p></p>
+                            <p>Sorry No Message is sent.Please try again.</p>
                         </div>
                     </div>
                 </div>	

@@ -15,7 +15,7 @@
         %>
         <%--<%@include file="internationalisationHeader.jsp" %>--%>
     
-     
+        <img src="images/logo1.png" alt="EmnimeProject" class="logo"/>
         <!-- Navigation -->
         <nav>
             <ul>
@@ -84,7 +84,7 @@
                         response.sendRedirect("login.jsp");
                     %>
                 <li>
-                    <a href="account.jsp"><%--<%=dataBundle.getString("menu_account")%>--%>Account</a>
+                    <a><%--<%=dataBundle.getString("menu_account")%>--%>Account</a>
                     <ul>
                         <li><a href="login.jsp"><%--<%=dataBundle.getString("menu_login")%>--%>Login</a></li>
                         <li><a href="register.jsp"><%--<%=dataBundle.getString("menu_register")%>--%>Register</a></li>

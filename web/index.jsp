@@ -33,7 +33,8 @@
     <body>
 
         <!-------------------------- header  menu ---------------------------->
-        <jsp:include page="view/header.jsp" /><%@include file="internationalisationHeader.jsp" %>
+        <%@include file="internationalisationHeader.jsp" %>
+        <jsp:include page="view/header.jsp" />
 
 
         <!-------------------------- body content ---------------------------->             
@@ -126,9 +127,10 @@
                     if (list != null && !list.equals("")) {
                         int max = list.size();
                         
-                        for (int i = 0; i <= max; i++) {
-                            max = (int) Math.random();
+                        for (int i = 0; i <= list.size(); i++) {
+                            max = (int) Math.random()+1;
                             a1 = list.get(max);
+                            list.remove(a1);
 
                             if (a1 != null & !a1.equals("")) {
                                 a2 = list.get(max);

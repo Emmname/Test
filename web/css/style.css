@@ -169,12 +169,11 @@ header{
 }
 
 .logo{
-    width: 50%;
-    height:40%;
+    width: 25%;
+    height:50%;
     float: left;
     left: 60px;
-    margin: 0;
-    object-fit: cover;
+
 }
 /*--- logo section ---*/
 

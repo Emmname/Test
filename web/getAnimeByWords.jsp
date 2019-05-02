@@ -11,12 +11,18 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <%@include file="internationalisationHeader.jsp" %>
+         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,700,900" rel="stylesheet">
+        <link href="css/favourite.css" rel="stylesheet">
+         <jsp:include page="view/header.jsp" />  
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><%=dataBundle.getString("search_title")%></title>
     </head>
     <body>
-        <table>
+        <table id="myTable">
             <tr>
                     
                     <th><%=dataBundle.getString("search_id")%></th>
@@ -26,33 +32,24 @@
                     <th><%=dataBundle.getString("search_picture")%></th>
                 </tr>
         </table>
-        <a href="home.jsp"><%=dataBundle.getString("search_back")%></a>
+        
         <%
            Object resultAnime = session.getAttribute("Animes");
            if(resultAnime != null){
                ArrayList<Anime> animes = (ArrayList<Anime>) resultAnime;
-           
-              
-            
+        %>
 
-        %>
-        
-        <%=dataBundle.getString("search_text")%><%=animes.size()%> <%=dataBundle.getString("search_text1")%>
-        
         <%
-        if(animes.size() >0)
-        
-        {
+        if(animes.size() >0){
         %>
-        <table>
+        <table id="myTable">
             <%
             for(Anime a: animes)
             {
-            
-            
+                        
             %>
             
-            <tr>
+            <tr class="item">
                     
                  <td><%=a.getAnime_id()%></td>
                  <td><a href="animeVideo.jsp?anime=<%=a.getAnimename()%>&aID=<%=a.getAnime_id()%>"><%=a.getAnimename()%></td>
@@ -77,7 +74,7 @@
          }
 
         %>
-        
+        <a href="home.jsp"><%=dataBundle.getString("search_back")%></a>
        
     </body>
 </html>
