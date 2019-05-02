@@ -73,6 +73,9 @@ private CommandFactory(){
                 case "mailSender":
                     c = new mailSenderCommand();
                     break;
+                case "RandomAnimes":
+                    c = new randomAnimesCommand();
+                    break;
                 case "downloadEpisode":
                     c= new DownloadEpisode();
                     break;

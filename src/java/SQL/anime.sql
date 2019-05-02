@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2019-04-27 12:30:44
--- 服务器版本： 10.1.19-MariaDB
--- PHP Version: 5.6.28
+-- Generation Time: May 02, 2019 at 03:10 AM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- 表的结构 `anime`
+-- Table structure for table `anime`
 --
 
 CREATE TABLE `anime` (
@@ -32,29 +34,30 @@ CREATE TABLE `anime` (
   `release_date` date NOT NULL,
   `animator` varchar(255) NOT NULL,
   `imageUrl` varchar(200) NOT NULL,
-  `videoUrl` varchar(255) DEFAULT NULL
+  `videoUrl` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `anime`
+-- Dumping data for table `anime`
 --
 
-INSERT INTO `anime` (`anime_id`, `anime_name`, `release_date`, `animator`, `imageUrl`, `videoUrl`) VALUES
-(1, 'One Punch Man', '2015-10-05', 'Tomohiro Suzuki\r\n', 'One Punch Man.jpg', '2JAElThbKrI'),
-(2, 'Dragon Ball Super', '2015-07-05', 'Akira Toriyama', 'Dragon Ball Super.jpg', 'wuIbeQv3v7c'),
-(3, 'Fullmetal Alchemist: Brotherhood', '2009-04-05', 'Hiroshi ?nogi', 'Fullmetal Alchemist Brotherhood.jpg', 'dqDB6gQLbPM'),
-(4, 'Attack on Titan', '2013-04-07', 'Yasuko Kobayashi', 'Attack on Titan.jpg', 'a3mo2TZGXlM'),
-(5, 'Naruto Shippuden', '2007-02-15', 'Masashi Kishimoto', 'Naruto Shippuden.jpg', '1WLO0Owi5-A'),
-(6, 'Sword Art Online', '2012-07-08', 'Reki Kawahara', 'Sword Art Online.jpg', '6ohYYtxfDCg'),
-(7, 'Bleach', '2004-10-05', 'Masashi Sogo \r\n\r\n\r\n', 'Bleach.jpg', 'oZ67d9XSjFs&t'),
-(8, 'Code Geass', '2006-10-06', 'Ichir? ?kouchi', 'Code Geass.jpeg', 'v-AGjx0N24U'),
-(9, 'Hunter x Hunter', '1999-10-16', 'Yoshihiro Togashi', 'Hunter x Hunter.png', 'd6kBeJjTGnY'),
-(10, 'Tokyo Ghoul', '2014-07-04', 'Ch?ji Mikasano', 'Tokyo Ghoul.jpg', 'ETHpMMV8rJU');
+INSERT INTO `anime` (`anime_id`, `anime_name`, `release_date`, `animator`, `imageUrl`, `videoUrl`, `description`) VALUES
+(1, 'One Punch Man', '2015-10-05', 'Tomohiro Suzuki\r\n', 'One Punch Man.jpg', '2JAElThbKrI', 'One-Punch Man is an ongoing Japanese superhero webcomic created by ONE which began publication in early 2009. The series quickly went viral, surpassing 7.9 million hits in June 2012.'),
+(2, 'Dragon Ball Super', '2015-07-05', 'Akira Toriyama', 'Dragon Ball Super.jpg', 'wuIbeQv3v7c', 'DescriptionWith Majin Buu now defeated and Earth at peace, the heroes have settled into normal lives, which in Goku\'s case means being a radish farmer. They can\'t get too comfortable in their new lives because more evildoers are on the horizon. Enter Beer'),
+(3, 'Fullmetal Alchemist: Brotherhood', '2009-04-05', 'Hiroshi ?nogi', 'Fullmetal Alchemist Brotherhood.jpg', 'dqDB6gQLbPM', 'Brothers Edward and Alphonse Elric search for the Philsopher\'s Stone, hoping to restore their bodies, which were lost when they attempted to use their alchemy skills to resurrect their deceased mother. Edward, who lost only limbs, joins the State Military'),
+(4, 'Attack on Titan', '2013-04-07', 'Yasuko Kobayashi', 'Attack on Titan.jpg', 'a3mo2TZGXlM', 'Attack on Titan is a Japanese manga series both written and illustrated by Hajime Isayama. The series first began in Kodansha\'s Bessatsu Sh?nen Magazine on September 9, 2009, and it has been collected into 28 tank?bon volumes as of April 2019.'),
+(5, 'Naruto Shippuden', '2007-02-15', 'Masashi Kishimoto', 'Naruto Shippuden.jpg', '1WLO0Owi5-A', 'Naruto Uzumaki, is a loud, hyperactive, adolescent ninja who constantly searches for approval and recognition, as well as to become Hokage, who is acknowledged as the leader and strongest of all ninja in the village.'),
+(6, 'Sword Art Online', '2012-07-08', 'Reki Kawahara', 'Sword Art Online.jpg', '6ohYYtxfDCg', 'Sword Art Online is a Japanese light novel series written by Reki Kawahara and illustrated by abec. The series takes place in the near future and focuses on protagonist Kazuto \"Kirito\" Kirigaya and Asuna Yuuki as they play through various virtual reality '),
+(7, 'Bleach', '2004-10-05', 'Masashi Sogo \r\n\r\n\r\n', 'Bleach.jpg', 'oZ67d9XSjFs&t', 'Ichigo Kurosaki never asked for the ability to see ghosts -- he was born with the gift. When his family is attacked by a Hollow -- a malevolent lost soul -- Ichigo becomes a Soul Reaper, dedicating his life to protecting the innocent and helping the tortu'),
+(8, 'Code Geass', '2006-10-06', 'Ichir? ?kouchi', 'Code Geass.jpeg', 'v-AGjx0N24U', 'Code Geass: Lelouch of the Resurrection will release in North American theaters this May.'),
+(9, 'Hunter x Hunter', '1999-10-16', 'Yoshihiro Togashi', 'Hunter x Hunter.png', 'd6kBeJjTGnY', 'Gon, a young boy who lives on Whale Island, dreams of becoming a Hunter like his father, who left when Gon was still young. '),
+(10, 'Tokyo Ghoul', '2014-07-04', 'Ch?ji Mikasano', 'Tokyo Ghoul.jpg', 'ETHpMMV8rJU', 'Tokyo Ghoul is a Japanese dark fantasy manga series written and illustrated by Sui Ishida. It was serialized in Shueisha\'s seinen manga magazine Weekly Young Jump between September 2011 and September 2014, and it has been collected in fourteen tank?bon vo');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `episode`
+-- Table structure for table `episode`
 --
 
 CREATE TABLE `episode` (
@@ -66,7 +69,7 @@ CREATE TABLE `episode` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `episode`
+-- Dumping data for table `episode`
 --
 
 INSERT INTO `episode` (`video_id`, `anime_id`, `episode_id`, `episode_name`, `episode_link`) VALUES
@@ -82,7 +85,7 @@ INSERT INTO `episode` (`video_id`, `anime_id`, `episode_id`, `episode_name`, `ep
 -- --------------------------------------------------------
 
 --
--- 表的结构 `favourite`
+-- Table structure for table `favourite`
 --
 
 CREATE TABLE `favourite` (
@@ -92,7 +95,7 @@ CREATE TABLE `favourite` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `favourite`
+-- Dumping data for table `favourite`
 --
 
 INSERT INTO `favourite` (`favourite_id`, `user_id`, `anime_id`) VALUES
@@ -105,7 +108,7 @@ INSERT INTO `favourite` (`favourite_id`, `user_id`, `anime_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `genre`
+-- Table structure for table `genre`
 --
 
 CREATE TABLE `genre` (
@@ -114,7 +117,7 @@ CREATE TABLE `genre` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `genre`
+-- Dumping data for table `genre`
 --
 
 INSERT INTO `genre` (`genre_id`, `genre_name`) VALUES
@@ -132,7 +135,7 @@ INSERT INTO `genre` (`genre_id`, `genre_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `genreanime`
+-- Table structure for table `genreanime`
 --
 
 CREATE TABLE `genreanime` (
@@ -142,7 +145,7 @@ CREATE TABLE `genreanime` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `genreanime`
+-- Dumping data for table `genreanime`
 --
 
 INSERT INTO `genreanime` (`genreanime_id`, `anime_id`, `genre_id`) VALUES
@@ -160,7 +163,7 @@ INSERT INTO `genreanime` (`genreanime_id`, `anime_id`, `genre_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `message`
+-- Table structure for table `message`
 --
 
 CREATE TABLE `message` (
@@ -173,7 +176,7 @@ CREATE TABLE `message` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `message`
+-- Dumping data for table `message`
 --
 
 INSERT INTO `message` (`message_id`, `user_id`, `anime_id`, `title`, `context`, `wholeft`) VALUES
@@ -182,7 +185,7 @@ INSERT INTO `message` (`message_id`, `user_id`, `anime_id`, `title`, `context`, 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `orders`
+-- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
@@ -195,7 +198,7 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `orders`
+-- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`order_id`, `user_id`, `date_paid`, `date_expired`, `PaymentType`, `AmountPaid`) VALUES
@@ -204,7 +207,7 @@ INSERT INTO `orders` (`order_id`, `user_id`, `date_paid`, `date_expired`, `Payme
 (3, 4, '2019-03-10', '2019-04-09', 'visa', 20);
 
 --
--- 触发器 `orders`
+-- Triggers `orders`
 --
 DELIMITER $$
 CREATE TRIGGER `addOrder` AFTER INSERT ON `orders` FOR EACH ROW Update orders SET date_expired = DATE_ADD(date_paid,INTERVAL 30 DAY) where date_expired IS null
@@ -214,7 +217,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- 表的结构 `rating`
+-- Table structure for table `rating`
 --
 
 CREATE TABLE `rating` (
@@ -225,7 +228,7 @@ CREATE TABLE `rating` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `rating`
+-- Dumping data for table `rating`
 --
 
 INSERT INTO `rating` (`rating_id`, `anime_id`, `user_id`, `ratingNumber`) VALUES
@@ -248,7 +251,7 @@ INSERT INTO `rating` (`rating_id`, `anime_id`, `user_id`, `ratingNumber`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `reviews`
+-- Table structure for table `reviews`
 --
 
 CREATE TABLE `reviews` (
@@ -262,7 +265,7 @@ CREATE TABLE `reviews` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -275,19 +278,21 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- 转存表中的数据 `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`user_id`, `Username`, `Email`, `Password`, `Status`, `salt`) VALUES
 (1, '1234', '1234@gmail.com', '1234', 1, ''),
 (2, 'ItsMeBaby', 'DrinkMe@gmail.com', 'b060dc3e37c6952d0128f207882cae02', NULL, '¬ŽäËZ*Þ{-×	Ï'),
-(4, 'ItsMeBaby69;)', 'ItsMe@hotmail.com', 'eb14bb84404dd20ffd5c0ee0c55cea12', NULL, 'µÜ¹1W¶åê‡–ÏÑšËþL6/µ8-ù!£áü=ä&¥9ƒGk''[„}§ÀÐëtîhø³ð@Ä84VÞx}1¤JìÂn0þ­/HÎ–%\Z!Ü¦‘qÁ›¬M‰dçÄ ­u^ðèw<"©kš—{;[@ª,‘¸´ «v¿ñpøx!ùêùø¦ÑKä¾KÂòÄp`a|YC±4ã´“ŒA?þäÃÉx~ÛÄÄ²›æiý’€_—­Ñ[Xz«¶~,îtÒÛßìy5Þ e7±ß3|þåõ>•ðÇ+“;œ-»Ç÷ƒæ„ZnXZ©@Ô  m¿’ÿmëXKÂ¿Ì«ñÄÁ_çè´5ž+lrMÈdLüB|×Œèª@Ñ ”Îb&\\]“üîqõ¿¶š‹ÏK¿´}–íd30x:…‰\r›+¬jeðþsØ‘ßBéfñ™=ÕUJõ;å¥–PÙ(¶VuÁèÎ›1•Îf"ÿ‘þf…êKétÐˆ/‰¥k§ØCI\\Æ³>Þ,¹šÚônfÃŽ–+âÚÿQ6H9·÷½ÜòÏ’ˆ3ùqŒ¬4;§Í4"·¶ÝPyT~à¼Àé«•}×;™u°/µ©‹ë>äý\n9ñ&ÞJƒÒx!±Òåì¿8y‹Ôº(Q6'),
-(5, '12345', '12345@qq.com', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'XHèæ€moV]©ºÀ¯@Äè|æóµ[Vè…ãoÄ½vs\0ÞC³u£²Zè®k¼=Ã¹Š8^>ØÅÇføPyIÃì©TQÀš¨,?··ã¾*ÕB½YÏnçd;Â^æžU_Ï¾^2\r©mûªß÷Øf;Íƒ¬£ÞÔšž{9¶ù¹}¼è‰…Jç=wßJt×2·D¥ò ¶û„nkH¾õ„÷ZnÈæ»!=T¶Ú\0ŠNY!¨m"ô°îz±t=(D)`Ý+øí‡¢ÃÕì—Z¨5¡T~Û…÷<éÂÈºd­ó\\u5	¬™¯Çæ]Ý“eÈ€\\ÊºNú~Úö°DQØªA9nÚn^òaö_gEß.òÂ½™_CÚÕY¸NsÃ³ÓÇg€a½ä|#gèGîÅT#t;!''qæ¶Ä“Á…B*hrPûºÔb%¤ØžôÀ^5SÛ·ÄžÛï¶¢ØwTß’Í^‚ñnf1>ÿj*‰ 8È¯{êëX_Á2ú»þ^ŠjV(BòHb·Ò_<59˜0bµsvïÒN‹ë…ƒ?€?^+=Ô¯öé­\Z¾0”‰`ãpâe&³Í?ð¯	 \0 ]jM> ¨by~¬f,ÀZ7\n»é¢9‘‚ Ý£Ü®³ŒÆþ]Ìi£ÚâM§ó‹öÐk‹H™'),
-(6, '123456', '123456@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'àdBé"Á>ÇzwŽ¾d‹ÔžX>±&"´((ºÓx÷“Ë©-Ÿƒ4àO›¼Ú˜°Ó-ú''^o4úYgKQÆ!«ï{¾ÛÁêYü¥×FŸíÄ÷í^n)Ë1šÂ¥›RTV&w:_ØâØ‚ìRÀ#U˜ÌÚ»´Úì^ãÚ\nÎÙ«‡%åcÖÉÊ”¨$\\wìêÔœ’k-‘?”UÂ.ã~µ\Z`þ)£&Ý1“$SÜÎ²œb\\Av–GGtMXºŠAÛBšEYPtHééV-Pø&Ë—(¼â]üÏñÚf©6 îá}Om»÷â¹¨×|Ø§P¨¹ÏÐÁ.D¥\0]\Zk;2ó‡''¢ª¯7²uUAúHë‹SÞÄué#i´°£Í·6Ë·u®\0»i‹š™X<è;òÆóNú ¬›à†÷«Y¼iÒõTëÖ ÔÝŽ¦$yy''à&œ÷\nÆZ?ÖOBlŽ:àèì¸üÇ?PÓŽ„ˆÂñÛ\\¬wsÄ·«€²:o\rüjù5Oˆï¤ÞÎ´I&ÈÛ/D i3¾uVr™xmtl{n\nò0þ ýµ1:KÊ±œcÀù[Ö\0ûY)\rbüo»´ÛgåýÌý•ß³äøý9ñ™½*9õŽó»Õ+ËÐœØ‰Bñ¬-ZÅnC''[J'),
-(7, 'Jordan', 'jordang@gmail.com', 'b5a682162aea3da64953e04ea820dad4', NULL, '-´:êBü8BKÓ°q9LÜáJ¾¬±\rœåùÌ4:Öd‡!‹¿Wù ÿü¼¿''Ë@Q†I†À!jQÙ.A¾tÂaó²(ò\0†Ë+ °À„ˆôZ=š²ý*‡	fêË©lž¾ˆ*°ØQÙR\r41¯§ƒ\0È²Ä_½‰E	3qK=Û•ù(\Z§SíÁ£°SÌˆR\\,’™”wIHDvæ¹÷æC3—Ü;´;ª®+JJæ\0Tï•ôîš+Öª„›öÑ^_…¹`·m6Ó7"‚y³œŠ½Ï ’éf"ž[äzJ|É¿¬h£ý*aEB¬Ÿ/¹¬ÞIÈ†ë1ëS–µäÙŸ,ÉU‚|ï˜]A°;#ýióú\nkíËÇ8½%MÌt!­È}’ùD„ŸHÞ–Ô™c¸K:}ÌªA+µÇ<dÈL³ºø™µht“û–c¡-sì=$4ãjyT¸ÆJ~œy&Qy¶lÐºïµèw/E¾H Ô×£ÃDV1nzB	9.i_þn”ú\\îG§#ÛG\\ŸP°Î´¿œO[ŒŠozžmô P‚¢5\r9þl×³¦ß²zmÒóé4‡I;ž’A±œÝ¿ry’D/\nA‘;|È³aí‘cÈ3iv¿å”ÐŽñ­PÉeû¥fBÀÑk#ñ~/È9†œ¹|`Ü¸àoF¨	yä>B˜ÞÞ8p['),
-(8, 'Joe', 'Joe@gmail.com', 'b5a682162aea3da64953e04ea820dad4', NULL, 'õŠSùê¢³‘ÞïRè3.Þ|‰	j$]|‘žTHT¥¥1õš–À‘‘wÛr:ÍBãÒerñ¿÷Yrä(Uº*)PÂxbY84$é…ê“$=x%L»ØrŽOsqÿo4ŒÖ|L\0é\r''	/‘‚ŽÇm8?©¬ÀAÄî´ÚPÌð«í´FYÉe_ÑFìôI«ÛD–.Ÿ!Z¦+oýöŽk½õø½°Û$Š¨òÂ	fÙâî¼êlAÒW‡\\qƒÎì©|¤·:¡¨`ÍÔlçþéA‡€³ä.1ÌLÙ¤\ZŠàã¹ÕTLx÷dS¿Ôç;>™æª®¾°5}þXáÏÇ‹c‡åÚk´_ê¯ëd’­T/Îàåí"ŸÕàtx±ˆ8õ‘ÞÊ\\\0k7»}š1éîÔ\\ßÖ€!Žm:ÐÐUC+\rrP&@º}»1	P·''	i"†„§iaâŠE/OÂÈ¢°¿š…Nù°öA·KFÓ…ðùÔž´sÏ¯égIÿs™æ¨\ZúKˆc›ý×†®ãfKà"Á&&·D¤Vç`¨rÍkG¯N,\ráŸj¬odž«02óXŒœíñ''ô`°Q*Ñ¥ÜÌò·¸¿îrã}”VvÎ1Ø›¦gÐCUg½ƒ\nbE\r,z-±À¥&v@¨f’YØ3¾U”Û¸íËmS’'),
+(4, 'ItsMeBaby69;)', 'ItsMe@hotmail.com', 'eb14bb84404dd20ffd5c0ee0c55cea12', NULL, 'µÜ¹1W¶åê‡–ÏÑšËþL6/µ8-ù!£áü=ä&¥9ƒGk\'[„}§ÀÐëtîhø³ð@Ä84VÞx}1¤JìÂn0þ­/HÎ–%\Z!Ü¦‘qÁ›¬M‰dçÄ ­u^ðèw<\"©kš—{;[@ª,‘¸´ «v¿ñpøx!ùêùø¦ÑKä¾KÂòÄp`a|YC±4ã´“ŒA?þäÃÉx~ÛÄÄ²›æiý’€_—­Ñ[Xz«¶~,îtÒÛßìy5Þ e7±ß3|þåõ>•ðÇ+“;œ-»Ç÷ƒæ„ZnXZ©@Ô  m¿’ÿmëXKÂ¿Ì«ñÄÁ_çè´5ž+lrMÈdLüB|×Œèª@Ñ ”Îb&\\]“üîqõ¿¶š‹ÏK¿´}–íd30x:…‰\r›+¬jeðþsØ‘ßBéfñ™=ÕUJõ;å¥–PÙ(¶VuÁèÎ›1•Îf\"ÿ‘þf…êKétÐˆ/‰¥k§ØCI\\Æ³>Þ,¹šÚônfÃŽ–+âÚÿQ6H9·÷½ÜòÏ’ˆ3ùqŒ¬4;§Í4\"·¶ÝPyT~à¼Àé«•}×;™u°/µ©‹ë>äý\n9ñ&ÞJƒÒx!±Òåì¿8y‹Ôº(Q6'),
+(5, '12345', '12345@qq.com', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'XHèæ€moV]©ºÀ¯@Äè|æóµ[Vè…ãoÄ½vs\0ÞC³u£²Zè®k¼=Ã¹Š8^>ØÅÇføPyIÃì©TQÀš¨,?··ã¾*ÕB½YÏnçd;Â^æžU_Ï¾^2\r©mûªß÷Øf;Íƒ¬£ÞÔšž{9¶ù¹}¼è‰…Jç=wßJt×2·D¥ò ¶û„nkH¾õ„÷ZnÈæ»!=T¶Ú\0ŠNY!¨m\"ô°îz±t=(D)`Ý+øí‡¢ÃÕì—Z¨5¡T~Û…÷<éÂÈºd­ó\\u5	¬™¯Çæ]Ý“eÈ€\\ÊºNú~Úö°DQØªA9nÚn^òaö_gEß.òÂ½™_CÚÕY¸NsÃ³ÓÇg€a½ä|#gèGîÅT#t;!\'qæ¶Ä“Á…B*hrPûºÔb%¤ØžôÀ^5SÛ·ÄžÛï¶¢ØwTß’Í^‚ñnf1>ÿj*‰ 8È¯{êëX_Á2ú»þ^ŠjV(BòHb·Ò_<59˜0bµsvïÒN‹ë…ƒ?€?^+=Ô¯öé­\Z¾0”‰`ãpâe&³Í?ð¯	 \0 ]jM> ¨by~¬f,ÀZ7\n»é¢9‘‚ Ý£Ü®³ŒÆþ]Ìi£ÚâM§ó‹öÐk‹H™'),
+(6, '123456', '123456@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'àdBé\"Á>ÇzwŽ¾d‹ÔžX>±&\"´((ºÓx÷“Ë©-Ÿƒ4àO›¼Ú˜°Ó-ú\'^o4úYgKQÆ!«ï{¾ÛÁêYü¥×FŸíÄ÷í^n)Ë1šÂ¥›RTV&w:_ØâØ‚ìRÀ#U˜ÌÚ»´Úì^ãÚ\nÎÙ«‡%åcÖÉÊ”¨$\\wìêÔœ’k-‘?”UÂ.ã~µ\Z`þ)£&Ý1“$SÜÎ²œb\\Av–GGtMXºŠAÛBšEYPtHééV-Pø&Ë—(¼â]üÏñÚf©6 îá}Om»÷â¹¨×|Ø§P¨¹ÏÐÁ.D¥\0]\Zk;2ó‡\'¢ª¯7²uUAúHë‹SÞÄué#i´°£Í·6Ë·u®\0»i‹š™X<è;òÆóNú ¬›à†÷«Y¼iÒõTëÖ ÔÝŽ¦$yy\'à&œ÷\nÆZ?ÖOBlŽ:àèì¸üÇ?PÓŽ„ˆÂñÛ\\¬wsÄ·«€²:o\rüjù5Oˆï¤ÞÎ´I&ÈÛ/D i3¾uVr™xmtl{n\nò0þ ýµ1:KÊ±œcÀù[Ö\0ûY)\rbüo»´ÛgåýÌý•ß³äøý9ñ™½*9õŽó»Õ+ËÐœØ‰Bñ¬-ZÅnC\'[J'),
+(7, 'Jordan', 'jordang@gmail.com', 'b5a682162aea3da64953e04ea820dad4', NULL, '-´:êBü8BKÓ°q9LÜáJ¾¬±\rœåùÌ4:Öd‡!‹¿Wù ÿü¼¿\'Ë@Q†I†À!jQÙ.A¾tÂaó²(ò\0†Ë+ °À„ˆôZ=š²ý*‡	fêË©lž¾ˆ*°ØQÙR\r41¯§ƒ\0È²Ä_½‰E	3qK=Û•ù(\Z§SíÁ£°SÌˆR\\,’™”wIHDvæ¹÷æC3—Ü;´;ª®+JJæ\0Tï•ôîš+Öª„›öÑ^_…¹`·m6Ó7\"‚y³œŠ½Ï ’éf\"ž[äzJ|É¿¬h£ý*aEB¬Ÿ/¹¬ÞIÈ†ë1ëS–µäÙŸ,ÉU‚|ï˜]A°;#ýióú\nkíËÇ8½%MÌt!­È}’ùD„ŸHÞ–Ô™c¸K:}ÌªA+µÇ<dÈL³ºø™µht“û–c¡-sì=$4ãjyT¸ÆJ~œy&Qy¶lÐºïµèw/E¾H Ô×£ÃDV1nzB	9.i_þn”ú\\îG§#ÛG\\ŸP°Î´¿œO[ŒŠozžmô P‚¢5\r9þl×³¦ß²zmÒóé4‡I;ž’A±œÝ¿ry’D/\nA‘;|È³aí‘cÈ3iv¿å”ÐŽñ­PÉeû¥fBÀÑk#ñ~/È9†œ¹|`Ü¸àoF¨	yä>B˜ÞÞ8p['),
+(8, 'Joe', 'Joe@gmail.com', 'b5a682162aea3da64953e04ea820dad4', NULL, 'õŠSùê¢³‘ÞïRè3.Þ|‰	j$]|‘žTHT¥¥1õš–À‘‘wÛr:ÍBãÒerñ¿÷Yrä(Uº*)PÂxbY84$é…ê“$=x%L»ØrŽOsqÿo4ŒÖ|L\0é\r\'	/‘‚ŽÇm8?©¬ÀAÄî´ÚPÌð«í´FYÉe_ÑFìôI«ÛD–.Ÿ!Z¦+oýöŽk½õø½°Û$Š¨òÂ	fÙâî¼êlAÒW‡\\qƒÎì©|¤·:¡¨`ÍÔlçþéA‡€³ä.1ÌLÙ¤\ZŠàã¹ÕTLx÷dS¿Ôç;>™æª®¾°5}þXáÏÇ‹c‡åÚk´_ê¯ëd’­T/Îàåí\"ŸÕàtx±ˆ8õ‘ÞÊ\\\0k7»}š1éîÔ\\ßÖ€!Žm:ÐÐUC+\rrP&@º}»1	P·\'	i\"†„§iaâŠE/OÂÈ¢°¿š…Nù°öA·KFÓ…ðùÔž´sÏ¯égIÿs™æ¨\ZúKˆc›ý×†®ãfKà\"Á&&·D¤Vç`¨rÍkG¯N,\ráŸj¬odž«02óXŒœíñ\'ô`°Q*Ñ¥ÜÌò·¸¿îrã}”VvÎ1Ø›¦gÐCUg½ƒ\nbE\r,z-±À¥&v@¨f’YØ3¾U”Û¸íËmS’'),
 (9, 'Jordan123', 'jordang111@gmail.com', '$2a$10$zKT1xgyOuc1zMOXv4C2CdemUtmYgzgug.u.YX0uM.KtTcxPNv8tJK', 0, '$2a$10$zKT1xgyOuc1zMOXv4C2Cde'),
-(10, '12345678', '12345678@gmail.com', '$2a$10$63UUya1E7FQjeTJx89.XsOQ060iwmIix7PI5HN.DJw0WzzNXGmmjS', 0, '$2a$10$63UUya1E7FQjeTJx89.XsO');
+(10, '12345678', '12345678@gmail.com', '$2a$10$63UUya1E7FQjeTJx89.XsOQ060iwmIix7PI5HN.DJw0WzzNXGmmjS', 0, '$2a$10$63UUya1E7FQjeTJx89.XsO'),
+(11, 'eyuriko', 'eyuriko@gmail.com', '$2a$10$w0ppz9SZoYp2cV0/4DMGhO1GJDnzMhru5RUp22RGAJpjX3HkRueiW', 0, '$2a$10$w0ppz9SZoYp2cV0/4DMGhO'),
+(12, 'Jrdan123', 'D00195567@student.dkit.ie', '$2a$10$kpNHeOPMRySPKMxSTUdY1uYqP5jfpyWkYtGjX8lrZ39z4HPiv8WSK', 0, '$2a$10$kpNHeOPMRySPKMxSTUdY1u');
 
 --
 -- Indexes for dumped tables
@@ -369,98 +374,108 @@ ALTER TABLE `user`
   ADD UNIQUE KEY `Email` (`Email`);
 
 --
--- 在导出的表使用AUTO_INCREMENT
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- 使用表AUTO_INCREMENT `anime`
+-- AUTO_INCREMENT for table `anime`
 --
 ALTER TABLE `anime`
   MODIFY `anime_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
--- 使用表AUTO_INCREMENT `episode`
+-- AUTO_INCREMENT for table `episode`
 --
 ALTER TABLE `episode`
   MODIFY `video_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
--- 使用表AUTO_INCREMENT `favourite`
+-- AUTO_INCREMENT for table `favourite`
 --
 ALTER TABLE `favourite`
   MODIFY `favourite_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
--- 使用表AUTO_INCREMENT `genre`
+-- AUTO_INCREMENT for table `genre`
 --
 ALTER TABLE `genre`
   MODIFY `genre_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
--- 使用表AUTO_INCREMENT `genreanime`
+-- AUTO_INCREMENT for table `genreanime`
 --
 ALTER TABLE `genreanime`
   MODIFY `genreanime_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
--- 使用表AUTO_INCREMENT `message`
+-- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
   MODIFY `message_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
--- 使用表AUTO_INCREMENT `orders`
+-- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
   MODIFY `order_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- 使用表AUTO_INCREMENT `rating`
+-- AUTO_INCREMENT for table `rating`
 --
 ALTER TABLE `rating`
   MODIFY `rating_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
--- 使用表AUTO_INCREMENT `reviews`
+-- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
   MODIFY `review_id` int(5) NOT NULL AUTO_INCREMENT;
+
 --
--- 使用表AUTO_INCREMENT `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 --
--- 限制导出的表
+-- Constraints for dumped tables
 --
 
 --
--- 限制表 `episode`
+-- Constraints for table `episode`
 --
 ALTER TABLE `episode`
   ADD CONSTRAINT `FK_anime_id` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`);
 
 --
--- 限制表 `favourite`
+-- Constraints for table `favourite`
 --
 ALTER TABLE `favourite`
   ADD CONSTRAINT `fk_anime_anime` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`),
   ADD CONSTRAINT `fk_user_favourite` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
--- 限制表 `genreanime`
+-- Constraints for table `genreanime`
 --
 ALTER TABLE `genreanime`
   ADD CONSTRAINT `fk_anime_genreanime` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`),
   ADD CONSTRAINT `fk_genre_genreanime` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`genre_id`);
 
 --
--- 限制表 `message`
+-- Constraints for table `message`
 --
 ALTER TABLE `message`
   ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `message_ibfk_2` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`);
 
 --
--- 限制表 `orders`
+-- Constraints for table `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `FK_user_order` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
--- 限制表 `rating`
+-- Constraints for table `rating`
 --
 ALTER TABLE `rating`
   ADD CONSTRAINT `fk_anime_rating` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`),
@@ -468,11 +483,12 @@ ALTER TABLE `rating`
   ADD CONSTRAINT `fk_user_rating` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
--- 限制表 `reviews`
+-- Constraints for table `reviews`
 --
 ALTER TABLE `reviews`
   ADD CONSTRAINT `FK_user_reviews` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `fk_anime_reviews` FOREIGN KEY (`anime_id`) REFERENCES `anime` (`anime_id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
