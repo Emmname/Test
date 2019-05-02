@@ -24,7 +24,7 @@ public class Episode {
         this.episode_link = null;
     }
 
-    public Episode(int video_id, int anime_id, int episode_id, String episode_name, String episode_link) {
+    public Episode(int episode_id,int anime_id, int video_id,  String episode_name, String episode_link) {
         this.video_id = video_id;
         this.anime_id = anime_id;
         this.episode_id = episode_id;

@@ -4,6 +4,8 @@
     Author     : Emmine Team (Rui Hu, Jordan Donnelly, Haiyun Yu)
 --%>
 
+<%@page import="Daos.EpisodeDao"%>
+<%@page import="Dtos.Episode"%>
 <%@page import="Daos.MessageDao"%>
 <%@page import="Dtos.Message"%>
 <%@page import="java.util.ArrayList"%>
@@ -66,6 +68,7 @@
                     </div>
                     <p class="caption">
                         This anime is animated by <%=anime.getAnimator()%> and was released on <%=anime.getReleasedate()%></p> 
+                    <p><%=anime.getDescription()%></p>
                     <section>
                         <p>The rating of this is anime is <%=rating%>(<%=ratingCount%>)</p>
                            
@@ -93,6 +96,26 @@
                             <input type="submit" value="Submit">
                             <input type="hidden" name ="action" value="addRating" />
                     </form>
+                        
+                        <%
+                            Episode episode = new Episode();
+                            ArrayList<Episode> eps = new ArrayList<>();
+                            EpisodeDao eDao = new EpisodeDao("anime");
+                            eps=eDao.getEpisodeByAnimeId(animeID);
+                            
+                            
+                            for(int i = 0; i<eps.size();i++ ){
+                                
+                                
+                        %>
+                            
+                    <form action = "Servlet" method="post" name="downloadEpisode">
+                            <input type="hidden" name ="action" value="downloadEpisode" />
+                            <input name="EpisdoeLink"type="submit" value="<%=eps.get(i).getEpisode_link()%>" />
+                          </form>
+                        
+                        <%}
+                           %>
                 </section>
                 </div>
                  

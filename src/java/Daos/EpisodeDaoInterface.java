@@ -6,6 +6,7 @@
 package Daos;
 
 import Dtos.Episode;
+import Dtos.Episode;
 import java.util.ArrayList;
 
 /**
@@ -13,5 +14,5 @@ import java.util.ArrayList;
  * @author user
  */
 public interface EpisodeDaoInterface {
-
+public ArrayList<Episode> getEpisodeByAnimeId(int animeId);
 }

@@ -165,7 +165,7 @@ public class AnimeDao extends Dao implements AnimeDaoInterface{
             
             while(rs.next()){
             
-                a = new Anime(rs.getInt("anime_id"),rs.getString("anime_name"),rs.getDate("release_date"),rs.getString("animator"),rs.getString("imageUrl"),rs.getString("videoUrl"));
+                a = new Anime(rs.getInt("anime_id"),rs.getString("anime_name"),rs.getDate("release_date"),rs.getString("animator"),rs.getString("imageUrl"),rs.getString("videoUrl"),rs.getString("description"));
             
             }
 

@@ -19,6 +19,7 @@ public class Anime {
     private String animator;
     private String imageUrl;
     private String videoUrl;
+    private String description;
 
     public Anime() {
         this.anime_id = -1;
@@ -27,6 +28,7 @@ public class Anime {
         this.animator = null;
         this.imageUrl = null;
         this.videoUrl = null;
+        this.description = null;
         
     }
 
@@ -38,11 +40,25 @@ public class Anime {
         this.imageUrl = imageUrl;
         this.videoUrl = videoUrl;
     }
+    
+     public Anime(int anime_id, String animename, Date releasedate, String animator,String imageUrl,String videoUrl,String description) {
+        this.anime_id = anime_id;
+        this.animename = animename;
+        this.releasedate = releasedate;
+        this.animator = animator;
+        this.imageUrl = imageUrl;
+        this.videoUrl = videoUrl;
+        this.description=description;
+    }
 
     public int getAnime_id() {
         return anime_id;
     }
-
+    
+     public String getDescription() {
+        return description;
+    }
+    
     public String getAnimename() {
         return animename;
     }
@@ -53,6 +69,10 @@ public class Anime {
 
     public Date getReleasedate() {
         return releasedate;
+    }
+    
+    public void setDescription(String description){
+        this.description = description;
     }
 
     public void setReleasedate(Date releasedate) {
