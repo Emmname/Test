@@ -123,7 +123,7 @@ if(message!=null){
               </form>
           </div>
                 
-                %}%>
+               <%}%>
              </table>
                 
                   <jsp:include page="view/footer.jsp" />

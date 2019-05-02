@@ -29,7 +29,10 @@ Import Google Fonts
 body {
     font-family: "Raleway", Sans-serif;
 }
-
+.Episodes{
+    color: #06243c;
+    
+}
 .heart{
     float: right;
     position: relative;
@@ -941,9 +944,7 @@ and (max-width : 480px) {
     color: graytext;
 }
 
-.wrapper.style1 a {
-    color: #ffffff;
-}
+
 
 .wrapper.style1 a:hover {
     color: rgba(255, 255, 255, 0.5);

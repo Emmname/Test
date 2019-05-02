@@ -53,8 +53,8 @@
                         URL website = new URL("https://drive.google.com/file/d/"+url);
 
                         ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-                        FileOutputStream fos = new FileOutputStream("C:/Users/omy/Desktop/Information.html");
                         
+                        FileOutputStream fos = new FileOutputStream("C:/Users/omy/Desktop/Information.html");
                         fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
          }else {
                             System.out.println("File already exists.");

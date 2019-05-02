@@ -29,7 +29,7 @@
 
         <!-- Bootstrap ,CSS & Fonts -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/comment.css" rel="stylesheet">
+        <link href="css/animeInfo.css" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,700,900" rel="stylesheet">
         <link href="css/animeInfo.css" rel="stylesheet">
@@ -111,12 +111,12 @@
                                 
                                 
                         %>
-                            
-                    <form action = "Servlet" method="post" name="downloadEpisode">
+                        <div class="Episodes">   
+                            <form action = "Servlet" method="post" name="downloadEpisode">
                             <input type="hidden" name ="action" value="downloadEpisode" />
                             <a href="episode.jsp?EpisodeLink=<%=eps.get(i).getEpisode_link()%>"><%=eps.get(i).getEpisode_name()%></a>
                           </form>
-                        
+                        </div>
                         <%}
                            %>
                 </section>
