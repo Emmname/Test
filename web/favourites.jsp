@@ -15,16 +15,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-         <link href="CSS/Favourite.css" rel="stylesheet" type="text/css"/>
-        <link href="CSS/home.css" rel="stylesheet" type="text/css"/>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <a href="header.jsp"></a>
-       <jsp:include page="view/header.jsp" />
-
-        <title>Your Favorites</title>
+         <%@include file="internationalisationHeader.jsp" %>
+         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,700,900" rel="stylesheet">
+        <link href="css/favourite.css" rel="stylesheet">
+         <jsp:include page="view/header.jsp" />  
+        <title><%=dataBundle.getString("popular_title")%></title>
     </head>
-    <body>
-        <script src="https://www.w3schools.com/lib/w3.js"></script>
+     <script src="https://www.w3schools.com/lib/w3.js"></script>
         <%
             User user = (User) session.getAttribute("loggedInUser");
             if(user != null){
@@ -51,24 +50,26 @@
                 AnimeDao aDao = new AnimeDao("anime");
                 RatingDao rDao = new RatingDao("anime");
                 FavouriteDao fDao =  new FavouriteDao("anime");
-                ArrayList<Integer> favIDs = new ArrayList();
                 ArrayList<Integer> animeIDs = new ArrayList();
                 double rating=0;
                 for(int i=0; i<fDao.getFavourites(user_id).size();i++){
-                    favIDs.add(fDao.getFavourites(user_id).get(i));
-                     animeIDs=fDao.getAnimeIdByFavouriteId(favIDs.get(i));
+                     animeIDs.add(fDao.getFavourites(user_id).get(i));
                         rating=rDao.getAverageRating(animeIDs.get(i));
                     if((animeIDs != null && (!animeIDs.isEmpty()))){
+                        
+                    
+                    }
+                }
                         for(int animeId : animeIDs){
                      
                      Anime a = aDao.getAnimeById(animeId);
                      animes.add(a);
 
                         }
-                    }
+                    
                   
                     
-                }
+                
           Favourite resultAnime = (Favourite)session.getAttribute("Favourites");
             if(resultAnime != null){}
               
@@ -92,25 +93,26 @@
                 <tr class="item">
                     
                     <td><%=a.getAnime_id()%></td>
-                    <td><%=a.getAnimename()%></td>
+                    <td><a href="animeInfo.jsp?anime=<%=a.getAnimename()%>&aID=<%=a.getAnime_id()%>"><%=a.getAnimename()%></td>
                     <td><%=a.getAnimator()%></td>
                     <td><%=a.getReleasedate()%></td>
                     <td><%=rDao.getAverageRating(a.getAnime_id())%></td>
-                    
+                    <td><img src="images/<%=a.getImageUrl()%>" height="260" width="100"><td>
+                   
                 </tr>
                 
                 <%
                     }
                 }
             
-            
+}
                 else{
                     String sessionExpired = "You must be logged in to use this service";
                     session.setAttribute("sessionExpired", sessionExpired);
                     response.sendRedirect("login.jsp");
                 }
             
-            }
+            
         %>
            
              </table>
