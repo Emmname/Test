@@ -170,8 +170,8 @@ public class UserDao extends Dao implements UserDaoInterface {
                     InternetAddress.parse(email)
             );
             message.setSubject("Testing Gmail SSL");
-            message.setText("Dear Mail Crawler,"
-                    + "\n\n Please do not spam my email!");
+            message.setText("Hello, welcom to sign up to Emnime Project, "
+                    + "\n\n This is a verification email, plaese do not spam this email. ");
 
             Transport.send(message);
 
@@ -400,5 +400,64 @@ public class UserDao extends Dao implements UserDaoInterface {
             }
         }
         return user;
+    }
+
+    
+    /**
+     * Update user's password to hash.
+     * @param email The user email address of the user.
+     * @param oldpass The current password saved in dbms of an user.
+     * @param newpass The new password that user inputed into the web page.
+     * @return return -1 if the password updated to the dbms.
+     * If not returned, appropriate message will be returned.
+     */
+    @Override
+    public int updateUserPassword(String email, String oldpass, String newpass) {
+        Connection con = null;
+        PreparedStatement ps = null; 
+        ResultSet rs = null;
+         int returnValue = -1;
+         
+        try {
+            con = this.getConnection();
+            String query1 ="Select Password Where Email =? ";
+            ps= con.prepareStatement(query1);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                boolean passwordMatches = false;
+                String passwordFromDB = rs.getString("password");
+                if(BCrypt.checkpw(oldpass, passwordFromDB)){
+                    passwordMatches=true;
+                }
+                if(passwordMatches){
+                    String salt = BCrypt.gensalt();
+                    String hashed = BCrypt.hashpw(newpass, salt);                 
+                    
+                    String query2 ="Update user SET Password = ? Where Email =? ";
+                    ps = con.prepareStatement(query2, Statement.RETURN_GENERATED_KEYS);
+                    
+                    ps.setString(1, hashed);
+                    ps.setString(2, email);
+                    ps.executeUpdate();
+                    returnValue = -1;
+                }
+            }
+    }catch (SQLException e) {
+            System.out.println("Exception occured in the updateUserPassword() method: " + e.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    freeConnection(con);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section of the updateUserPassword() method");
+                e.getMessage();
+            }
+        }
+        return returnValue = -1;
     }
 }

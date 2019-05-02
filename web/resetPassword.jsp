@@ -33,21 +33,23 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <div class="section-title"> 
-                            <form action="servlet" method="post">
+                            <form action="Servlet" method="post" name="resetPassword">
                                 <table>
                                     <tr>
+                                        <th>Email: </th>
                                         <th>Old Password: </th>
                                         <th>New Password: </th>
-                                        <th>Confirm New Password: </th>
                                     </tr>
                                     <tr>
-                                        <th><input type="password" name="oldPassword"></th>
-                                        <th><input type="password" name="newPassword"></th>
-                                        <th><input type="password" name="reenter_Password"></th>
+                                        <th><input type="text" name="emailAddress"></th>
+                                        <th><input type="password" name="oldpass"></th>
+                                        <th><input type="password" name="newpass"></th>
                                     </tr>
                                     
                                     <tr>
-                                        <th><input type="submit" name="updatePassword"></th>                                                                   
+                                        <th></th>
+                                        <th><input type="submit" name="action" value="resetPassword"></th>                                                                   
+                                        <th></th>
                                     </tr>
                                 </table>
                             </form>

@@ -39,8 +39,8 @@
                                 <table>
                                     <tr>
                                         <th><%=dataBundle.getString("ver_email")%></th>
-                                        <th> <input type="text"size="40" name=""> </th>
-                                        <th> <button type="submit" class=" btn"><%=dataBundle.getString("ver_send")%></button></th>                                   
+                                        <th> <input type="text"size="40" name="email"> </th>
+                                        <th> <input type="submit" class="btn" ><a href="http://localhost:8084/AnimeProject2.0/resetPassword.jsp"/></th>                                   
                                     </tr>
                                     <tr>
                                         <th> <%=dataBundle.getString("ver_reset")%></th>

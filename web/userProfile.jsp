@@ -55,7 +55,7 @@
                                     <!-- Email -->
                                     <th><%=user.getEmail()%></th>
                                     <!-- Password -->
-                                    <th><a href="verification.jsp"><%=dataBundle.getString("profile_changep")%></a></th>
+                                    <th><a href="resetPassword.jsp"><%=dataBundle.getString("profile_changep")%></a></th>
                                     <!-- Status -->
                                     <% int userstatus = (int) session.getAttribute("Status");//premium
                                         if (userstatus == 1) {  %> 
