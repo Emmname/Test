@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/AnimeProject/web/index.jsp</file>
-            <file>file:/C:/xampp/htdocs/AnimeProject/web/Pay.jsp</file>
-            <file>file:/C:/xampp/htdocs/AnimeProject/test/Daos/RatingDaoTest.java</file>
-            <file>file:/C:/xampp/htdocs/AnimeProject/nbproject/build-impl.xml</file>
-            <file>file:/C:/xampp/htdocs/AnimeProject/test/Daos/UserDaoTest.java</file>
-            <file>file:/C:/xampp/htdocs/AnimeProject/test/Daos/OrderDaoTest.java</file>
+            <file>file:/C:/xampp/htdocs/Cloned/AnimeProject/test/Daos/RatingDaoTest.java</file>
+            <file>file:/C:/xampp/htdocs/Cloned/AnimeProject/test/Daos/UserDaoTest.java</file>
+            <file>file:/C:/xampp/htdocs/Cloned/AnimeProject/src/java/Daos/UserDao.java</file>
+            <file>file:/C:/xampp/htdocs/Cloned/AnimeProject/test/Daos/OrderDaoTest.java</file>
         </group>
     </open-files>
 </project-private>

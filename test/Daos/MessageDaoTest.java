@@ -84,9 +84,9 @@ public class MessageDaoTest {
         String title = "The new title";
         String context = "It is nice";
         String wholeft = "hugh";
-        int expResult = 3;
         int result = messageDao.addMessage(userId, animeId, title, context, wholeft);
-        assertEquals(expResult, result);
+        assertTrue(result>0);
+        
 
     }
 
@@ -96,9 +96,14 @@ public class MessageDaoTest {
     @Test
     public void testRemoveMessageByID() {
         System.out.println("removeMessageByID");
-        int messageId = 3;
-        boolean expResult = true;
-        boolean result = messageDao.removeMessageByID(messageId);
+        int userId = 9;
+        int animeId = 2;
+        String title = "The new title";
+        String context = "It is nice";
+        String wholeft = "hugh";
+        int messageId = messageDao.addMessage(userId, animeId, title, context, wholeft);
+        int expResult = 1;
+        int result = messageDao.removeMessageByID(messageId);
         assertEquals(expResult, result);
 
     }

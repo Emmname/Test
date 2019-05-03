@@ -17,5 +17,5 @@ public interface MessageDaoInterface {
      public ArrayList<Message> getMsgByAnimeId(int animeId);
       public ArrayList<Message> getMsgByUserId(int userId);
       public int addMessage( int userId,int animeId,String title , String context, String wholeft );
-      public boolean removeMessageByID(int messageId);
+      public int removeMessageByID(int messageId);
 }

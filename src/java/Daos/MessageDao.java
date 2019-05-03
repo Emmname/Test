@@ -196,7 +196,7 @@ public class MessageDao extends Dao implements MessageDaoInterface{
         return newId; 
     }
      @Override
-    public boolean removeMessageByID(int messageId) {
+    public int removeMessageByID(int messageId) {
         Connection con = null;
         PreparedStatement ps = null;
         boolean result = false;
@@ -210,7 +210,6 @@ public class MessageDao extends Dao implements MessageDaoInterface{
             ps.setInt(1, messageId);
             rowsAffected = ps.executeUpdate();
             if (rowsAffected == 1) {
-                result = true;
             }
         } catch (SQLException e) {
             System.out.println("Exception occured in the removeMessageByID() method: " + e.getMessage());
@@ -228,6 +227,6 @@ public class MessageDao extends Dao implements MessageDaoInterface{
             }
         }
 
-        return result;
+        return rowsAffected;
     }
       }
