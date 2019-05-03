@@ -47,7 +47,7 @@ public class RatingDaoTest {
         System.out.println("addRating");
         int anime_id = 1;
         int ratingNumber = 4;
-        int user_id = 16;
+        int user_id = 10;
         int result = ratingDao.addRating(anime_id, ratingNumber, user_id);
         assertTrue( result>15);
     }

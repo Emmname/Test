@@ -45,12 +45,12 @@ public class UserDaoTest {
     @Test
     public void testGetUserByUsernamePassword() {
         System.out.println("getUserByUsernamePassword");
-        String username = "12345";
-        String password = "12345";
-        User expResult = new User(5,"12345","12345@qq.com","12345",2);
+        String username = "12345678";
+        String password = "12345678";
+        User expResult = new User(10,"12345678","1234578@gmail.com","12345678",0);
         User result = userDao.getUserByUsernamePassword(username, password);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
+        
 
     }
 
@@ -60,13 +60,13 @@ public class UserDaoTest {
     @Test
     public void testRegisterUser() {
         System.out.println("registerUser");
-        String username = "123456";
-        String password = "123456";
-        String email = "123456@gmail.com";
+        String username = "2345678";
+        String password = "2345678";
+        String email = "2345678@gmail.com";
   
         int result = userDao.registerUser(username, password, email);
-        assertTrue(result>5);
-        // TODO review the generated test code and remove the default call to fail.
+        assertTrue(result>10);
+        
 
     }
 
@@ -76,28 +76,16 @@ public class UserDaoTest {
     @Test
     public void testUpdateUserStatus() {
         System.out.println("updateUserStatus");
-        int userId = 5;
+        int userId = 10;
         int Status = 1;
-        User expResult = new User(5,"12345","12345@qq.com","12345",2);
+        User expResult = new User(5,"12345678","12345678@gmail.com","12345678",0);
         int result = userDao.updateUserStatus(userId, Status);
         assertEquals(expResult, result);
         
         
     }
 
-    /**
-     * Test of getSaltByUsername method, of class UserDao.
-     */
-    @Test
-    public void testGetSaltByUsername() {
-        System.out.println("getSaltByUsername");
-        String username = "12345";
-        byte[] expResult = null;
-        byte[] result = userDao.getSaltByUsername(username);
-        assertArrayEquals(expResult, result);
 
-    }
-    
 
     /**
      * Test of getUserById method, of class UserDao.
@@ -105,10 +93,9 @@ public class UserDaoTest {
      @Test
     public void testGetUserById() {
         System.out.println("getUserById");
-        int userId = 0;
-        UserDao instance = null;
-        User expResult = null;
-        User result = instance.getUserById(userId);
+        int userId = 10;
+        User expResult = new User(10,"12345678","1234578@gmail.com","12345678",0);
+        User result = userDao.getUserById(userId);
         assertEquals(expResult, result);
 
     }
@@ -119,10 +106,9 @@ public class UserDaoTest {
      @Test
     public void testGetUserByEmail() {
         System.out.println("getUserByEmail");
-        String email = "";
-        UserDao instance = null;
-        User expResult = null;
-        User result = instance.getUserByEmail(email);
+        String email = "12345678@gmail.com";
+        User expResult =  new User(10,"12345678","1234578@gmail.com","12345678",0);
+        User result = userDao.getUserByEmail(email);
         assertEquals(expResult, result);
 
     }

@@ -40,19 +40,7 @@ public class MessageDaoTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of getAllMsg method, of class MessageDao.
-     */
-//    @Test
-//    public void testGetAllMsg() {
-//        System.out.println("getAllMsg");
-//        MessageDao instance = null;
-//        ArrayList<Message> expResult = null;
-//        ArrayList<Message> result = instance.getAllMsg();
-//        assertEquals(expResult, result);
-//
-//    }
-
+ 
     /**
      * Test of getMsgByAnimeId method, of class MessageDao.
      */
@@ -91,7 +79,7 @@ public class MessageDaoTest {
     @Test
     public void testAddMessage() {
         System.out.println("addMessage");
-        int userId = 10;
+        int userId = 9;
         int animeId = 2;
         String title = "The new title";
         String context = "It is nice";
@@ -108,7 +96,7 @@ public class MessageDaoTest {
     @Test
     public void testRemoveMessageByID() {
         System.out.println("removeMessageByID");
-        int messageId = 5;
+        int messageId = 3;
         boolean expResult = true;
         boolean result = messageDao.removeMessageByID(messageId);
         assertEquals(expResult, result);

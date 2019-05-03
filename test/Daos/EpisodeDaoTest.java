@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 public class EpisodeDaoTest {
     private EpisodeDao episodeDao;
     public EpisodeDaoTest() {
-         episodeDao = new EpisodeDao("animetest");
+         episodeDao = new EpisodeDao("animeTest");
     }
     
     @BeforeClass
@@ -46,9 +46,9 @@ public class EpisodeDaoTest {
     @Test
     public void testGetEpisodeByAnimeId() {
         System.out.println("getEpisodeByAnimeId");
-        int animeId = 0;
+        int animeId = 3;
          ArrayList<Episode> eList = new ArrayList<Episode>();
-         Episode e = new Episode(1,1,0,"OVA: Road to Hero","");
+         Episode e = new Episode(1,2,11,"Hagane no renkinjutsushi (Fullmetal Alchemist)",null);
          eList.add(e);
         ArrayList<Episode> expResult = eList;
         ArrayList<Episode> result = episodeDao.getEpisodeByAnimeId(animeId);

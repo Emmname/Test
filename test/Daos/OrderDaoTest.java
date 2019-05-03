@@ -43,17 +43,16 @@ public class OrderDaoTest {
     /**
      * Test of addOrder method, of class OrderDao.
      */
-//    @Test
-//    public void testAddOrder() {
-//       System.out.println("addOrder");
-//        int userId = 1;
-//        Date date = new Date(23-10-2015);
-//        Date datePaid = date;
-//        String paymentType = "visa";
-//        int AmountPaid = 5;
-//        Order expResult = new Order(4,1, (java.sql.Date) datePaid,null,"visa",5);
-//        int result = orderDao.addOrder(userId, datePaid, paymentType, AmountPaid);
-//        assertEquals(expResult, result);
-//    }
+    @Test
+    public void testAddOrder() {
+       System.out.println("addOrder");
+        int userId = 6;
+        Date date = new Date(23-10-2015);
+        Date datePaid = date;
+        String paymentType = "visa";
+        int AmountPaid = 5;
+        int result = orderDao.addOrder(userId, datePaid, paymentType, AmountPaid);
+        assertTrue(result>7);
+    }
     
 }

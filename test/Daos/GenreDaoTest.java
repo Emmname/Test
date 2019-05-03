@@ -56,8 +56,8 @@ public class GenreDaoTest {
     @Test
     public void testGetNumberOfGenreIds() {
         System.out.println("getNumberOfGenreIds");
-        String genreName = "";
-        int expResult = 10;
+        String genreName = "Action";
+        int expResult = 1;
         int result = genreDao.getNumberOfGenreIds(genreName);
         assertEquals(expResult, result);
 

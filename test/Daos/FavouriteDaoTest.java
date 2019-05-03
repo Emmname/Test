@@ -61,7 +61,7 @@ public class FavouriteDaoTest {
     @Test
     public void testAddFavourite() {
          System.out.println("addFavourite");
-        int user_id = 2;
+        int user_id = 10;
         int anime_id = 3;
         int result = favouriteDao.addFavourite(user_id, anime_id);
         assertTrue( result>2);

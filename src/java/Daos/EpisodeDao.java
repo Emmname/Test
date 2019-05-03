@@ -48,7 +48,7 @@ public class EpisodeDao extends Dao implements EpisodeDaoInterface{
             
             while(rs.next()){
             
-                ep = new Episode(rs.getInt("episode_id"),rs.getInt("anime_id"),rs.getInt("episodeNumber"),rs.getString("episode_name"),rs.getString("episode_link"));
+                ep = new Episode(rs.getInt("episode_id"),rs.getInt("anime_id"),rs.getInt("video_id"),rs.getString("episode_name"),rs.getString("episode_link"));
                 e.add(ep);
             }
 

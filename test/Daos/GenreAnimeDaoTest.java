@@ -5,6 +5,7 @@
  */
 package Daos;
 
+import Dtos.GenreAnime;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,7 +19,7 @@ import static org.junit.Assert.*;
  * @author user
  */
 public class GenreAnimeDaoTest {
-     private GenreAnimeDao genreanimeDao;
+        private GenreAnimeDao genreanimeDao;
     public GenreAnimeDaoTest() {
         genreanimeDao = new GenreAnimeDao("animetest");
     }
@@ -39,18 +40,20 @@ public class GenreAnimeDaoTest {
     public void tearDown() {
     }
 
-//    /**
-//     * Test of getAnimeIdBygenreId method, of class GenreAnimeDao.
-//     */
-//    @Test
-//    public void testGetAnimeIdBygenreId() {
-//        System.out.println("getAnimeIdBygenreId");
-//        int genreId = 0;
-//        GenreAnimeDao instance = null;
-//        ArrayList<Integer> expResult = null;
-//        ArrayList<Integer> result = instance.getAnimeIdBygenreId(genreId);
-//        assertEquals(expResult, result);
-//
-//    }
+    /**
+     * Test of getAnimeIdBygenreId method, of class GenreAnimeDao.
+     */
+    @Test
+    public void testGetAnimeIdBygenreId() {
+        System.out.println("getAnimeIdBygenreId");
+        int genreId = 4;
+        ArrayList<Integer> aList = new ArrayList<Integer>(); 
+        aList.add(6);
+        aList.add(10);
+        ArrayList<Integer> expResult = aList;
+        ArrayList<Integer> result = genreanimeDao.getAnimeIdBygenreId(genreId);
+        assertEquals(expResult, result);
+
+    }
     
 }
