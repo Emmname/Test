@@ -50,8 +50,6 @@ public class UserDaoTest {
         User expResult = new User(10,"12345678","1234578@gmail.com","12345678",0);
         User result = userDao.getUserByUsernamePassword(username, password);
         assertEquals(expResult, result);
-        
-
     }
 
     /**
@@ -66,8 +64,6 @@ public class UserDaoTest {
   
         int result = userDao.registerUser(username, password, email);
         assertTrue(result>10);
-        
-
     }
 
     /**
@@ -79,10 +75,8 @@ public class UserDaoTest {
         int userId = 10;
         int Status = 1;
         User expResult = new User(5,"12345678","12345678@gmail.com","12345678",0);
-        int result = userDao.updateUserStatus(userId, Status);
+        int result = userDao.updateUserStatus(userId, Status);//it works but it doesn't have the 
         assertEquals(expResult, result);
-        
-        
     }
 
 
@@ -97,7 +91,6 @@ public class UserDaoTest {
         User expResult = new User(10,"12345678","1234578@gmail.com","12345678",0);
         User result = userDao.getUserById(userId);
         assertEquals(expResult, result);
-
     }
 
     /**
@@ -110,7 +103,6 @@ public class UserDaoTest {
         User expResult =  new User(10,"12345678","1234578@gmail.com","12345678",0);
         User result = userDao.getUserByEmail(email);
         assertEquals(expResult, result);
-
     }
     
 }

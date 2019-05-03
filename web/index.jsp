@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        n
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="utf-8">
@@ -35,7 +35,6 @@
         <!-------------------------- header  menu ---------------------------->
         <%@include file="internationalisationHeader.jsp" %>
         <jsp:include page="view/header.jsp" />
-
 
         <!-------------------------- body content ---------------------------->             
         <!--iframe container-->  
@@ -87,7 +86,6 @@
         <!--iframe container-->
 
         <!-- container -->
-
         <section id="about" class="mz-module">
             <div class="container light-bg">
                 <div class="row">
@@ -102,9 +100,6 @@
             </div>
         </section>		
         <!-- /.container -->
-
-
-
 
         <section class="wrapper ">
             <div class="inner">
@@ -167,6 +162,7 @@
 
                     if (anime1 != null || anime2 != null || anime3 != null) {
                 %>
+                
                 <!-- 3 Column Video Section -->
                 <div class="flex flex-3">
                     <div class="video col">
@@ -217,8 +213,6 @@
             </div>
             <% }%>
         </section>
-
-
 
         <!-------------------------- footer section ---------------------------->
         <jsp:include page="view/footer.jsp" />

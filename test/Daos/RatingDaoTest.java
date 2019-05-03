@@ -48,7 +48,7 @@ public class RatingDaoTest {
         int anime_id = 1;
         int ratingNumber = 4;
         int user_id = 10;
-        int result = ratingDao.addRating(anime_id, ratingNumber, user_id);
+        int result = ratingDao.addRating(anime_id, ratingNumber, user_id);//ignore the add information, otherwise it won't work well.
         assertTrue( result>15);
     }
 
@@ -65,7 +65,6 @@ public class RatingDaoTest {
 
     }
 
-    
     /**
      * Test of getNumberOfRatingIds method, of class RatingDao.
      */
