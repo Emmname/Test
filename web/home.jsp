@@ -124,7 +124,7 @@
                     if (list != null && !list.equals("")) {
                         int max = list.size();
                         
-                        for (int i = 0; i <= list.size(); i++) {
+                        for (int i = 0; i <list.size(); i++) {
                             max = (int) Math.random()+1;
                             a1 = list.get(max);
                             list.remove(a1);

@@ -13,7 +13,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        n
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="utf-8">
@@ -116,13 +116,14 @@
 
                     //assign it into new arraylist,create new anime
                     ArrayList<Anime> list = ad.getAllAnimes();
+                    System.out.println("The size is " + list.size());
                     Anime a1 = new Anime();
                     Anime a2 = new Anime();
                     Anime a3 = new Anime();
                     if (list != null && !list.equals("")) {
                         int max = list.size();
                         
-                        for (int i = 0; i <= list.size(); i++) {
+                        for (int i = 0; i <list.size(); i++) {
                             max = (int) Math.random()+1;
                             a1 = list.get(max);
                             list.remove(a1);
